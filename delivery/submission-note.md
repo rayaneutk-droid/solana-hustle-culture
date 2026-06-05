@@ -6,8 +6,8 @@ Built with Codex: a premium static AI website about hustle culture, styled as a
 Solana-inspired launch room / meme coin hustle terminal.
 
 Deliverables:
-- Live website: pending deployment
-- GitHub repo: pending publication
+- Live website: https://rayaneutk-droid.github.io/solana-hustle-culture/
+- GitHub repo: https://github.com/rayaneutk-droid/solana-hustle-culture
 - Figma design: https://www.figma.com/design/zjFiLNJFC9LGmfO4e0C8nl
 - The site is demo-only: no wallet connection, no trading, no private keys, no financial advice.
 
@@ -48,5 +48,5 @@ and this submission script so the work is easy to review.
 - [x] Demo-safe crypto copy
 - [x] Desktop screenshot: `delivery/desktop.png`
 - [x] Mobile screenshot: `delivery/mobile.png`
-- [ ] Public GitHub repo
-- [ ] Live deployment URL
+- [x] Public GitHub repo: https://github.com/rayaneutk-droid/solana-hustle-culture
+- [x] Live deployment URL: https://rayaneutk-droid.github.io/solana-hustle-culture/

@@ -8,7 +8,8 @@ This repo also keeps the original local TypeScript bounty triage CLI.
 
 ## Live Deliverable
 
-- Live URL: pending deployment
+- Live URL: https://rayaneutk-droid.github.io/solana-hustle-culture/
+- GitHub repo: https://github.com/rayaneutk-droid/solana-hustle-culture
 - Figma design: https://www.figma.com/design/zjFiLNJFC9LGmfO4e0C8nl
 - Submission note and Loom script: `delivery/submission-note.md`
 
