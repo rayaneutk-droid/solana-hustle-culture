@@ -1,0 +1,42 @@
+[
+  {
+    "id": "go-demo-001",
+    "title": "Build a Telegram alert bot for new Pump.fun coin launches",
+    "rewardUsd": 150,
+    "deadline": "2026-06-07",
+    "status": "open",
+    "url": "https://pump.fun/go",
+    "description": "Need a bot that posts token name, ticker, market cap, bonding curve progress and creator wallet into a Telegram channel.",
+    "tags": ["telegram", "bot", "solana", "pumpfun", "alerts"]
+  },
+  {
+    "id": "go-demo-002",
+    "title": "Landing page for meme coin launch",
+    "rewardUsd": 75,
+    "deadline": "2026-06-06",
+    "status": "open",
+    "url": "https://pump.fun/go",
+    "description": "One-page responsive landing with contract address copy button, socials, meme sections and countdown.",
+    "tags": ["landing", "html", "css", "meme", "fast"]
+  },
+  {
+    "id": "go-demo-003",
+    "title": "Wallet tracker dashboard for top buyers",
+    "rewardUsd": 250,
+    "deadline": "2026-06-09",
+    "status": "open",
+    "url": "https://pump.fun/go",
+    "description": "Simple dashboard showing wallets buying a coin, buy sizes, sell activity and quick risk notes.",
+    "tags": ["dashboard", "wallets", "solana", "analytics", "risk"]
+  },
+  {
+    "id": "go-demo-004",
+    "title": "Fix broken mobile layout on token site",
+    "rewardUsd": 35,
+    "deadline": "2026-06-05",
+    "status": "open",
+    "url": "https://pump.fun/go",
+    "description": "CSS fix for hero overlap, broken buttons and Telegram link.",
+    "tags": ["css", "mobile", "fix", "frontend"]
+  }
+]

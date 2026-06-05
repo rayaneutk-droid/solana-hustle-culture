@@ -1,0 +1,37 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Solana hustle launch room visual</title>
+  <desc id="desc">A stylized neon trading desk with demo coin, terminal panels, and signal bars.</desc>
+  <rect width="1200" height="900" rx="48" fill="#070A0F"/>
+  <path d="M0 118H1200M0 236H1200M0 354H1200M0 472H1200M0 590H1200M0 708H1200M0 826H1200" stroke="white" stroke-opacity="0.045"/>
+  <path d="M118 0V900M236 0V900M354 0V900M472 0V900M590 0V900M708 0V900M826 0V900M944 0V900M1062 0V900" stroke="white" stroke-opacity="0.045"/>
+  <circle cx="792" cy="290" r="220" fill="#9945FF" fill-opacity="0.18"/>
+  <circle cx="920" cy="508" r="150" fill="#14F195" fill-opacity="0.12"/>
+  <rect x="76" y="72" width="1048" height="696" rx="34" fill="#0B111D" stroke="#273247" stroke-width="2"/>
+  <rect x="116" y="112" width="968" height="76" rx="22" fill="#111A2B"/>
+  <circle cx="154" cy="150" r="10" fill="#FF5C7A"/>
+  <circle cx="186" cy="150" r="10" fill="#FFCF5A"/>
+  <circle cx="218" cy="150" r="10" fill="#14F195"/>
+  <rect x="116" y="228" width="420" height="364" rx="26" fill="#101827" stroke="#2A3344" stroke-width="2"/>
+  <circle cx="326" cy="404" r="122" fill="#9945FF" fill-opacity="0.28"/>
+  <circle cx="326" cy="404" r="76" fill="#14F195"/>
+  <path d="M308 386H358M294 404H344M312 422H362" stroke="#07100B" stroke-width="18" stroke-linecap="round"/>
+  <path d="M166 654H220V520H166V654ZM252 654H306V458H252V654ZM338 654H392V562H338V654ZM424 654H478V404H424V654ZM510 654H564V496H510V654ZM596 654H650V342H596V654ZM682 654H736V448H682V654ZM768 654H822V280H768V654ZM854 654H908V392H854V654ZM940 654H994V228H940V654Z" fill="url(#bars)"/>
+  <rect x="596" y="228" width="448" height="110" rx="24" fill="#121A2B" stroke="#273247" stroke-width="2"/>
+  <rect x="596" y="374" width="448" height="110" rx="24" fill="#121A2B" stroke="#273247" stroke-width="2"/>
+  <rect x="596" y="520" width="448" height="110" rx="24" fill="#121A2B" stroke="#273247" stroke-width="2"/>
+  <text x="636" y="270" fill="#9DA7B8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">FOCUS INDEX</text>
+  <text x="636" y="318" fill="#14F195" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">98.4%</text>
+  <text x="636" y="416" fill="#9DA7B8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">MEME VELOCITY</text>
+  <text x="636" y="464" fill="#FFCF5A" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">+420%</text>
+  <text x="636" y="562" fill="#9DA7B8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">STATUS</text>
+  <text x="636" y="610" fill="#FF5C7A" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">BUILD</text>
+  <path d="M96 804H1104" stroke="#14F195" stroke-opacity="0.75" stroke-width="4"/>
+  <path d="M96 834H720" stroke="#9945FF" stroke-opacity="0.8" stroke-width="4"/>
+  <defs>
+    <linearGradient id="bars" x1="166" y1="228" x2="994" y2="654" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14F195"/>
+      <stop offset="0.52" stop-color="#FFCF5A"/>
+      <stop offset="1" stop-color="#9945FF"/>
+    </linearGradient>
+  </defs>
+</svg>
