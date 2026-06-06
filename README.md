@@ -1,17 +1,25 @@
-# Solana Hustle Culture Bounty MVP
+# $HUSTLE Coin Promo Bounty MVP
 
-Static AI website MVP built with Codex for a bounty asking for a website about
-hustle culture. The creative direction is a Solana-inspired launch room:
-discipline, meme velocity, terminal energy, and a clean demo-safe delivery.
+Static Codex-built website for the Pump.fun bounty **"Develop an AI website using
+Codex"**. The first version was a generic hustle culture page; this version is
+rebuilt around the actual coin: **HUSTLE / $HUSTLE** on Solana.
 
-This repo also keeps the original local TypeScript bounty triage CLI.
+The repo also keeps the original local TypeScript bounty triage CLI.
 
 ## Live Deliverable
 
 - Live URL: https://rayaneutk-droid.github.io/solana-hustle-culture/
 - GitHub repo: https://github.com/rayaneutk-droid/solana-hustle-culture
 - Figma design: https://www.figma.com/design/zjFiLNJFC9LGmfO4e0C8nl
-- Submission note and Loom script: `delivery/submission-note.md`
+- Pump.fun coin: https://pump.fun/coin/BYkyLgYY23CFjSYeTKKcrUJWxaW3ymu74NRkpF4tpump?clip=20260604_183448%3A2280210_20260604_183339
+- Submission note: `delivery/submission-note.md`
+
+## Coin Details Used
+
+- Token: `$HUSTLE`
+- Chain: Solana
+- Contract address: `BYkyLgYY23CFjSYeTKKcrUJWxaW3ymu74NRkpF4tpump`
+- Pump.fun snapshot checked on June 6, 2026: market cap around `$1.74K`
 
 ## Website
 
@@ -35,18 +43,13 @@ http://localhost:4173
 
 ## What The Visitor Sees
 
-- Premium "Solana Hustle Terminal" hero
-- Local visual asset in `site/assets/launch-room.svg`
-- Fictional launch-room metrics
-- Hustle culture manifesto
-- Daily command interaction
-- Demo contract address copy button
-- Proof strip for Figma, static MVP, and bounty delivery
-
-## Safety Notes
-
-This is demo content only. It has no wallet connection, no trading execution, no
-private-key flow, no hidden API calls, and no financial advice.
+- Coin-first hero for `$HUSTLE`
+- Official Pump.fun outbound CTA
+- Real contract address copy button
+- Pump.fun coin thumbnail used as a local visual asset
+- Community loops: raid board, builder roll call, daily command
+- Buy path that tells visitors to open Pump.fun and verify the CA
+- Demo-safe positioning: no wallet, no embedded trading, no financial advice
 
 ## Original CLI
 
@@ -63,8 +66,11 @@ npm run check
 ## Structure
 
 ```text
-site/                       static bounty MVP website
+site/                       static $HUSTLE bounty MVP website
+site/assets/hustle-coin.jpg local Pump.fun thumbnail asset
 delivery/submission-note.md copy-paste bounty reply and Loom script
+delivery/desktop.png        desktop screenshot
+delivery/mobile.png         mobile screenshot
 data/sample-bounties.json   example bounties to score
 src/cli.ts                  original CLI: list + pitch
 ```

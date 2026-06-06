@@ -1,15 +1,15 @@
 const commands = [
-  "Ship one visible thing before the feed gets a vote.",
-  "Turn one quiet hour into proof, not noise.",
-  "Clean the offer. Tighten the page. Send the link.",
-  "Make the demo undeniable, then make the pitch short.",
-  "No wallet. No hype. Just a sharper build."
+  "Post the CA with one clean reason to watch $HUSTLE.",
+  "Drop one $HUSTLE screenshot, not a paragraph.",
+  "Bring one builder into the roll call today.",
+  "Turn the hustle into proof before the feed moves on.",
+  "Share the Pump.fun link, then tell people to verify the CA."
 ];
 
-const demoCa = "HUSTLE1111111111111111111111111111111111";
+const coinCa = "BYkyLgYY23CFjSYeTKKcrUJWxaW3ymu74NRkpF4tpump";
 const commandOutput = document.querySelector("#commandOutput");
 const commandButton = document.querySelector("[data-command-button]");
-const copyButton = document.querySelector("[data-copy-ca]");
+const copyButtons = document.querySelectorAll("[data-copy-ca]");
 const toast = document.querySelector("[data-toast]");
 const ticker = document.querySelector(".ticker-track");
 
@@ -33,12 +33,12 @@ function nextCommand() {
   commandOutput.textContent = command;
 }
 
-async function copyDemoCa() {
+async function copyCa() {
   try {
-    await navigator.clipboard.writeText(demoCa);
-    showToast("Demo contract address copied.");
+    await navigator.clipboard.writeText(coinCa);
+    showToast("$HUSTLE contract address copied.");
   } catch {
-    showToast("Copy unavailable. Demo CA is visible on the page.");
+    showToast("Copy unavailable. The CA is visible on the page.");
   }
 }
 
@@ -49,5 +49,5 @@ function duplicateTickerItems() {
 }
 
 commandButton?.addEventListener("click", nextCommand);
-copyButton?.addEventListener("click", copyDemoCa);
+copyButtons.forEach((button) => button.addEventListener("click", copyCa));
 duplicateTickerItems();
