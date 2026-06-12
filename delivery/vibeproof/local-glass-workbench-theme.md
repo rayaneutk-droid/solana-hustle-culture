@@ -81,7 +81,7 @@ Use:
   - compact visual preview of the Studio
   - honesty note about first model/WASM/app resource downloads
 - Workspace keeps the full builder, proof panels, toolbox, editor, preview, and LocalKit bridge.
-- Tablet/mobile keep touch-sized controls and a bottom tab bar.
+- Tablet/mobile keep touch-sized controls; the proof brief avoids fixed-nav overlap, and the Studio view keeps a bottom tab bar for core workspace areas.
 - Windows/laptop viewport should feel like a neutral professional app, not Apple cosplay.
 
 ## Motion

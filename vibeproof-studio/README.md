@@ -13,7 +13,7 @@ Visual direction: `Local Glass Workbench`, an iOS/macOS-inspired glass workspace
 - First screen is a proof/control-room brief, not a generic marketing page.
 - `#studio` exposes the builder, preview, proof cards, and toolbox in one dense workspace.
 - Tablet and mobile layouts open on the proof brief first, then keep the Studio path touch-friendly.
-- Mobile layout adds a bottom tab bar for Proof and Studio on the brief, then Build, Model, Tools, and Proof inside the Studio.
+- Mobile proof brief keeps the launch path visible without a fixed nav overlay; Studio mobile adds Build, Model, Tools, and Proof tab navigation.
 - Local model worker exposes `loadModel`, `runPipeline`, and `complete`.
 - Default model is `Qwen2.5-Coder-0.5B-Instruct-q4f16_1-MLC`, with larger optional WebLLM models.
 - No OpenAI, Gemini, Groq, OpenRouter, hosted AI API, account, wallet, or server inference route is used by the app.

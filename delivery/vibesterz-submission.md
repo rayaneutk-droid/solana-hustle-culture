@@ -135,7 +135,7 @@ npm run vibeproof:assets
 6. Click `Compile proof`.
 7. Confirm runtime console shows `LocalKit iframe proof OK`.
 8. Confirm LocalKit/PGlite event count updates.
-9. On mobile, confirm the bottom tab bar jumps between Proof and Studio without layout overflow.
+9. On mobile, confirm the proof brief has no fixed-nav overlap, then launch Studio and confirm the Studio tab bar jumps between Build, Model, Tools, and Proof.
 10. Run deterministic tools: JSON format, SHA-256, CSV to JSON.
 11. Try an AI-backed tool before model load and confirm it refuses cloud fallback.
 12. Confirm network proof lists app/PWA resources and reports `0 cloud AI / prompt API requests`.
