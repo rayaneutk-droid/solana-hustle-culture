@@ -124,6 +124,7 @@ What is inside:
 - WebLLM local model worker: loadModel, runPipeline, complete
 - Five-pass app builder pipeline: research, plan, generate, verify, repair
 - Editable HTML/CSS/JS workspace with sandboxed preview
+- Downloadable generated-app ZIP with source files, standalone wrapper, README, and proof-manifest.json
 - LocalKit.store and LocalKit.db.query injected into generated apps
 - PGlite local backend in IndexedDB
 - 68 local tools, with AI-backed tools locked to the loaded local model

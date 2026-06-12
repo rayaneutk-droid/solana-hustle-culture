@@ -69,11 +69,12 @@ Manual browser checks:
 4. Click `Compile proof`.
 5. Confirm the runtime console shows `LocalKit iframe proof OK`.
 6. Optionally click `Write LocalKit store` and `Query PGlite` manually in the preview.
-7. Confirm the toolbox count is above 62 and deterministic tools run without a model.
-8. Try `Load local model` in a WebGPU browser. If WebGPU is unavailable, the app disables model loading, explains the requirement, and keeps deterministic proof mode available.
-9. Reload after service-worker registration and confirm the PWA proof panel updates.
-10. Check desktop, laptop, tablet-like, and mobile layouts. Confirm the proof brief has no horizontal overflow and the Studio remains usable.
-11. Confirm the network proof reports `0 cloud AI / prompt API requests` while still listing app/PWA/model resources.
+7. Click `Download generated app` and confirm the ZIP contains `index.html`, `src/app.html`, `src/app.css`, `src/app.js`, `README.md`, and `proof-manifest.json`.
+8. Confirm the toolbox count is above 62 and deterministic tools run without a model.
+9. Try `Load local model` in a WebGPU browser. If WebGPU is unavailable, the app disables model loading, explains the requirement, and keeps deterministic proof mode available.
+10. Reload after service-worker registration and confirm the PWA proof panel updates.
+11. Check desktop, laptop, tablet-like, and mobile layouts. Confirm the proof brief has no horizontal overflow and the Studio remains usable.
+12. Confirm the network proof reports `0 cloud AI / prompt API requests` while still listing app/PWA/model resources.
 
 Local visual evidence is stored in `../delivery/vibeproof/`:
 

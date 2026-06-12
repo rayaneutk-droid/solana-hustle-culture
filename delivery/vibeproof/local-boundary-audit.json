@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:04:09.034Z",
+  "generatedAt": "2026-06-12T21:07:39.095Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -147,6 +147,16 @@
         "hasLocalKit": true,
         "hasStoreSet": true,
         "hasDbQuery": true
+      }
+    },
+    {
+      "label": "Generated ZIP export includes a proof manifest and LocalKit/runtime boundary notes.",
+      "ok": true,
+      "details": {
+        "hasProofManifest": true,
+        "hasExportReadme": true,
+        "hasCloudAiCounter": true,
+        "hasLocalKitFallbackNote": true
       }
     },
     {

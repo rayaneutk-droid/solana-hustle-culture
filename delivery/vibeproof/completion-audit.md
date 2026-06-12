@@ -25,6 +25,7 @@ Current implemented flow:
 | Worker APIs `loadModel`, `runPipeline`, `complete` | Done locally | `vibeproof-studio/src/engine/aiWorker.ts`; UI wiring in `vibeproof-studio/src/App.tsx` |
 | Five-pass pipeline | Done locally | `research`, `plan`, `generate`, `verify`, `repair` events in app/template pipeline |
 | Code workspace | Done locally | CodeMirror editor tabs for HTML/CSS/JS in `vibeproof-studio/src/App.tsx` |
+| Generated app export | Done locally | `Download generated app` writes source files, standalone wrapper, README, and `proof-manifest.json`; proof audit checks the export manifest/README wiring |
 | 62+ local tools | Done locally | Audit reports `toolCount: 68`; registry in `vibeproof-studio/src/lib/toolbox.ts` |
 | PGlite/local backend proof | Done locally | Audit checks PGlite IndexedDB and LocalKit bridge; preview auto-proof logs `LocalKit iframe proof OK` |
 | `window.LocalKit.store` and `window.LocalKit.db.query` in sandbox preview | Done locally | `buildPreviewDoc()` in `vibeproof-studio/src/App.tsx`; audit LocalKit bridge check passes |

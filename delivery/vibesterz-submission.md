@@ -34,6 +34,7 @@ Why it satisfies the bounty:
 - No account, wallet, server AI route, BYOK cloud mode, OpenAI/Gemini/Groq/OpenRouter route, or hosted prompt processing.
 - Five-pass build pipeline: research, plan, generate, verify, repair.
 - Editable CodeMirror HTML/CSS/JS workspace plus sandboxed live preview.
+- Downloadable generated-app ZIP includes source files, a standalone wrapper, README, and `proof-manifest.json` with local runtime/export facts.
 - Generated apps receive `window.LocalKit.store` and `window.LocalKit.db.query(sql, params)`.
 - PGlite runs locally through IndexedDB and is parent-owned, so generated apps persist without a server.
 - 62+ local toolbox tools. Deterministic tools run immediately; AI-backed tools require the loaded local model.
@@ -61,6 +62,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Workspace reviewer checklist proof panel implemented.
 - [x] Integrated proof-first bounty dossier implemented as the root shareable explanation page.
 - [x] CodeMirror editor integrated for a stronger MVP workspace feel.
+- [x] Generated-app ZIP export includes proof manifest and LocalKit/runtime notes.
 - [x] Local Glass Workbench premium theme implemented.
 - [x] Tablet/mobile proof-first order implemented.
 - [x] `npm run lint` passes in `vibeproof-studio/`.

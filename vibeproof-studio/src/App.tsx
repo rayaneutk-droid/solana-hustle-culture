@@ -611,11 +611,63 @@ function App() {
 
   async function downloadZip() {
     const zip = new JSZip()
+    const proofManifest = {
+      generatedAt: new Date().toISOString(),
+      generatedBy: 'VibeProof Studio',
+      files: ['index.html', 'src/app.html', 'src/app.css', 'src/app.js'],
+      runtimeBoundary: {
+        cloudAiPromptApis: false,
+        serverAiRoutes: false,
+        telemetry: false,
+        accountOrWalletRequired: false,
+        modelDownloadNote:
+          'The exported app is static. VibeProof Studio model loading may download WebLLM/model assets before export, but prompts, generated code, toolbox input, LocalKit data, and preview state are not sent to hosted AI prompt APIs by this app.',
+      },
+      localKit: {
+        store: 'window.LocalKit.store.get/set/delete/list is injected by VibeProof preview.',
+        db: 'window.LocalKit.db.query(sql, params) is injected by VibeProof preview and backed by parent-owned PGlite.',
+        standaloneFallback:
+          'The exported standalone index includes a small in-tab fallback for inspection outside VibeProof Studio.',
+      },
+      studioProof: {
+        modelState,
+        webGpuExposed: hasWebGpu,
+        pwaState,
+        dbState,
+        dbEvents,
+        observedNetworkResources: networkEvents.length,
+        observedCloudAiPromptApiHits: cloudAiEvents.length,
+        localToolCount: LOCAL_TOOL_COUNT,
+      },
+    }
     zip.file('index.html', standaloneHtml(files))
     zip.file('src/app.html', files.html)
     zip.file('src/app.css', files.css)
     zip.file('src/app.js', files.js)
-    zip.file('README.md', `# VibeProof export\n\nGenerated locally by VibeProof Studio.\n`)
+    zip.file(
+      'README.md',
+      `# VibeProof Local App Export
+
+Generated locally by VibeProof Studio.
+
+## What Is Included
+
+- \`index.html\`: standalone preview wrapper.
+- \`src/app.html\`, \`src/app.css\`, \`src/app.js\`: editable generated app files.
+- \`proof-manifest.json\`: local runtime facts captured at export time.
+
+## Runtime Boundary
+
+The exported app is static and does not include a cloud AI route, telemetry SDK, account flow, wallet hook, or hosted prompt API integration.
+
+VibeProof Studio may download WebLLM/model/WASM resources during local model loading before export. Prompts, generated code, toolbox input, LocalKit data, and preview state are not sent to hosted AI prompt APIs by this app.
+
+## LocalKit
+
+Inside VibeProof Studio, generated apps can call \`window.LocalKit.store\` and \`window.LocalKit.db.query(sql, params)\`. Those calls are bridged to a parent-owned local store and PGlite database. The standalone export includes a small in-tab fallback so reviewers can inspect the app outside the Studio.
+`,
+    )
+    zip.file('proof-manifest.json', `${JSON.stringify(proofManifest, null, 2)}\n`)
     const blob = await zip.generateAsync({ type: 'blob' })
     const url = URL.createObjectURL(blob)
     const anchor = document.createElement('a')

@@ -325,6 +325,19 @@ const checks = [
       hasDbQuery: appSource.includes('db:query'),
     },
   ),
+  check(
+    appSource.includes("zip.file('proof-manifest.json'") &&
+      appSource.includes('VibeProof Local App Export') &&
+      appSource.includes('observedCloudAiPromptApiHits') &&
+      appSource.includes('standaloneFallback'),
+    'Generated ZIP export includes a proof manifest and LocalKit/runtime boundary notes.',
+    {
+      hasProofManifest: appSource.includes("zip.file('proof-manifest.json'"),
+      hasExportReadme: appSource.includes('VibeProof Local App Export'),
+      hasCloudAiCounter: appSource.includes('observedCloudAiPromptApiHits'),
+      hasLocalKitFallbackNote: appSource.includes('standaloneFallback'),
+    },
+  ),
   check(toolCount >= 62, 'Local toolbox has at least 62 tools.', { toolCount }),
   check(
     !/"functions"\s*:/.test(vercelConfig) && !/"builds"\s*:/.test(vercelConfig),
