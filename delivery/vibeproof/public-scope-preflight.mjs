@@ -43,6 +43,8 @@ const statusLines = runGit(['status', '--porcelain=v1'])
   .map((line) => line.trimEnd())
   .filter(Boolean)
 const entries = statusLines.map(parseStatusLine)
+const generatedReportDirty = entries.some((entry) => entry.path === generatedReportPath)
+const reportDirtyEntries = entries.filter((entry) => entry.path !== generatedReportPath)
 const disallowedDirty = entries.filter((entry) =>
   entry.path !== generatedReportPath && !allowedDirtyPrefixes.some((prefix) => entry.path.startsWith(prefix)),
 )
@@ -87,7 +89,8 @@ const report = {
   project: 'VibeProof Studio',
   status: checks.every((check) => check.ok) ? 'pass' : 'fail',
   branch,
-  dirtyEntries: entries,
+  dirtyEntries: reportDirtyEntries,
+  generatedReportDirty,
   checks,
 }
 
