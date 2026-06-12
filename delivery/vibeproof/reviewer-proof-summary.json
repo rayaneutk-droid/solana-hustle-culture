@@ -1,0 +1,123 @@
+{
+  "generatedAt": "2026-06-12T21:19:48.940Z",
+  "project": "VibeProof Studio",
+  "status": "pass",
+  "publicActionsRequireConfirmation": true,
+  "app": {
+    "appPath": "vibeproof-studio/",
+    "rootRoute": "/",
+    "studioRoute": "/#studio",
+    "runtime": "pure local browser app; WebLLM model assets may download on first load"
+  },
+  "localBoundary": {
+    "toolCount": 68,
+    "forbiddenRuntimePackageHits": 0,
+    "telemetryPackageHits": 0,
+    "walletPackageHits": 0,
+    "lockCloudPackageHits": 0,
+    "lockTelemetryPackageHits": 0,
+    "lockWalletPackageHits": 0,
+    "directNetworkApiHits": 0,
+    "builtPromptEndpointHits": 0,
+    "builtSecretMarkerHits": 0,
+    "telemetryHostHits": 0,
+    "externalIndexAssetHits": 0,
+    "remoteCssAssetHits": 0
+  },
+  "browserRuntimeNetwork": {
+    "dev": {
+      "target": "http://127.0.0.1:5173/",
+      "requestCount": 87,
+      "hosts": [
+        "127.0.0.1"
+      ],
+      "cloudAiRequestHits": []
+    },
+    "productionPreview": {
+      "target": "http://127.0.0.1:4173/",
+      "requestCount": 21,
+      "hosts": [
+        "127.0.0.1"
+      ],
+      "cloudAiRequestHits": []
+    }
+  },
+  "productionPreview": {
+    "status": "pass",
+    "serviceWorkerContentType": "text/javascript",
+    "serviceWorkerDevFallback": false,
+    "generatedZipExportOk": true,
+    "generatedZipEntries": [
+      "index.html",
+      "src/",
+      "src/app.html",
+      "src/app.css",
+      "src/app.js",
+      "README.md",
+      "proof-manifest.json"
+    ],
+    "generatedZipLocalToolCount": 68,
+    "generatedZipCloudAiPromptApis": false
+  },
+  "responsiveProof": {
+    "captured": [
+      {
+        "name": "proof-brief-desktop",
+        "width": 1440,
+        "height": 900,
+        "horizontalOverflow": false,
+        "smallTouchTargetCount": 0
+      },
+      {
+        "name": "proof-brief-laptop",
+        "width": 1280,
+        "height": 720,
+        "horizontalOverflow": false,
+        "smallTouchTargetCount": 0
+      },
+      {
+        "name": "proof-brief-tablet",
+        "width": 834,
+        "height": 1194,
+        "horizontalOverflow": false,
+        "smallTouchTargetCount": 0
+      },
+      {
+        "name": "proof-brief-mobile",
+        "width": 390,
+        "height": 844,
+        "horizontalOverflow": false,
+        "smallTouchTargetCount": 0
+      },
+      {
+        "name": "studio-desktop",
+        "width": 1440,
+        "height": 900,
+        "horizontalOverflow": false,
+        "smallTouchTargetCount": 19
+      }
+    ],
+    "reducedMotion": true
+  },
+  "delivery": {
+    "deliveryAuditStatus": "pass",
+    "deliveryAuditFailedChecks": 0,
+    "preflightStatus": "pass",
+    "generatedEvidenceDirtyEntries": 0,
+    "publicPlaceholders": {
+      "github_source_url": "TODO after explicit approval",
+      "vercel_demo_url": "TODO after explicit approval",
+      "figma_frame_url": "TODO after explicit approval",
+      "canva_design_url": "TODO after explicit approval",
+      "pump_fun_reply": "TODO after explicit approval"
+    }
+  },
+  "evidenceFiles": {
+    "localBoundaryAudit": "delivery/vibeproof/local-boundary-audit.json",
+    "publicUrlVerification": "delivery/vibeproof/public-url-verification.json",
+    "productionUrlVerification": "delivery/vibeproof/production-url-verification.json",
+    "responsiveReport": "delivery/vibeproof/proof-first-responsive-report.json",
+    "deliveryAudit": "delivery/vibeproof/delivery-audit.json",
+    "publicPreflight": "delivery/vibeproof/public-preflight.json"
+  }
+}

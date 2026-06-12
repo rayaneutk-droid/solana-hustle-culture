@@ -94,9 +94,11 @@ Local visual evidence is stored in `../delivery/vibeproof/`:
 - `proof-first-responsive-report.json`
 - `public-url-verification.json`
 - `production-url-verification.json`
+- `reviewer-proof-summary.json`
 
 `public-url-verification.json` also captures the real generated-app ZIP Blob from the `Download generated app` button, verifies the required source files, README, and `proof-manifest.json`, and records Chrome runtime request hosts.
 `production-url-verification.json` repeats those checks against the built app served by `vite preview`, including a real service-worker asset instead of the dev-server HTML fallback.
+`reviewer-proof-summary.json` condenses the core local boundary, runtime network, production preview, ZIP export, responsive, and launch-gate evidence into one small reviewer-facing file.
 
 ## Runtime Boundary
 

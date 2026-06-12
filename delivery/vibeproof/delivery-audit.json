@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:16:49.484Z",
+  "generatedAt": "2026-06-12T21:20:01.683Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
-    "artifactCount": 33,
+    "artifactCount": 35,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 32,
+    "checkCount": 37,
     "failedChecks": 0
   },
   "checks": [
@@ -113,6 +113,88 @@
       "ok": true,
       "details": {
         "remoteCssAssetHits": 0
+      }
+    },
+    {
+      "label": "Reviewer proof summary status is pass.",
+      "ok": true,
+      "details": {
+        "status": "pass"
+      }
+    },
+    {
+      "label": "Reviewer proof summary keeps public actions gated.",
+      "ok": true,
+      "details": {
+        "publicActionsRequireConfirmation": true
+      }
+    },
+    {
+      "label": "Reviewer proof summary captures pure-local boundary counters.",
+      "ok": true,
+      "details": {
+        "localBoundary": {
+          "toolCount": 68,
+          "forbiddenRuntimePackageHits": 0,
+          "telemetryPackageHits": 0,
+          "walletPackageHits": 0,
+          "lockCloudPackageHits": 0,
+          "lockTelemetryPackageHits": 0,
+          "lockWalletPackageHits": 0,
+          "directNetworkApiHits": 0,
+          "builtPromptEndpointHits": 0,
+          "builtSecretMarkerHits": 0,
+          "telemetryHostHits": 0,
+          "externalIndexAssetHits": 0,
+          "remoteCssAssetHits": 0
+        }
+      }
+    },
+    {
+      "label": "Reviewer proof summary captures runtime network proof.",
+      "ok": true,
+      "details": {
+        "browserRuntimeNetwork": {
+          "dev": {
+            "target": "http://127.0.0.1:5173/",
+            "requestCount": 87,
+            "hosts": [
+              "127.0.0.1"
+            ],
+            "cloudAiRequestHits": []
+          },
+          "productionPreview": {
+            "target": "http://127.0.0.1:4173/",
+            "requestCount": 21,
+            "hosts": [
+              "127.0.0.1"
+            ],
+            "cloudAiRequestHits": []
+          }
+        }
+      }
+    },
+    {
+      "label": "Reviewer proof summary captures production service worker and ZIP export proof.",
+      "ok": true,
+      "details": {
+        "productionPreview": {
+          "status": "pass",
+          "serviceWorkerContentType": "text/javascript",
+          "serviceWorkerDevFallback": false,
+          "generatedZipExportOk": true,
+          "generatedZipEntries": [
+            "index.html",
+            "src/",
+            "src/app.html",
+            "src/app.css",
+            "src/app.js",
+            "README.md",
+            "proof-manifest.json"
+          ],
+          "generatedZipLocalToolCount": 68,
+          "generatedZipCloudAiPromptApis": false
+        }
       }
     },
     {
@@ -259,8 +341,8 @@
       "label": "Submission manifest lists build before proof audit because proof audit scans dist artifacts.",
       "ok": true,
       "details": {
-        "manifestBuildIndex": 7,
-        "manifestProofAuditIndex": 8
+        "manifestBuildIndex": 8,
+        "manifestProofAuditIndex": 9
       }
     },
     {

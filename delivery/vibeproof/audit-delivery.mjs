@@ -118,6 +118,32 @@ async function main() {
     remoteCssAssetHits: boundaryAudit.summary?.remoteCssAssetHits,
   })
 
+  const reviewerSummary = await readJson(toAbs('delivery/vibeproof/reviewer-proof-summary.json'))
+  addCheck('Reviewer proof summary status is pass.', reviewerSummary.status === 'pass', {
+    status: reviewerSummary.status,
+  })
+  addCheck('Reviewer proof summary keeps public actions gated.', reviewerSummary.publicActionsRequireConfirmation === true, {
+    publicActionsRequireConfirmation: reviewerSummary.publicActionsRequireConfirmation,
+  })
+  addCheck('Reviewer proof summary captures pure-local boundary counters.', reviewerSummary.localBoundary?.toolCount >= 62 &&
+    reviewerSummary.localBoundary?.forbiddenRuntimePackageHits === 0 &&
+    reviewerSummary.localBoundary?.directNetworkApiHits === 0 &&
+    reviewerSummary.localBoundary?.builtPromptEndpointHits === 0 &&
+    reviewerSummary.localBoundary?.externalIndexAssetHits === 0 &&
+    reviewerSummary.localBoundary?.remoteCssAssetHits === 0, {
+    localBoundary: reviewerSummary.localBoundary,
+  })
+  addCheck('Reviewer proof summary captures runtime network proof.', (reviewerSummary.browserRuntimeNetwork?.dev?.cloudAiRequestHits?.length ?? -1) === 0 &&
+    (reviewerSummary.browserRuntimeNetwork?.productionPreview?.cloudAiRequestHits?.length ?? -1) === 0, {
+    browserRuntimeNetwork: reviewerSummary.browserRuntimeNetwork,
+  })
+  addCheck('Reviewer proof summary captures production service worker and ZIP export proof.', reviewerSummary.productionPreview?.serviceWorkerDevFallback === false &&
+    reviewerSummary.productionPreview?.generatedZipExportOk === true &&
+    reviewerSummary.productionPreview?.generatedZipLocalToolCount >= 62 &&
+    reviewerSummary.productionPreview?.generatedZipCloudAiPromptApis === false, {
+    productionPreview: reviewerSummary.productionPreview,
+  })
+
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []
   const requiredCaptures = [
