@@ -905,7 +905,11 @@ button:disabled {
 }
 
 .brief-mode {
-  grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.brief-mode .system-rail {
+  display: none;
 }
 
 .brief-page {
@@ -1537,7 +1541,7 @@ button:disabled {
   }
 
   .brief-mode {
-    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .toolbox-panel {
