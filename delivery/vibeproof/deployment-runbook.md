@@ -2,6 +2,8 @@
 
 Status: prepared only. Do not push, deploy, publish Figma/Canva, or submit Pump.fun without explicit approval.
 
+Approval handoff: `delivery/vibeproof/public-launch-approval.md`.
+
 ## Current Branch
 
 ```bash

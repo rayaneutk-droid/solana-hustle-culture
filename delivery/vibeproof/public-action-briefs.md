@@ -2,6 +2,8 @@
 
 These are prepared briefs. Do not execute GitHub push, Vercel deployment, Figma creation, Canva creation, or Pump.fun submission without explicit approval.
 
+Action approval handoff: `delivery/vibeproof/public-launch-approval.md`.
+
 ## GitHub
 
 Target branch: `codex/vibeproof-studio`
