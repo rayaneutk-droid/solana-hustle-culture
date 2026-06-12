@@ -86,6 +86,8 @@ Local visual evidence is stored in `../delivery/vibeproof/`:
 - `proof-first-responsive-report.json`
 - `public-url-verification.json`
 
+`public-url-verification.json` also captures the real generated-app ZIP Blob from the `Download generated app` button and verifies the required source files, README, and `proof-manifest.json`.
+
 ## Runtime Boundary
 
 The app has no backend AI route. The first model load can contact model/CDN hosts for WebLLM assets. Prompts, code, generated files, toolbox inputs, and preview data are not sent to an AI server by this app.

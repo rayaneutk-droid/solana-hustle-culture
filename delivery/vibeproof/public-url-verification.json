@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:07:51.269Z",
+  "generatedAt": "2026-06-12T21:10:28.073Z",
   "project": "VibeProof Studio",
   "target": "http://127.0.0.1:5173/",
   "mode": "local",
@@ -759,6 +759,28 @@
         "doneStepCount": 5,
         "hasNoCloudCopy": true,
         "consoleTail": "info\nPreview reloaded with deterministic proof app.\n\ninfo\nDeterministic proof compile replaced workspace files.\n\ninfo\nLocalKit iframe proof OK"
+      }
+    },
+    {
+      "label": "Generated app ZIP export includes source files, README, and proof manifest.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "size": 8422,
+        "entryNames": [
+          "index.html",
+          "src/",
+          "src/app.html",
+          "src/app.css",
+          "src/app.js",
+          "README.md",
+          "proof-manifest.json"
+        ],
+        "missingEntries": [],
+        "manifestGeneratedBy": "VibeProof Studio",
+        "cloudAiPromptApis": false,
+        "localToolCount": 68,
+        "readmeMentionsLocalKit": true
       }
     },
     {

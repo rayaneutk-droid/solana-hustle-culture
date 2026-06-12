@@ -154,9 +154,22 @@ async function main() {
 
   const urlVerification = await readJson(toAbs('delivery/vibeproof/public-url-verification.json'))
   const failedUrlChecks = (urlVerification.checks ?? []).filter((check) => !check.ok)
+  const exportZipCheck = (urlVerification.checks ?? []).find((check) =>
+    check.label === 'Generated app ZIP export includes source files, README, and proof manifest.'
+  )
   addCheck('Public URL verification report status is pass.', urlVerification.status === 'pass', {
     status: urlVerification.status,
     failedUrlChecks: failedUrlChecks.map((check) => check.label),
+  })
+  addCheck('Public URL verification proves generated app ZIP export contents.', Boolean(exportZipCheck?.ok), {
+    exportZipCheck: exportZipCheck
+      ? {
+          ok: exportZipCheck.ok,
+          missingEntries: exportZipCheck.details?.missingEntries,
+          localToolCount: exportZipCheck.details?.localToolCount,
+          cloudAiPromptApis: exportZipCheck.details?.cloudAiPromptApis,
+        }
+      : null,
   })
 
   const visuals = await readJson(toAbs('delivery/vibeproof/submission-visuals-manifest.json'))

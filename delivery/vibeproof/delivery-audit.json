@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:07:51.620Z",
+  "generatedAt": "2026-06-12T21:10:28.416Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 31,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 26,
+    "checkCount": 27,
     "failedChecks": 0
   },
   "checks": [
@@ -159,6 +159,18 @@
       "details": {
         "status": "pass",
         "failedUrlChecks": []
+      }
+    },
+    {
+      "label": "Public URL verification proves generated app ZIP export contents.",
+      "ok": true,
+      "details": {
+        "exportZipCheck": {
+          "ok": true,
+          "missingEntries": [],
+          "localToolCount": 68,
+          "cloudAiPromptApis": false
+        }
       }
     },
     {

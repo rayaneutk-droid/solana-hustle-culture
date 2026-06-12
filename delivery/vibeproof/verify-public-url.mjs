@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { Buffer } from 'node:buffer'
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
@@ -225,6 +226,127 @@ async function runCompileProofCheck(client) {
   })()`)
 }
 
+function readStoredZipEntries(base64Zip) {
+  const buffer = Buffer.from(base64Zip, 'base64')
+  const entries = new Map()
+  let offset = 0
+
+  while (offset + 30 <= buffer.length) {
+    const signature = buffer.readUInt32LE(offset)
+    if (signature !== 0x04034b50) break
+
+    const compressionMethod = buffer.readUInt16LE(offset + 8)
+    const compressedSize = buffer.readUInt32LE(offset + 18)
+    const uncompressedSize = buffer.readUInt32LE(offset + 22)
+    const fileNameLength = buffer.readUInt16LE(offset + 26)
+    const extraLength = buffer.readUInt16LE(offset + 28)
+    const nameStart = offset + 30
+    const dataStart = nameStart + fileNameLength + extraLength
+    const dataEnd = dataStart + compressedSize
+    const name = buffer.subarray(nameStart, nameStart + fileNameLength).toString('utf8')
+
+    if (dataEnd > buffer.length) {
+      entries.set(name, { compressionMethod, error: 'Entry exceeds ZIP buffer length.' })
+      break
+    }
+
+    const content =
+      compressionMethod === 0 && uncompressedSize === compressedSize
+        ? buffer.subarray(dataStart, dataEnd).toString('utf8')
+        : ''
+
+    entries.set(name, {
+      compressionMethod,
+      compressedSize,
+      uncompressedSize,
+      content,
+    })
+    offset = dataEnd
+  }
+
+  return entries
+}
+
+async function runExportZipCheck(client) {
+  await client.send('Emulation.setDeviceMetricsOverride', {
+    width: desktopViewport.width,
+    height: desktopViewport.height,
+    deviceScaleFactor: 1,
+    mobile: desktopViewport.mobile,
+  })
+  await client.send('Page.navigate', { url: studioUrl })
+  await new Promise((resolve) => setTimeout(resolve, 900))
+
+  const capture = await evalJs(client, `(async () => {
+    const originalCreateObjectURL = URL.createObjectURL;
+    const originalRevokeObjectURL = URL.revokeObjectURL;
+    const originalClick = HTMLAnchorElement.prototype.click;
+    let capturedBlob = null;
+    URL.createObjectURL = (blob) => {
+      capturedBlob = blob;
+      return 'blob:vibeproof-export-proof';
+    };
+    URL.revokeObjectURL = () => undefined;
+    HTMLAnchorElement.prototype.click = function click() {
+      return undefined;
+    };
+    try {
+      const button = [...document.querySelectorAll('button')]
+        .find((item) => /Download generated app/.test(item.getAttribute('aria-label') || item.textContent || ''));
+      if (!button) return { ok: false, reason: 'Download generated app button not found.' };
+      button.click();
+      await new Promise((resolve) => setTimeout(resolve, 350));
+      if (!capturedBlob) return { ok: false, reason: 'Download button did not create a ZIP blob.' };
+      const bytes = new Uint8Array(await capturedBlob.arrayBuffer());
+      let binary = '';
+      for (const byte of bytes) binary += String.fromCharCode(byte);
+      return {
+        ok: true,
+        type: capturedBlob.type,
+        size: capturedBlob.size,
+        base64: btoa(binary),
+      };
+    } finally {
+      URL.createObjectURL = originalCreateObjectURL;
+      URL.revokeObjectURL = originalRevokeObjectURL;
+      HTMLAnchorElement.prototype.click = originalClick;
+    }
+  })()`)
+
+  if (!capture.ok) return capture
+
+  const entries = readStoredZipEntries(capture.base64)
+  const requiredEntries = ['index.html', 'src/app.html', 'src/app.css', 'src/app.js', 'README.md', 'proof-manifest.json']
+  const entryNames = [...entries.keys()]
+  const missingEntries = requiredEntries.filter((name) => !entries.has(name))
+  const manifestEntry = entries.get('proof-manifest.json')
+  const readmeEntry = entries.get('README.md')
+  let manifest
+  try {
+    manifest = JSON.parse(manifestEntry?.content || '{}')
+  } catch (error) {
+    manifest = { parseError: error.message }
+  }
+
+  return {
+    ok:
+      capture.size > 0 &&
+      missingEntries.length === 0 &&
+      manifest?.generatedBy === 'VibeProof Studio' &&
+      manifest?.runtimeBoundary?.cloudAiPromptApis === false &&
+      manifest?.studioProof?.localToolCount >= 62 &&
+      /LocalKit/.test(readmeEntry?.content || ''),
+    size: capture.size,
+    entryNames,
+    missingEntries,
+    manifestGeneratedBy: manifest?.generatedBy,
+    cloudAiPromptApis: manifest?.runtimeBoundary?.cloudAiPromptApis,
+    localToolCount: manifest?.studioProof?.localToolCount,
+    readmeMentionsLocalKit: /LocalKit/.test(readmeEntry?.content || ''),
+    manifestParseError: manifest?.parseError,
+  }
+}
+
 async function checkStaticAsset(relativePath) {
   try {
     const result = await fetch(new URL(relativePath, appUrl))
@@ -287,6 +409,9 @@ async function main() {
 
     const compileProof = await runCompileProofCheck(client)
     addCheck('Compile proof runs and sandboxed LocalKit iframe proof completes.', compileProof.ok, compileProof)
+
+    const exportZip = await runExportZipCheck(client)
+    addCheck('Generated app ZIP export includes source files, README, and proof manifest.', exportZip.ok, exportZip)
 
     const mobileProofBrief = await inspectRoute(client, appUrl, mobileViewport)
     addCheck('Mobile root opens the Proof Brief with Studio CTA.', mobileProofBrief.hasProofBrief && mobileProofBrief.hasStudioCta, mobileProofBrief)

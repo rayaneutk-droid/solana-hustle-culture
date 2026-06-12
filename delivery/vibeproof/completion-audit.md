@@ -25,7 +25,7 @@ Current implemented flow:
 | Worker APIs `loadModel`, `runPipeline`, `complete` | Done locally | `vibeproof-studio/src/engine/aiWorker.ts`; UI wiring in `vibeproof-studio/src/App.tsx` |
 | Five-pass pipeline | Done locally | `research`, `plan`, `generate`, `verify`, `repair` events in app/template pipeline |
 | Code workspace | Done locally | CodeMirror editor tabs for HTML/CSS/JS in `vibeproof-studio/src/App.tsx` |
-| Generated app export | Done locally | `Download generated app` writes source files, standalone wrapper, README, and `proof-manifest.json`; proof audit checks the export manifest/README wiring |
+| Generated app export | Done locally | `Download generated app` writes source files, standalone wrapper, README, and `proof-manifest.json`; proof audit checks the export manifest/README wiring; URL verification captures the real ZIP Blob and checks required entries, `localToolCount: 68`, and `cloudAiPromptApis: false` |
 | 62+ local tools | Done locally | Audit reports `toolCount: 68`; registry in `vibeproof-studio/src/lib/toolbox.ts` |
 | PGlite/local backend proof | Done locally | Audit checks PGlite IndexedDB and LocalKit bridge; preview auto-proof logs `LocalKit iframe proof OK` |
 | `window.LocalKit.store` and `window.LocalKit.db.query` in sandbox preview | Done locally | `buildPreviewDoc()` in `vibeproof-studio/src/App.tsx`; audit LocalKit bridge check passes |
@@ -34,7 +34,7 @@ Current implemented flow:
 | Premium Liquid Glass-inspired responsive frontend | Done locally | `vibeproof-studio/src/App.css`; screenshots under `delivery/vibeproof/` |
 | Reduced-motion support | Done locally | CSS `@media (prefers-reduced-motion: reduce)` and Chrome CDP reduced-motion check in `proof-first-responsive-report.json` |
 | Browser/responsive verification | Done locally | `delivery/vibeproof/proof-first-responsive-report.json` plus Browser connector state documented in `delivery/vibesterz-submission.md` |
-| Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks desktop and mobile root Proof Brief, `#studio`, PWA assets, local backend, network proof, touch targets, compile proof, sandboxed LocalKit iframe proof, and no account/wallet/API-key prompt |
+| Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks desktop and mobile root Proof Brief, `#studio`, PWA assets, local backend, network proof, touch targets, compile proof, sandboxed LocalKit iframe proof, generated-app ZIP export contents, and no account/wallet/API-key prompt |
 | Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |
 | Public-scope preflight | Prepared locally | `delivery/vibeproof/public-preflight.json` records branch, required files, gated placeholders, and dirty-file scope before public actions |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |
