@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:13:58.498Z",
+  "generatedAt": "2026-06-12T21:16:45.551Z",
   "project": "VibeProof Studio",
   "target": "http://127.0.0.1:5173/",
   "mode": "local",
@@ -1005,6 +1005,18 @@
         "scrollWidth": 390,
         "visibleControlCount": 101,
         "smallTouchTargets": []
+      }
+    },
+    {
+      "label": "Runtime browser requests contain no cloud AI prompt API hosts.",
+      "ok": true,
+      "details": {
+        "requestCount": 87,
+        "uniqueHostCount": 1,
+        "hosts": [
+          "127.0.0.1"
+        ],
+        "cloudAiRequestHits": []
       }
     }
   ]

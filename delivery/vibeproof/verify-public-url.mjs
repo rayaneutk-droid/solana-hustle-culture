@@ -19,6 +19,16 @@ const targetHostname = new URL(appUrl).hostname
 const isLocalTarget = ['127.0.0.1', 'localhost'].includes(targetHostname)
 const desktopViewport = { name: 'desktop', width: 1440, height: 900, mobile: false }
 const mobileViewport = { name: 'mobile', width: 390, height: 844, mobile: true }
+const cloudAiRequestHints = [
+  'api.openai.com',
+  'chat.openai.com',
+  'generativelanguage.googleapis.com',
+  'gemini.googleapis.com',
+  'api.groq.com',
+  'openrouter.ai',
+  'api.anthropic.com',
+  'api.cohere.ai',
+]
 
 const checks = []
 
@@ -67,6 +77,7 @@ async function cdp(wsUrl) {
 
   let id = 0
   const pending = new Map()
+  const eventHandlers = new Map()
   ws.addEventListener('message', (event) => {
     const message = JSON.parse(event.data)
     if (message.id && pending.has(message.id)) {
@@ -74,6 +85,9 @@ async function cdp(wsUrl) {
       pending.delete(message.id)
       if (message.error) reject(new Error(message.error.message))
       else resolve(message.result)
+    }
+    if (message.method && eventHandlers.has(message.method)) {
+      for (const handler of eventHandlers.get(message.method)) handler(message.params ?? {})
     }
   })
 
@@ -85,6 +99,11 @@ async function cdp(wsUrl) {
     },
     close() {
       ws.close()
+    },
+    on(method, handler) {
+      const handlers = eventHandlers.get(method) ?? []
+      handlers.push(handler)
+      eventHandlers.set(method, handlers)
     },
   }
 }
@@ -349,6 +368,35 @@ async function runExportZipCheck(client) {
   }
 }
 
+function summarizeNetworkRequests(events) {
+  const normalized = events
+    .map((event) => {
+      let host = ''
+      try {
+        host = new URL(event.url).hostname
+      } catch {
+        host = ''
+      }
+      return { ...event, host }
+    })
+    .filter((event) => event.url && !event.url.startsWith('data:') && !event.url.startsWith('blob:'))
+  const hosts = [...new Set(normalized.map((event) => event.host).filter(Boolean))].sort()
+  const cloudAiRequestHits = normalized.filter((event) =>
+    cloudAiRequestHints.some((hint) => `${event.host}${event.url}`.toLowerCase().includes(hint)),
+  )
+
+  return {
+    requestCount: normalized.length,
+    uniqueHostCount: hosts.length,
+    hosts,
+    cloudAiRequestHits: cloudAiRequestHits.map((event) => ({
+      url: event.url,
+      method: event.method,
+      resourceType: event.resourceType,
+    })),
+  }
+}
+
 async function checkStaticAsset(relativePath) {
   try {
     const result = await fetch(new URL(relativePath, appUrl))
@@ -389,6 +437,7 @@ async function main() {
   ], { stdio: 'ignore' })
 
   let client
+  const observedRequests = []
   try {
     const targets = await waitForJson(`http://127.0.0.1:${port}/json/list`)
     const pageTarget = targets.find((target) => target.type === 'page' && target.webSocketDebuggerUrl)
@@ -396,6 +445,14 @@ async function main() {
     client = await cdp(pageTarget.webSocketDebuggerUrl)
     await client.send('Page.enable')
     await client.send('Runtime.enable')
+    await client.send('Network.enable')
+    client.on('Network.requestWillBeSent', (event) => {
+      observedRequests.push({
+        url: event.request?.url ?? '',
+        method: event.request?.method ?? '',
+        resourceType: event.type ?? '',
+      })
+    })
 
     const proofBrief = await inspectRoute(client, appUrl, desktopViewport)
     addCheck('Root route opens the reviewer Proof Brief.', proofBrief.hasProofBrief, proofBrief)
@@ -425,6 +482,9 @@ async function main() {
     addCheck('Mobile Studio opens with builder and visible mobile navigation.', mobileStudio.hasStudio && mobileStudio.hasBuilderPanel && mobileStudio.hasVisibleMobileTabbar, mobileStudio)
     addCheck('Mobile Studio has no horizontal overflow.', !mobileStudio.horizontalOverflow, mobileStudio)
     addCheck('Mobile Studio controls are touch-sized.', mobileStudio.smallTouchTargets.length === 0, mobileStudio)
+
+    const networkAudit = summarizeNetworkRequests(observedRequests)
+    addCheck('Runtime browser requests contain no cloud AI prompt API hosts.', networkAudit.cloudAiRequestHits.length === 0, networkAudit)
   } catch (error) {
     addCheck('Chrome route inspection completed.', false, { error: error.message })
   } finally {

@@ -157,6 +157,9 @@ async function main() {
   const exportZipCheck = (urlVerification.checks ?? []).find((check) =>
     check.label === 'Generated app ZIP export includes source files, README, and proof manifest.'
   )
+  const runtimeNetworkCheck = (urlVerification.checks ?? []).find((check) =>
+    check.label === 'Runtime browser requests contain no cloud AI prompt API hosts.'
+  )
   addCheck('Public URL verification report status is pass.', urlVerification.status === 'pass', {
     status: urlVerification.status,
     failedUrlChecks: failedUrlChecks.map((check) => check.label),
@@ -171,6 +174,16 @@ async function main() {
         }
       : null,
   })
+  addCheck('Public URL verification proves runtime browser requests avoid cloud AI hosts.', Boolean(runtimeNetworkCheck?.ok), {
+    runtimeNetworkCheck: runtimeNetworkCheck
+      ? {
+          ok: runtimeNetworkCheck.ok,
+          requestCount: runtimeNetworkCheck.details?.requestCount,
+          hosts: runtimeNetworkCheck.details?.hosts,
+          cloudAiRequestHits: runtimeNetworkCheck.details?.cloudAiRequestHits,
+        }
+      : null,
+  })
 
   const productionUrlVerification = await readJson(toAbs('delivery/vibeproof/production-url-verification.json'))
   const failedProductionUrlChecks = (productionUrlVerification.checks ?? []).filter((check) => !check.ok)
@@ -179,6 +192,9 @@ async function main() {
   )
   const productionExportZipCheck = (productionUrlVerification.checks ?? []).find((check) =>
     check.label === 'Generated app ZIP export includes source files, README, and proof manifest.'
+  )
+  const productionRuntimeNetworkCheck = (productionUrlVerification.checks ?? []).find((check) =>
+    check.label === 'Runtime browser requests contain no cloud AI prompt API hosts.'
   )
   addCheck('Production preview URL verification report status is pass.', productionUrlVerification.status === 'pass', {
     status: productionUrlVerification.status,
@@ -195,6 +211,16 @@ async function main() {
           missingEntries: productionExportZipCheck.details?.missingEntries,
           localToolCount: productionExportZipCheck.details?.localToolCount,
           cloudAiPromptApis: productionExportZipCheck.details?.cloudAiPromptApis,
+        }
+      : null,
+  })
+  addCheck('Production preview verification proves runtime browser requests avoid cloud AI hosts.', Boolean(productionRuntimeNetworkCheck?.ok), {
+    runtimeNetworkCheck: productionRuntimeNetworkCheck
+      ? {
+          ok: productionRuntimeNetworkCheck.ok,
+          requestCount: productionRuntimeNetworkCheck.details?.requestCount,
+          hosts: productionRuntimeNetworkCheck.details?.hosts,
+          cloudAiRequestHits: productionRuntimeNetworkCheck.details?.cloudAiRequestHits,
         }
       : null,
   })
