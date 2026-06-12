@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:31:19.078Z",
+  "generatedAt": "2026-06-12T20:34:18.446Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "branch": "codex/vibeproof-studio",
@@ -49,6 +49,10 @@
     {
       "status": " M",
       "path": "delivery/vibeproof/local-boundary-audit.json"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/public-preflight.json"
     },
     {
       "status": " M",
