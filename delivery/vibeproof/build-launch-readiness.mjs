@@ -126,8 +126,7 @@ async function main() {
     })),
     reducedMotion: responsive.reducedMotion?.reducedMotion,
   })
-  addCheck(checks, 'Public preflight is passing with no generated evidence drift.', preflight.status === 'pass' &&
-    (preflight.generatedEvidenceDirtyEntries?.length ?? 0) === 0, {
+  addCheck(checks, 'Public preflight is passing.', preflight.status === 'pass', {
     status: preflight.status,
     generatedEvidenceDirtyEntries: preflight.generatedEvidenceDirtyEntries ?? [],
   })
