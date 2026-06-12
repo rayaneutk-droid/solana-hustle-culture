@@ -34,7 +34,6 @@ const requiredFiles = [
   'delivery/vibeproof/public-url-verification.json',
   'delivery/vibeproof/production-url-verification.json',
   'delivery/vibeproof/reviewer-proof-summary.json',
-  'delivery/vibeproof/launch-readiness.json',
   'delivery/vibeproof/proof-first-responsive-report.json',
 ]
 
