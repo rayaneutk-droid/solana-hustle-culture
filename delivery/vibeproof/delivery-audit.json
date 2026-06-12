@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:00:58.841Z",
+  "generatedAt": "2026-06-12T21:03:41.774Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 31,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 24,
+    "checkCount": 26,
     "failedChecks": 0
   },
   "checks": [
@@ -99,6 +99,20 @@
       "ok": true,
       "details": {
         "telemetryHostHits": 0
+      }
+    },
+    {
+      "label": "Built index has no remote static asset loads.",
+      "ok": true,
+      "details": {
+        "externalIndexAssetHits": 0
+      }
+    },
+    {
+      "label": "Built CSS has no remote font, image, or stylesheet imports.",
+      "ok": true,
+      "details": {
+        "remoteCssAssetHits": 0
       }
     },
     {

@@ -111,6 +111,12 @@ async function main() {
   addCheck('No telemetry collection host hits in source or built artifacts.', boundaryAudit.summary?.telemetryHostHits === 0, {
     telemetryHostHits: boundaryAudit.summary?.telemetryHostHits,
   })
+  addCheck('Built index has no remote static asset loads.', boundaryAudit.summary?.externalIndexAssetHits === 0, {
+    externalIndexAssetHits: boundaryAudit.summary?.externalIndexAssetHits,
+  })
+  addCheck('Built CSS has no remote font, image, or stylesheet imports.', boundaryAudit.summary?.remoteCssAssetHits === 0, {
+    remoteCssAssetHits: boundaryAudit.summary?.remoteCssAssetHits,
+  })
 
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []

@@ -250,7 +250,17 @@ const toolboxSource = sourceEntries.find((entry) => entry.relativePath === 'src/
 const vercelConfig = await readFile(path.join(projectRoot, 'vercel.json'), 'utf8')
 const vercelConfigJson = JSON.parse(vercelConfig)
 const builtIndexHtml = distEntries.find((entry) => entry.relativePath === 'dist/index.html')?.text ?? ''
+const builtCssEntries = distEntries.filter((entry) => entry.relativePath.endsWith('.css'))
 const externalScriptHits = [...builtIndexHtml.matchAll(/<script[^>]+src=["']https?:\/\//gi)].map((match) => match[0])
+const externalIndexAssetHits = [
+  ...builtIndexHtml.matchAll(/<(script|link|img|source|iframe)[^>]+(?:src|href)=["']https?:\/\//gi),
+].map((match) => match[0])
+const remoteCssAssetHits = builtCssEntries.flatMap((entry) =>
+  [...entry.text.matchAll(/(?:@import\s+)?url\(\s*["']?https?:\/\//gi)].map((match) => ({
+    file: entry.relativePath,
+    pattern: match[0],
+  })),
+)
 
 const toolCount = countToolDefinitions(toolboxSource)
 const cloudHostFiles = new Set(cloudHostHits.map((hit) => hit.file))
@@ -381,6 +391,12 @@ const checks = [
   check(externalScriptHits.length === 0, 'Built index.html does not load remote scripts.', {
     externalScriptHits,
   }),
+  check(externalIndexAssetHits.length === 0, 'Built index.html does not load remote scripts, styles, images, sources, or iframes.', {
+    externalIndexAssetHits,
+  }),
+  check(remoteCssAssetHits.length === 0, 'Built CSS does not import remote fonts, images, or stylesheets.', {
+    remoteCssAssetHits,
+  }),
 ]
 
 const report = {
@@ -402,6 +418,8 @@ const report = {
     builtPromptEndpointHits: builtPromptEndpointHits.length,
     builtSecretMarkerHits: builtSecretMarkerHits.length,
     telemetryHostHits: telemetryHostHits.length,
+    externalIndexAssetHits: externalIndexAssetHits.length,
+    remoteCssAssetHits: remoteCssAssetHits.length,
   },
   checks,
   note: 'Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, telemetry packages/hosts, wallet connector packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config.',

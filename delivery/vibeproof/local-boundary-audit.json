@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:00:48.405Z",
+  "generatedAt": "2026-06-12T21:03:38.889Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -16,7 +16,9 @@
     "knownCloudAiHostStrings": 11,
     "builtPromptEndpointHits": 0,
     "builtSecretMarkerHits": 0,
-    "telemetryHostHits": 0
+    "telemetryHostHits": 0,
+    "externalIndexAssetHits": 0,
+    "remoteCssAssetHits": 0
   },
   "checks": [
     {
@@ -241,6 +243,20 @@
       "ok": true,
       "details": {
         "externalScriptHits": []
+      }
+    },
+    {
+      "label": "Built index.html does not load remote scripts, styles, images, sources, or iframes.",
+      "ok": true,
+      "details": {
+        "externalIndexAssetHits": []
+      }
+    },
+    {
+      "label": "Built CSS does not import remote fonts, images, or stylesheets.",
+      "ok": true,
+      "details": {
+        "remoteCssAssetHits": []
       }
     }
   ],
