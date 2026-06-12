@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-06-12T20:20:21.557Z",
+  "project": "VibeProof Studio",
+  "status": "pass",
+  "branch": "codex/vibeproof-studio",
+  "dirtyEntries": [
+    {
+      "status": "D ",
+      "path": "delivery/social/watch-this-man-desktop.png"
+    },
+    {
+      "status": " D",
+      "path": "delivery/social/watch-this-man-mobile.png"
+    },
+    {
+      "status": " D",
+      "path": "delivery/social/watch-this-man-portrait-raw.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/Solana_Hustle_mobile.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/hustle-bounty-cover-16x9.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/hustle-bounty-square.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/hustle-watch-this-man-portrait.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/solana_hustle_desktop.png"
+    },
+    {
+      "status": "??",
+      "path": "delivery/social/solana_hustle_portrait.png"
+    }
+  ],
+  "checks": [
+    {
+      "label": "Current branch is the VibeProof branch.",
+      "ok": true,
+      "details": {
+        "currentBranch": "codex/vibeproof-studio",
+        "expectedBranch": "codex/vibeproof-studio"
+      }
+    },
+    {
+      "label": "No dirty files outside the explicitly excluded delivery/social scope.",
+      "ok": true,
+      "details": {
+        "disallowedDirty": [],
+        "allowedDirtyPrefixes": [
+          "delivery/social/"
+        ]
+      }
+    },
+    {
+      "label": "Required VibeProof launch files exist.",
+      "ok": true,
+      "details": {
+        "missingFiles": []
+      }
+    },
+    {
+      "label": "Public actions remain gated in the manifest.",
+      "ok": true,
+      "details": {
+        "public_actions_require_confirmation": true
+      }
+    },
+    {
+      "label": "Public URL placeholders are not filled before approval.",
+      "ok": true,
+      "details": {
+        "publicPlaceholders": {
+          "github_source_url": "TODO after explicit approval",
+          "vercel_demo_url": "TODO after explicit approval",
+          "figma_frame_url": "TODO after explicit approval",
+          "canva_design_url": "TODO after explicit approval",
+          "pump_fun_reply": "TODO after explicit approval"
+        }
+      }
+    },
+    {
+      "label": "Delivery artifact audit is passing.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "failedChecks": 0
+      }
+    },
+    {
+      "label": "Local boundary audit is passing.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "toolCount": 68
+      }
+    }
+  ]
+}
