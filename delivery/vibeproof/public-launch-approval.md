@@ -7,7 +7,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 ## Current Local State
 
 - Branch: `codex/vibeproof-studio`
-- Latest VibeProof commit: `dd31af5 Make VibeProof proof-first premium MVP`
+- Latest VibeProof delivery commits are on the branch; confirm with `git log --oneline -6`.
 - App root: `vibeproof-studio/`
 - Reviewer entry route: `/`
 - Working Studio route: `/#studio`
@@ -60,6 +60,7 @@ Run from repository root:
 
 ```bash
 npm run vibeproof:verify
+npm run vibeproof:public-preflight
 ```
 
 Equivalent expanded commands:
@@ -72,6 +73,7 @@ npm run build
 cd ..
 npm run check
 npm run vibeproof:delivery:audit
+npm run vibeproof:public-preflight
 ```
 
 Expected:
@@ -79,6 +81,7 @@ Expected:
 - All commands exit 0.
 - Build may warn about large WebLLM/PGlite chunks and PGlite dependency `eval`; these are documented local-runtime artifacts.
 - Delivery audit validates required screenshots, visuals, proof reports, and active docs.
+- Public preflight confirms branch, required launch files, public placeholders, and that dirty files are limited to the explicitly excluded `delivery/social/` scope.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
 ## Screenshot And Visual Refresh

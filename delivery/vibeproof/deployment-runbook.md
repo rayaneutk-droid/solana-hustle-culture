@@ -24,6 +24,7 @@ Run from the repository root:
 
 ```bash
 npm run vibeproof:verify
+npm run vibeproof:public-preflight
 ```
 
 Equivalent expanded commands:
@@ -36,6 +37,7 @@ npm run build
 cd ..
 npm run check
 npm run vibeproof:delivery:audit
+npm run vibeproof:public-preflight
 ```
 
 Expected:
@@ -45,6 +47,7 @@ Expected:
 - Vite build exits 0.
 - Root TypeScript check exits 0.
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
+- `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 
 ## GitHub Scope

@@ -15,6 +15,7 @@
     "delivery/vibeproof/public-launch-approval.md",
     "delivery/vibeproof/submission-visuals-manifest.json",
     "delivery/vibeproof/audit-delivery.mjs",
+    "delivery/vibeproof/public-scope-preflight.mjs",
     "delivery/vibeproof/capture-proof-first.mjs",
     "delivery/vibeproof/render-submission-visuals.mjs",
     "delivery/vibeproof/figma-proof-frame-brief.md",
@@ -40,6 +41,7 @@
   "local_checks": [
     "npm run vibeproof:verify",
     "npm run vibeproof:delivery:audit",
+    "npm run vibeproof:public-preflight",
     "cd vibeproof-studio && npm run lint",
     "cd vibeproof-studio && npm run proof:audit",
     "cd vibeproof-studio && npm run build",
