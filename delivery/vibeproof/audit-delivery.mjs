@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { readFile, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
@@ -62,6 +63,15 @@ async function pngDimensions(relativePath) {
     relativePath,
     width: bytes.readUInt32BE(16),
     height: bytes.readUInt32BE(20),
+  }
+}
+
+async function artifactDigest(relativePath) {
+  const bytes = await readFile(toAbs(relativePath))
+  return {
+    path: relativePath,
+    bytes: bytes.length,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
   }
 }
 
@@ -215,13 +225,31 @@ async function main() {
   const malformedDigestEntries = (reviewerSummary.artifactDigests ?? []).filter((artifact) =>
     !artifact.path || !(artifact.bytes > 0) || !/^[a-f0-9]{64}$/.test(artifact.sha256 ?? ''),
   )
+  const digestMismatches = []
+  for (const artifact of reviewerSummary.artifactDigests ?? []) {
+    if (!artifact.path) continue
+    try {
+      const actual = await artifactDigest(artifact.path)
+      if (actual.bytes !== artifact.bytes || actual.sha256 !== artifact.sha256) {
+        digestMismatches.push({ expected: artifact, actual })
+      }
+    } catch (error) {
+      digestMismatches.push({
+        expected: artifact,
+        actual: null,
+        error: error instanceof Error ? error.message : String(error),
+      })
+    }
+  }
   addCheck('Reviewer proof summary includes SHA-256 digests for visual and source proof artifacts.', missingDigestPaths.length === 0 &&
     duplicateDigestPaths.length === 0 &&
-    malformedDigestEntries.length === 0, {
+    malformedDigestEntries.length === 0 &&
+    digestMismatches.length === 0, {
     digestCount: reviewerSummary.artifactDigests?.length,
     missingDigestPaths,
     duplicateDigestPaths,
     malformedDigestEntries,
+    digestMismatches,
   })
 
   const launchReadiness = await readJson(toAbs('delivery/vibeproof/launch-readiness.json'))

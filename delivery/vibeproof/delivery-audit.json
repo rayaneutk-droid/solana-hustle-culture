@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:58:28.889Z",
+  "generatedAt": "2026-06-12T21:59:55.777Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -219,7 +219,8 @@
         "digestCount": 17,
         "missingDigestPaths": [],
         "duplicateDigestPaths": [],
-        "malformedDigestEntries": []
+        "malformedDigestEntries": [],
+        "digestMismatches": []
       }
     },
     {

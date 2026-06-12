@@ -46,7 +46,7 @@ Why it satisfies the bounty:
 - 62+ local toolbox tools. Deterministic tools run immediately; AI-backed tools require the loaded local model.
 - Visible network proof panel lists runtime resource requests and reports known cloud AI/prompt API host matches.
 - Workspace proof panel includes a reviewer checklist for local runtime, no hosted AI route, LocalKit, PWA, and network visibility.
-- One-file reviewer summary condenses local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 digests for visual/source proof artifacts.
+- One-file reviewer summary condenses local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 digests for visual/source proof artifacts; delivery audit recomputes those hashes to detect drift.
 - Delivery audit validates exact PNG dimensions for the reviewer screenshots, submission cover, square/story cards, and local Figma proof frame.
 - Launch readiness JSON explicitly reports `local_ready_public_gated`, with GitHub, Vercel, Figma, Canva, and Pump.fun still pending explicit approval.
 - Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, no remote static asset loads in the built index/CSS, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
