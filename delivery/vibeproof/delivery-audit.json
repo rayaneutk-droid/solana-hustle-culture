@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:54:36.919Z",
+  "generatedAt": "2026-06-12T21:55:56.434Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 38,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 39,
+    "checkCount": 40,
     "failedChecks": 0
   },
   "checks": [
@@ -113,6 +113,14 @@
       "ok": true,
       "details": {
         "remoteCssAssetHits": 0
+      }
+    },
+    {
+      "label": "Vercel deployment config is static, cache-safe, and local-runtime compatible.",
+      "ok": true,
+      "details": {
+        "missingVercelChecks": [],
+        "failedVercelChecks": []
       }
     },
     {

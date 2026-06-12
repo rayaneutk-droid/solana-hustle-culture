@@ -50,6 +50,7 @@ Why it satisfies the bounty:
 - Launch readiness JSON explicitly reports `local_ready_public_gated`, with GitHub, Vercel, Figma, Canva, and Pump.fun still pending explicit approval.
 - Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, no remote static asset loads in the built index/CSS, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
 - `npm run vibeproof:prod-url-verify` serves the production build locally and verifies the proof brief, Studio, LocalKit iframe proof, generated-app ZIP export, mobile touch targets, real service-worker asset, and runtime browser requests with zero cloud AI prompt API hosts.
+- Delivery audit surfaces Vercel static-deploy checks: no serverless functions/builds, immutable hashed assets, revalidatable service worker/manifest, static security headers, no forced COOP/COEP, and SPA rewrites that preserve direct asset/service-worker access.
 - PWA proof panel shows service-worker status and states the offline boundary honestly: app shell after first cache; model weights after first model download/browser cache.
 
 Important honesty note: first model load downloads WebLLM/model assets from model/CDN hosts. The app does not send prompts, generated code, files, toolbox input, or preview data to a cloud AI API.

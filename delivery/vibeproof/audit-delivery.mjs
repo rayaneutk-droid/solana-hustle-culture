@@ -31,6 +31,10 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'))
 }
 
+function findCheck(report, label) {
+  return (report.checks ?? []).find((check) => check.label === label)
+}
+
 async function fileInfo(relativePath) {
   const absolute = toAbs(relativePath)
   const info = await stat(absolute)
@@ -116,6 +120,25 @@ async function main() {
   })
   addCheck('Built CSS has no remote font, image, or stylesheet imports.', boundaryAudit.summary?.remoteCssAssetHits === 0, {
     remoteCssAssetHits: boundaryAudit.summary?.remoteCssAssetHits,
+  })
+  const vercelCheckLabels = [
+    'Vercel config does not define serverless functions.',
+    'Vercel config gives hashed assets immutable cache headers and nosniff.',
+    'Vercel config keeps service worker and manifest revalidatable.',
+    'Vercel config blocks sensitive browser prompts and sets baseline static security headers.',
+    'Vercel config does not force COOP/COEP headers that could block WebLLM/PGlite assets.',
+    'Vercel SPA rewrite preserves direct access to assets, service worker, manifest, and icons.',
+  ]
+  const vercelChecks = vercelCheckLabels.map((label) => findCheck(boundaryAudit, label))
+  const missingVercelChecks = vercelCheckLabels.filter((label, index) => !vercelChecks[index])
+  const failedVercelChecks = vercelChecks.filter((check) => check && !check.ok)
+  addCheck('Vercel deployment config is static, cache-safe, and local-runtime compatible.', missingVercelChecks.length === 0 &&
+    failedVercelChecks.length === 0, {
+    missingVercelChecks,
+    failedVercelChecks: failedVercelChecks.map((check) => ({
+      label: check.label,
+      details: check.details,
+    })),
   })
 
   const reviewerSummary = await readJson(toAbs('delivery/vibeproof/reviewer-proof-summary.json'))
