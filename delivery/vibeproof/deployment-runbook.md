@@ -35,6 +35,7 @@ npm run proof:audit
 npm run build
 cd ..
 npm run check
+npm run vibeproof:delivery:audit
 ```
 
 Expected:
@@ -43,6 +44,7 @@ Expected:
 - `proof:audit` writes `delivery/vibeproof/local-boundary-audit.json` and exits 0.
 - Vite build exits 0.
 - Root TypeScript check exits 0.
+- `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 
 ## GitHub Scope

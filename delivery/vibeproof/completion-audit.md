@@ -33,6 +33,7 @@ Current implemented flow:
 | Premium Liquid Glass-inspired responsive frontend | Done locally | `vibeproof-studio/src/App.css`; screenshots under `delivery/vibeproof/` |
 | Reduced-motion support | Done locally | CSS `@media (prefers-reduced-motion: reduce)` and Chrome CDP reduced-motion check in `proof-first-responsive-report.json` |
 | Browser/responsive verification | Done locally | `delivery/vibeproof/proof-first-responsive-report.json` plus Browser connector state documented in `delivery/vibesterz-submission.md` |
+| Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |
 | Root check passes | Done locally | Last run: `npm run check` exited 0 |
 | GitHub source public | Pending approval | Prepared scope in `delivery/vibeproof/public-launch-approval.md`; not pushed |
@@ -44,6 +45,7 @@ Current implemented flow:
 ## Current Evidence Files
 
 - `delivery/vibeproof/local-boundary-audit.json`
+- `delivery/vibeproof/delivery-audit.json`
 - `delivery/vibeproof/proof-first-responsive-report.json`
 - `delivery/vibeproof/submission-assets-manifest.json`
 - `delivery/vibeproof/public-launch-approval.md`
@@ -59,6 +61,7 @@ npm run vibeproof:verify
 ```
 
 This runs the app lint, local-boundary audit, production build, and root TypeScript check in sequence.
+It also runs `npm run vibeproof:delivery:audit` to validate the delivery package itself.
 
 ## Asset Refresh Commands
 

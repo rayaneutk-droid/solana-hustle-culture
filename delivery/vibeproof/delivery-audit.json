@@ -1,0 +1,128 @@
+{
+  "generatedAt": "2026-06-12T20:12:53.013Z",
+  "project": "VibeProof Studio",
+  "status": "pass",
+  "summary": {
+    "artifactCount": 27,
+    "screenshotCount": 5,
+    "localVisualCount": 8,
+    "checkCount": 15,
+    "failedChecks": 0
+  },
+  "checks": [
+    {
+      "label": "All manifest artifacts exist.",
+      "ok": true,
+      "details": {
+        "missing": []
+      }
+    },
+    {
+      "label": "All manifest artifacts are nonempty.",
+      "ok": true,
+      "details": {
+        "empty": []
+      }
+    },
+    {
+      "label": "All screenshot and visual PNGs have PNG signatures.",
+      "ok": true,
+      "details": {
+        "badPngs": []
+      }
+    },
+    {
+      "label": "Local boundary audit status is pass.",
+      "ok": true,
+      "details": {
+        "status": "pass"
+      }
+    },
+    {
+      "label": "Local toolbox count is at least 62.",
+      "ok": true,
+      "details": {
+        "toolCount": 68
+      }
+    },
+    {
+      "label": "No forbidden cloud runtime package hits.",
+      "ok": true,
+      "details": {
+        "forbiddenRuntimePackageHits": 0
+      }
+    },
+    {
+      "label": "No direct prompt API network hits.",
+      "ok": true,
+      "details": {
+        "directNetworkApiHits": 0
+      }
+    },
+    {
+      "label": "Responsive report has all required captures.",
+      "ok": true,
+      "details": {
+        "missingCaptures": []
+      }
+    },
+    {
+      "label": "Responsive captures have no horizontal overflow.",
+      "ok": true,
+      "details": {
+        "overflowCaptures": []
+      }
+    },
+    {
+      "label": "Proof brief captures expose the Studio CTA.",
+      "ok": true,
+      "details": {
+        "proofCapturesMissingCta": []
+      }
+    },
+    {
+      "label": "Tablet and mobile captures have no tiny touch targets.",
+      "ok": true,
+      "details": {
+        "mobileTouchIssues": []
+      }
+    },
+    {
+      "label": "Reduced-motion check is present and true.",
+      "ok": true,
+      "details": {
+        "reducedMotion": {
+          "hasProofBrief": true,
+          "reducedMotion": true
+        }
+      }
+    },
+    {
+      "label": "Submission visual manifest has all expected renders.",
+      "ok": true,
+      "details": {
+        "missingVisuals": []
+      }
+    },
+    {
+      "label": "Active delivery docs avoid stale workspace-first artifact references.",
+      "ok": true,
+      "details": {
+        "staleHits": []
+      }
+    },
+    {
+      "label": "Public URLs remain gated placeholders.",
+      "ok": true,
+      "details": {
+        "publicPlaceholders": {
+          "github_source_url": "TODO after explicit approval",
+          "vercel_demo_url": "TODO after explicit approval",
+          "figma_frame_url": "TODO after explicit approval",
+          "canva_design_url": "TODO after explicit approval",
+          "pump_fun_reply": "TODO after explicit approval"
+        }
+      }
+    }
+  ]
+}

@@ -13,6 +13,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Working Studio route: `/#studio`
 - Local proof report: `delivery/vibeproof/proof-first-responsive-report.json`
 - Boundary audit: `delivery/vibeproof/local-boundary-audit.json`
+- Delivery audit: `delivery/vibeproof/delivery-audit.json`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
 Unrelated `delivery/social/` changes are intentionally excluded from this launch scope.
@@ -70,12 +71,14 @@ npm run proof:audit
 npm run build
 cd ..
 npm run check
+npm run vibeproof:delivery:audit
 ```
 
 Expected:
 
 - All commands exit 0.
 - Build may warn about large WebLLM/PGlite chunks and PGlite dependency `eval`; these are documented local-runtime artifacts.
+- Delivery audit validates required screenshots, visuals, proof reports, and active docs.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
 ## Screenshot And Visual Refresh
@@ -123,6 +126,7 @@ Honesty note: first model load may download WebLLM/model/WASM assets from model/
 
 Verification artifacts:
 - delivery/vibeproof/local-boundary-audit.json
+- delivery/vibeproof/delivery-audit.json
 - delivery/vibeproof/proof-first-responsive-report.json
 - delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png
 - delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png
