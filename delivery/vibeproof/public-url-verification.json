@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:40:01.258Z",
+  "generatedAt": "2026-06-12T20:42:39.090Z",
   "project": "VibeProof Studio",
   "target": "http://127.0.0.1:5173/",
   "mode": "local",
@@ -59,21 +59,8 @@
         "horizontalOverflow": false,
         "clientWidth": 1425,
         "scrollWidth": 1425,
-        "visibleControlCount": 8,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "visibleControlCount": 4,
+        "smallTouchTargets": []
       }
     },
     {
@@ -103,21 +90,8 @@
         "horizontalOverflow": false,
         "clientWidth": 1425,
         "scrollWidth": 1425,
-        "visibleControlCount": 8,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "visibleControlCount": 4,
+        "smallTouchTargets": []
       }
     },
     {
@@ -147,21 +121,8 @@
         "horizontalOverflow": false,
         "clientWidth": 1425,
         "scrollWidth": 1425,
-        "visibleControlCount": 8,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "visibleControlCount": 4,
+        "smallTouchTargets": []
       }
     },
     {
@@ -191,21 +152,8 @@
         "horizontalOverflow": false,
         "clientWidth": 1425,
         "scrollWidth": 1425,
-        "visibleControlCount": 8,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "visibleControlCount": 4,
+        "smallTouchTargets": []
       }
     },
     {
@@ -239,13 +187,13 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
@@ -385,13 +333,13 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
@@ -531,13 +479,13 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
@@ -677,13 +625,13 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 128,
+            "width": 127,
             "height": 36,
             "visible": true
           },
@@ -832,7 +780,7 @@
         "horizontalOverflow": false,
         "clientWidth": 390,
         "scrollWidth": 390,
-        "visibleControlCount": 10,
+        "visibleControlCount": 6,
         "smallTouchTargets": []
       }
     },
@@ -863,7 +811,7 @@
         "horizontalOverflow": false,
         "clientWidth": 390,
         "scrollWidth": 390,
-        "visibleControlCount": 10,
+        "visibleControlCount": 6,
         "smallTouchTargets": []
       }
     },
@@ -894,7 +842,7 @@
         "horizontalOverflow": false,
         "clientWidth": 390,
         "scrollWidth": 390,
-        "visibleControlCount": 10,
+        "visibleControlCount": 6,
         "smallTouchTargets": []
       }
     },
