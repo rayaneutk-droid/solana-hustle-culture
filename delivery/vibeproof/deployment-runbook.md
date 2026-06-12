@@ -23,9 +23,7 @@ Do not include unrelated `delivery/social` changes in the VibeProof publish scop
 Run from the repository root:
 
 ```bash
-npm run vibeproof:verify
-npm run vibeproof:public-preflight
-npm run vibeproof:url-verify
+npm run vibeproof:launch-check
 ```
 
 Equivalent expanded commands:
@@ -38,8 +36,9 @@ npm run build
 cd ..
 npm run check
 npm run vibeproof:delivery:audit
-npm run vibeproof:public-preflight
 npm run vibeproof:url-verify
+npm run vibeproof:delivery:audit
+npm run vibeproof:public-preflight
 ```
 
 Expected:
@@ -51,6 +50,7 @@ Expected:
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
 - `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route on the configured URL.
+- Generated evidence reports may refresh during this command; source/docs changes outside those generated reports still fail the public preflight.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 
 ## GitHub Scope

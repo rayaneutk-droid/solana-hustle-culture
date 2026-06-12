@@ -61,9 +61,7 @@ Approve only the actions you want executed.
 Run from repository root:
 
 ```bash
-npm run vibeproof:verify
-npm run vibeproof:public-preflight
-npm run vibeproof:url-verify
+npm run vibeproof:launch-check
 ```
 
 Equivalent expanded commands:
@@ -76,8 +74,9 @@ npm run build
 cd ..
 npm run check
 npm run vibeproof:delivery:audit
-npm run vibeproof:public-preflight
 npm run vibeproof:url-verify
+npm run vibeproof:delivery:audit
+npm run vibeproof:public-preflight
 ```
 
 Expected:
@@ -86,7 +85,7 @@ Expected:
 - Build may warn about large WebLLM/PGlite chunks and PGlite dependency `eval`; these are documented local-runtime artifacts.
 - Delivery audit validates required screenshots, visuals, proof reports, and active docs.
 - Public preflight confirms branch, required launch files, public placeholders, and that dirty files are limited to the explicitly excluded `delivery/social/` scope.
-- Public preflight writes `delivery/vibeproof/public-preflight.json` for reviewer/auditor evidence before push or deploy.
+- Public preflight writes `delivery/vibeproof/public-preflight.json` for reviewer/auditor evidence before push or deploy, while allowing generated evidence reports to refresh.
 - URL verification writes `delivery/vibeproof/public-url-verification.json`; after Vercel approval, rerun it with `VIBEPROOF_URL` set to the preview URL to recheck desktop/mobile routes and mobile touch targets.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 

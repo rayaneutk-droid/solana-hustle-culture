@@ -42,6 +42,7 @@
     "delivery/vibeproof/figma-proof-frame-local.html"
   ],
   "local_checks": [
+    "npm run vibeproof:launch-check",
     "npm run vibeproof:verify",
     "npm run vibeproof:delivery:audit",
     "npm run vibeproof:public-preflight",

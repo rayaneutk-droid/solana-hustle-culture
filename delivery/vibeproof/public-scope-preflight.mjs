@@ -13,7 +13,13 @@ function parseStatusLine(line) {
 
 const expectedBranch = 'codex/vibeproof-studio'
 const allowedDirtyPrefixes = ['delivery/social/']
-const generatedReportPath = 'delivery/vibeproof/public-preflight.json'
+const generatedEvidencePaths = [
+  'delivery/vibeproof/public-preflight.json',
+  'delivery/vibeproof/delivery-audit.json',
+  'delivery/vibeproof/local-boundary-audit.json',
+  'delivery/vibeproof/public-url-verification.json',
+]
+const generatedReportPath = generatedEvidencePaths[0]
 const requiredFiles = [
   'vibeproof-studio/package.json',
   'vibeproof-studio/vercel.json',
@@ -43,15 +49,15 @@ const statusLines = runGit(['status', '--porcelain=v1'])
   .map((line) => line.trimEnd())
   .filter(Boolean)
 const entries = statusLines.map(parseStatusLine)
-const generatedReportWasDirtyBeforeRun = entries.some((entry) => entry.path === generatedReportPath)
-const reportDirtyEntries = entries.filter((entry) => entry.path !== generatedReportPath)
+const generatedEvidenceDirtyEntries = entries.filter((entry) => generatedEvidencePaths.includes(entry.path))
+const reportDirtyEntries = entries.filter((entry) => !generatedEvidencePaths.includes(entry.path))
 const disallowedDirty = entries.filter((entry) =>
-  entry.path !== generatedReportPath && !allowedDirtyPrefixes.some((prefix) => entry.path.startsWith(prefix)),
+  !generatedEvidencePaths.includes(entry.path) && !allowedDirtyPrefixes.some((prefix) => entry.path.startsWith(prefix)),
 )
 addCheck('No dirty files outside the explicitly excluded delivery/social scope.', disallowedDirty.length === 0, {
   disallowedDirty,
   allowedDirtyPrefixes,
-  generatedReportPath,
+  generatedEvidencePaths,
 })
 
 const missingFiles = []
@@ -90,7 +96,7 @@ const report = {
   status: checks.every((check) => check.ok) ? 'pass' : 'fail',
   branch,
   dirtyEntries: reportDirtyEntries,
-  generatedReportWasDirtyBeforeRun,
+  generatedEvidenceDirtyEntries,
   checks,
 }
 

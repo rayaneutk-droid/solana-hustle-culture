@@ -116,8 +116,7 @@ npm run check
 Full verification from the repository root:
 
 ```bash
-npm run vibeproof:verify
-npm run vibeproof:url-verify
+npm run vibeproof:launch-check
 ```
 
 Asset refresh from the repository root, with the local dev server running:

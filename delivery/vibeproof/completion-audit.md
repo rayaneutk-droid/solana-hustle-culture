@@ -70,13 +70,13 @@ It also runs `npm run vibeproof:delivery:audit` to validate the delivery package
 Before public push/deploy approval, run:
 
 ```bash
-npm run vibeproof:public-preflight
-npm run vibeproof:url-verify
+npm run vibeproof:launch-check
 ```
 
 This is expected to pass when VibeProof files are committed and any remaining dirty files are limited to the explicitly excluded `delivery/social/` scope.
 It also writes `delivery/vibeproof/public-preflight.json` so the launch gate has a reviewable artifact, not only terminal output.
 The URL verification defaults to the local dev server and can be rerun after Vercel approval with `VIBEPROOF_URL` to refresh the same report against the deployed app.
+Generated evidence reports may refresh during the launch check; source/docs changes outside those generated reports still fail the public preflight.
 
 ## Asset Refresh Commands
 
