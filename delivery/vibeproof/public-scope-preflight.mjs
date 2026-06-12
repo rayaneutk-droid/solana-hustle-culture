@@ -13,6 +13,7 @@ function parseStatusLine(line) {
 
 const expectedBranch = 'codex/vibeproof-studio'
 const allowedDirtyPrefixes = ['delivery/social/']
+const generatedReportPath = 'delivery/vibeproof/public-preflight.json'
 const requiredFiles = [
   'vibeproof-studio/package.json',
   'vibeproof-studio/vercel.json',
@@ -43,11 +44,12 @@ const statusLines = runGit(['status', '--porcelain=v1'])
   .filter(Boolean)
 const entries = statusLines.map(parseStatusLine)
 const disallowedDirty = entries.filter((entry) =>
-  !allowedDirtyPrefixes.some((prefix) => entry.path.startsWith(prefix)),
+  entry.path !== generatedReportPath && !allowedDirtyPrefixes.some((prefix) => entry.path.startsWith(prefix)),
 )
 addCheck('No dirty files outside the explicitly excluded delivery/social scope.', disallowedDirty.length === 0, {
   disallowedDirty,
   allowedDirtyPrefixes,
+  generatedReportPath,
 })
 
 const missingFiles = []
@@ -89,7 +91,7 @@ const report = {
   checks,
 }
 
-await writeFile('delivery/vibeproof/public-preflight.json', `${JSON.stringify(report, null, 2)}\n`)
+await writeFile(generatedReportPath, `${JSON.stringify(report, null, 2)}\n`)
 console.log(JSON.stringify(report, null, 2))
 
 if (report.status !== 'pass') {
