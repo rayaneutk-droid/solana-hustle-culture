@@ -82,6 +82,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Local Chrome CDP desktop/laptop/tablet/mobile responsive report captured.
 - [x] Root/Studio URL verification command prepared and run locally for desktop/mobile routes, touch targets, Compile proof, LocalKit iframe proof, generated ZIP export, and runtime network host audit.
 - [x] Production preview URL verification prepared and run locally against the built app.
+- [x] Post-approval public submission verifier prepared.
 - [x] Integrated proof brief desktop/mobile screenshots captured.
 - [x] Local preview LocalKit store and DB actions verified by iframe auto-proof.
 - [ ] GitHub public source prepared and approved.
@@ -132,6 +133,12 @@ Full verification from the repository root:
 
 ```bash
 npm run vibeproof:launch-check
+```
+
+Post-approval public submission verification, after GitHub/Vercel URLs are filled and the deployed URL has been verified:
+
+```bash
+npm run vibeproof:public-submission:verify
 ```
 
 Asset refresh from the repository root, with the local dev server running:

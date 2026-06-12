@@ -23,6 +23,7 @@
     "delivery/vibeproof/public-scope-preflight.mjs",
     "delivery/vibeproof/verify-public-url.mjs",
     "delivery/vibeproof/verify-production-preview.mjs",
+    "delivery/vibeproof/verify-public-submission.mjs",
     "delivery/vibeproof/build-reviewer-proof-summary.mjs",
     "delivery/vibeproof/build-launch-readiness.mjs",
     "delivery/vibeproof/capture-proof-first.mjs",

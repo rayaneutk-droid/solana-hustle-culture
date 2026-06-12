@@ -133,6 +133,16 @@ To rebuild the local submission cards from the refreshed screenshots:
 npm run vibeproof:visuals
 ```
 
+## Final Public Submission Check
+
+After the GitHub source URL and verified Vercel URL are written into `delivery/vibeproof/submission-assets-manifest.json`, run:
+
+```bash
+npm run vibeproof:public-submission:verify
+```
+
+This writes `delivery/vibeproof/public-submission-verification.json` and fails if the manifest still has TODO public URLs, if the Vercel URL is localhost, if `public-url-verification.json` was not regenerated against the deployed hostname, or if deployed Proof Brief/Studio/LocalKit/ZIP/network checks are not passing.
+
 ## Figma And Canva
 
 Create only after approval.

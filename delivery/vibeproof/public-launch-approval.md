@@ -17,6 +17,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Public preflight report: `delivery/vibeproof/public-preflight.json`
 - URL verification report: `delivery/vibeproof/public-url-verification.json`
 - Launch readiness report: `delivery/vibeproof/launch-readiness.json`
+- Post-approval public submission verifier: `npm run vibeproof:public-submission:verify`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
 Unrelated `delivery/social/` changes are intentionally excluded from this launch scope.
@@ -114,6 +115,22 @@ Remove-Item Env:VIBEPROOF_URL
 ```
 
 Then run `npm run vibeproof:visuals` if the local submission cards should be rebuilt from those deployed screenshots.
+
+## Final Public Submission Verification
+
+After GitHub and Vercel URLs are approved, published, and written into `delivery/vibeproof/submission-assets-manifest.json`, run:
+
+```bash
+npm run vibeproof:public-submission:verify
+```
+
+Expected:
+
+- GitHub source URL is HTTPS and not a TODO.
+- Vercel demo URL is HTTPS and not localhost.
+- `delivery/vibeproof/public-url-verification.json` was regenerated against the same Vercel hostname.
+- Deployed Proof Brief, `#studio`, LocalKit iframe proof, generated ZIP proof, and network cloud-AI boundary all pass.
+- Pump.fun reply remains marked TODO until the final explicit submit approval.
 
 ## Pump.fun Reply Template
 

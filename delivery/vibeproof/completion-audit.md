@@ -44,6 +44,7 @@ Current implemented flow:
 | Root check passes | Done locally | Last run: `npm run check` exited 0 |
 | GitHub source public | Pending approval | Prepared scope in `delivery/vibeproof/public-launch-approval.md`; not pushed |
 | Vercel deployment | Pending approval | `vibeproof-studio/vercel.json` ready; not deployed |
+| Post-approval public submission verification | Prepared, pending public URLs | `delivery/vibeproof/verify-public-submission.mjs` and `npm run vibeproof:public-submission:verify` will fail until GitHub/Vercel URLs are approved, filled, and the deployed URL verification report is refreshed |
 | Figma proof frame | Prepared locally, pending approval | `delivery/vibeproof/figma-proof-frame-brief.md`, `delivery/vibeproof/figma-proof-frame-local.png` |
 | Canva submission visuals | Prepared locally, pending approval | `delivery/vibeproof/canva-cover-brief.md`; local PNG fallbacks generated |
 | Pump.fun submission | Pending approval | Template in `delivery/vibeproof/public-launch-approval.md`; not submitted |
@@ -122,9 +123,10 @@ The goal cannot be marked complete until these public-state actions are either a
 
 1. Push/publish GitHub source.
 2. Deploy and verify Vercel preview or production URL.
-3. Create/share Figma frame if desired.
-4. Create/share Canva visuals if desired.
-5. Submit Pump.fun reply after final user approval.
+3. Fill public URLs and run `npm run vibeproof:public-submission:verify`.
+4. Create/share Figma frame if desired.
+5. Create/share Canva visuals if desired.
+6. Submit Pump.fun reply after final user approval.
 
 ## Safety Notes
 

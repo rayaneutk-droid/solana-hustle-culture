@@ -84,6 +84,7 @@ Post-deploy verification:
 10. From the repository root, run `VIBEPROOF_URL=<preview-url> npm run vibeproof:url-verify` or the PowerShell equivalent.
 11. Capture proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop from the deployed URL.
 12. Refresh `delivery/vibeproof/launch-readiness.json` after verification and before final submission copy.
+13. Fill GitHub/Vercel URLs in `delivery/vibeproof/submission-assets-manifest.json` and run `npm run vibeproof:public-submission:verify`.
 
 Headers/config checks:
 
@@ -175,4 +176,5 @@ Only submit after:
 - Vercel preview or production URL is verified.
 - Browser screenshots are current for the deployed URL.
 - Deployed root proof brief and `#studio` Studio are verified.
+- `npm run vibeproof:public-submission:verify` passes after public URLs are filled.
 - Figma/Canva support assets are optional but ready.
