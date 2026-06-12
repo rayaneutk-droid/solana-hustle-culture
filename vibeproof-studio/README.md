@@ -42,7 +42,7 @@ npm run build
 npm run proof:audit
 ```
 
-Expected result: TypeScript build and Vite production build pass. The proof audit writes `../delivery/vibeproof/local-boundary-audit.json` and exits 0 when the local-runtime boundary checks pass.
+Expected result: TypeScript build and Vite production build pass. The proof audit writes `../delivery/vibeproof/local-boundary-audit.json` and exits 0 when the source and built-artifact local-runtime boundary checks pass.
 
 Full local check set from the repository root:
 

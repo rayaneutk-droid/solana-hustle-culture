@@ -20,7 +20,7 @@ Current implemented flow:
 | --- | --- | --- |
 | Isolated app under `vibeproof-studio/` | Done | `vibeproof-studio/package.json`, `vibeproof-studio/src/App.tsx` |
 | Existing `$HUSTLE` site preserved | Done | VibeProof app is isolated; no root site files changed in latest VibeProof commits |
-| Pure-local submitted runtime, no cloud AI prompt API | Done locally | `delivery/vibeproof/local-boundary-audit.json` shows zero forbidden runtime packages and zero direct prompt API network calls |
+| Pure-local submitted runtime, no cloud AI prompt API | Done locally | `delivery/vibeproof/local-boundary-audit.json` shows zero forbidden runtime packages, zero direct prompt API network calls, and zero forbidden cloud prompt endpoint or secret markers in built artifacts |
 | WebLLM local inference worker | Done locally | `vibeproof-studio/src/engine/aiWorker.ts`; audit check `WebLLM is the local model runtime` passes |
 | Worker APIs `loadModel`, `runPipeline`, `complete` | Done locally | `vibeproof-studio/src/engine/aiWorker.ts`; UI wiring in `vibeproof-studio/src/App.tsx` |
 | Five-pass pipeline | Done locally | `research`, `plan`, `generate`, `verify`, `repair` events in app/template pipeline |
@@ -64,7 +64,7 @@ Run from repository root:
 npm run vibeproof:verify
 ```
 
-This runs the app lint, local-boundary audit, production build, and root TypeScript check in sequence.
+This runs the app lint, production build, local-boundary audit over source and built artifacts, and root TypeScript check in sequence.
 It also runs `npm run vibeproof:delivery:audit` to validate the delivery package itself.
 
 Before public push/deploy approval, run:

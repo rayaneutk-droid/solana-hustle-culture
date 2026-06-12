@@ -6,6 +6,7 @@ const here = path.dirname(fileURLToPath(import.meta.url))
 const projectRoot = path.resolve(here, '..')
 const repoRoot = path.resolve(projectRoot, '..')
 const sourceRoot = path.join(projectRoot, 'src')
+const distRoot = path.join(projectRoot, 'dist')
 const deliveryPath = path.join(repoRoot, 'delivery', 'vibeproof', 'local-boundary-audit.json')
 
 const forbiddenRuntimePackages = [
@@ -42,6 +43,37 @@ const cloudHostHints = [
   'api.perplexity.ai',
 ]
 
+const forbiddenBuiltPromptEndpointPatterns = [
+  /api\.openai\.com\/v1/i,
+  /generativelanguage\.googleapis\.com\/v1/i,
+  /gemini\.googleapis\.com\/v1/i,
+  /api\.groq\.com\/openai\/v1/i,
+  /openrouter\.ai\/api\/v1/i,
+  /api\.anthropic\.com\/v1/i,
+  /api\.cohere\.ai\/v1/i,
+  /api\.mistral\.ai\/v1/i,
+  /api\.together\.xyz\/v1/i,
+  /api\.fireworks\.ai\/inference/i,
+  /api\.perplexity\.ai\/chat\/completions/i,
+  /chat\/completions/i,
+  /messages\/batches/i,
+]
+
+const forbiddenSecretMarkers = [
+  /OPENAI_API_KEY/i,
+  /ANTHROPIC_API_KEY/i,
+  /GEMINI_API_KEY/i,
+  /GOOGLE_API_KEY/i,
+  /GROQ_API_KEY/i,
+  /OPENROUTER_API_KEY/i,
+  /MISTRAL_API_KEY/i,
+  /TOGETHER_API_KEY/i,
+  /COHERE_API_KEY/i,
+  /FIREWORKS_API_KEY/i,
+  /PERPLEXITY_API_KEY/i,
+  /Authorization["']?\s*:\s*["']?Bearer/i,
+]
+
 async function walk(dir) {
   const entries = await readdir(dir)
   const files = []
@@ -54,12 +86,21 @@ async function walk(dir) {
       continue
     }
 
-    if (/\.(ts|tsx|js|jsx|css|html)$/.test(entry)) {
+    if (/\.(ts|tsx|js|jsx|css|html|svg|webmanifest)$/.test(entry)) {
       files.push(fullPath)
     }
   }
 
   return files
+}
+
+async function walkExisting(dir, extensions) {
+  try {
+    const files = await walk(dir)
+    return files.filter((filePath) => extensions.some((extension) => filePath.endsWith(extension)))
+  } catch {
+    return []
+  }
 }
 
 function relative(filePath) {
@@ -94,6 +135,15 @@ const sourceEntries = await Promise.all(
   })),
 )
 
+const distFiles = await walkExisting(distRoot, ['.html', '.js', '.css', '.webmanifest', '.svg'])
+const distEntries = await Promise.all(
+  distFiles.map(async (filePath) => ({
+    filePath,
+    relativePath: path.relative(projectRoot, filePath).replaceAll(path.sep, '/'),
+    text: await readFile(filePath, 'utf8'),
+  })),
+)
+
 const packageHits = forbiddenRuntimePackages.filter((name) => Object.hasOwn(dependencies, name))
 const networkApiHits = sourceEntries.flatMap((entry) =>
   forbiddenNetworkApis
@@ -111,11 +161,29 @@ const cloudHostHits = sourceEntries.flatMap((entry) =>
       host,
     })),
 )
+const builtPromptEndpointHits = distEntries.flatMap((entry) =>
+  forbiddenBuiltPromptEndpointPatterns
+    .filter((pattern) => pattern.test(entry.text))
+    .map((pattern) => ({
+      file: entry.relativePath,
+      pattern: pattern.source,
+    })),
+)
+const builtSecretMarkerHits = distEntries.flatMap((entry) =>
+  forbiddenSecretMarkers
+    .filter((pattern) => pattern.test(entry.text))
+    .map((pattern) => ({
+      file: entry.relativePath,
+      pattern: pattern.source,
+    })),
+)
 
 const appSource = sourceEntries.find((entry) => entry.relativePath === 'src/App.tsx')?.text ?? ''
 const workerSource = sourceEntries.find((entry) => entry.relativePath === 'src/engine/aiWorker.ts')?.text ?? ''
 const toolboxSource = sourceEntries.find((entry) => entry.relativePath === 'src/lib/toolbox.ts')?.text ?? ''
 const vercelConfig = await readFile(path.join(projectRoot, 'vercel.json'), 'utf8')
+const builtIndexHtml = distEntries.find((entry) => entry.relativePath === 'dist/index.html')?.text ?? ''
+const externalScriptHits = [...builtIndexHtml.matchAll(/<script[^>]+src=["']https?:\/\//gi)].map((match) => match[0])
 
 const toolCount = countToolDefinitions(toolboxSource)
 const cloudHostFiles = new Set(cloudHostHits.map((hit) => hit.file))
@@ -148,6 +216,18 @@ const checks = [
     'Vercel config does not define serverless functions.',
     { config: 'vibeproof-studio/vercel.json' },
   ),
+  check(distEntries.length > 0, 'Production build artifacts are present for audit.', {
+    distFilesScanned: distEntries.length,
+  }),
+  check(builtPromptEndpointHits.length === 0, 'Built artifacts do not contain cloud prompt API endpoint paths.', {
+    builtPromptEndpointHits,
+  }),
+  check(builtSecretMarkerHits.length === 0, 'Built artifacts do not contain cloud AI secret or bearer-token markers.', {
+    builtSecretMarkerHits,
+  }),
+  check(externalScriptHits.length === 0, 'Built index.html does not load remote scripts.', {
+    externalScriptHits,
+  }),
 ]
 
 const report = {
@@ -156,13 +236,16 @@ const report = {
   status: checks.every((item) => item.ok) ? 'pass' : 'fail',
   summary: {
     sourceFilesScanned: sourceEntries.length,
+    distFilesScanned: distEntries.length,
     toolCount,
     forbiddenRuntimePackageHits: packageHits.length,
     directNetworkApiHits: networkApiHits.length,
     knownCloudAiHostStrings: cloudHostHits.length,
+    builtPromptEndpointHits: builtPromptEndpointHits.length,
+    builtSecretMarkerHits: builtSecretMarkerHits.length,
   },
   checks,
-  note: 'Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source for cloud AI runtime packages, direct prompt API network calls, LocalKit/PGlite proof wiring, and serverless function config.',
+  note: 'Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config.',
 }
 
 await writeFile(deliveryPath, `${JSON.stringify(report, null, 2)}\n`)

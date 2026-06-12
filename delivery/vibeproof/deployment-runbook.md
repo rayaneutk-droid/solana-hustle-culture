@@ -44,7 +44,7 @@ npm run vibeproof:public-preflight
 Expected:
 
 - ESLint exits 0.
-- `proof:audit` writes `delivery/vibeproof/local-boundary-audit.json` and exits 0.
+- `proof:audit` writes `delivery/vibeproof/local-boundary-audit.json` after checking source and built artifacts, then exits 0.
 - Vite build exits 0.
 - Root TypeScript check exits 0.
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
