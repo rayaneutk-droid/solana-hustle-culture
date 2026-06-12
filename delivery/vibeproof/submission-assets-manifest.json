@@ -42,6 +42,12 @@
     "cd vibeproof-studio && npm run build",
     "npm run check"
   ],
+  "asset_refresh_commands": [
+    "npm run vibeproof:assets",
+    "npm run vibeproof:capture",
+    "npm run vibeproof:visuals",
+    "$env:VIBEPROOF_URL='https://YOUR-VERCEL-PREVIEW-URL'; npm run vibeproof:capture; Remove-Item Env:VIBEPROOF_URL"
+  ],
   "public_placeholders": {
     "github_source_url": "TODO after explicit approval",
     "vercel_demo_url": "TODO after explicit approval",

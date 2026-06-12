@@ -116,6 +116,12 @@ Full verification from the repository root:
 npm run vibeproof:verify
 ```
 
+Asset refresh from the repository root, with the local dev server running:
+
+```bash
+npm run vibeproof:assets
+```
+
 ## Browser QA Script
 
 1. Open local Vite URL.

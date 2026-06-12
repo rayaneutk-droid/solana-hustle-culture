@@ -103,6 +103,20 @@ On the Vercel preview URL:
 10. Capture deployed proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop.
 11. Replace local-only URLs/TODOs in the Pump.fun reply only after source and preview links exist.
 
+To refresh deployed screenshots from the repository root after approval:
+
+```powershell
+$env:VIBEPROOF_URL = 'https://YOUR-VERCEL-PREVIEW-URL'
+npm run vibeproof:capture
+Remove-Item Env:VIBEPROOF_URL
+```
+
+To rebuild the local submission cards from the refreshed screenshots:
+
+```bash
+npm run vibeproof:visuals
+```
+
 ## Figma And Canva
 
 Create only after approval.

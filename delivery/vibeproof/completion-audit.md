@@ -60,6 +60,22 @@ npm run vibeproof:verify
 
 This runs the app lint, local-boundary audit, production build, and root TypeScript check in sequence.
 
+## Asset Refresh Commands
+
+Run after a local dev server is available at `http://127.0.0.1:5173/`:
+
+```bash
+npm run vibeproof:assets
+```
+
+Run against a deployed preview after Vercel approval:
+
+```powershell
+$env:VIBEPROOF_URL = 'https://YOUR-VERCEL-PREVIEW-URL'
+npm run vibeproof:capture
+Remove-Item Env:VIBEPROOF_URL
+```
+
 ## Current Screenshot Set
 
 - `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`

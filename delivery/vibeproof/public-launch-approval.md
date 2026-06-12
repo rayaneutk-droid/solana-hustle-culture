@@ -78,6 +78,26 @@ Expected:
 - Build may warn about large WebLLM/PGlite chunks and PGlite dependency `eval`; these are documented local-runtime artifacts.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
+## Screenshot And Visual Refresh
+
+For local evidence, start the Vite dev server first, then run:
+
+```bash
+npm run vibeproof:assets
+```
+
+This captures the proof-first responsive screenshots and regenerates the submission cover, square card, story card, and local Figma-style proof frame.
+
+For deployed evidence after Vercel approval, point the capture script at the deployed URL:
+
+```powershell
+$env:VIBEPROOF_URL = 'https://YOUR-VERCEL-PREVIEW-URL'
+npm run vibeproof:capture
+Remove-Item Env:VIBEPROOF_URL
+```
+
+Then run `npm run vibeproof:visuals` if the local submission cards should be rebuilt from those deployed screenshots.
+
 ## Pump.fun Reply Template
 
 ```text
