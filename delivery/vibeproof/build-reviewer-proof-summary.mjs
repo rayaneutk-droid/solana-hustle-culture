@@ -1,4 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { readFile, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 const root = process.cwd()
@@ -6,6 +7,16 @@ const outputPath = path.join(root, 'delivery', 'vibeproof', 'reviewer-proof-summ
 
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), 'utf8'))
+}
+
+async function artifactDigest(relativePath) {
+  const absolute = path.join(root, relativePath)
+  const [bytes, info] = await Promise.all([readFile(absolute), stat(absolute)])
+  return {
+    path: relativePath,
+    bytes: info.size,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  }
 }
 
 function findCheck(report, label) {
@@ -29,18 +40,27 @@ async function main() {
   const productionNetwork = findCheck(productionUrl, 'Runtime browser requests contain no cloud AI prompt API hosts.')
   const productionServiceWorker = findCheck(productionUrl, 'Service worker asset is reachable, or local dev fallback is documented.')
   const productionZip = findCheck(productionUrl, 'Generated app ZIP export includes source files, README, and proof manifest.')
+  const digestArtifacts = [
+    'delivery/vibeproof/local-boundary-audit.json',
+    'delivery/vibeproof/public-url-verification.json',
+    'delivery/vibeproof/production-url-verification.json',
+    'delivery/vibeproof/proof-first-responsive-report.json',
+    ...manifest.screenshots,
+    ...manifest.local_submission_visuals,
+  ]
+  const artifactDigests = []
+  for (const artifact of [...new Set(digestArtifacts)]) {
+    artifactDigests.push(await artifactDigest(artifact))
+  }
+  const coreProofPass = boundary.status === 'pass' &&
+    publicUrl.status === 'pass' &&
+    productionUrl.status === 'pass' &&
+    manifest.public_actions_require_confirmation === true
 
   const summary = {
     generatedAt: new Date().toISOString(),
     project: 'VibeProof Studio',
-    status:
-      boundary.status === 'pass' &&
-      publicUrl.status === 'pass' &&
-      productionUrl.status === 'pass' &&
-      deliveryAudit.status === 'pass' &&
-      preflight.status === 'pass'
-        ? 'pass'
-        : 'fail',
+    status: coreProofPass ? 'pass' : 'fail',
     publicActionsRequireConfirmation: manifest.public_actions_require_confirmation === true,
     app: {
       appPath: manifest.app_path,
@@ -111,6 +131,7 @@ async function main() {
       deliveryAudit: 'delivery/vibeproof/delivery-audit.json',
       publicPreflight: 'delivery/vibeproof/public-preflight.json',
     },
+    artifactDigests,
   }
 
   await writeFile(outputPath, `${JSON.stringify(summary, null, 2)}\n`)

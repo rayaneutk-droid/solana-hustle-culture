@@ -143,6 +143,28 @@ async function main() {
     reviewerSummary.productionPreview?.generatedZipCloudAiPromptApis === false, {
     productionPreview: reviewerSummary.productionPreview,
   })
+  const digestPaths = (reviewerSummary.artifactDigests ?? []).map((artifact) => artifact.path)
+  const duplicateDigestPaths = digestPaths.filter((item, index) => digestPaths.indexOf(item) !== index)
+  const expectedDigestPaths = [
+    'delivery/vibeproof/local-boundary-audit.json',
+    'delivery/vibeproof/public-url-verification.json',
+    'delivery/vibeproof/production-url-verification.json',
+    'delivery/vibeproof/proof-first-responsive-report.json',
+    ...manifest.screenshots,
+    ...manifest.local_submission_visuals,
+  ]
+  const missingDigestPaths = [...new Set(expectedDigestPaths)].filter((item) => !digestPaths.includes(item))
+  const malformedDigestEntries = (reviewerSummary.artifactDigests ?? []).filter((artifact) =>
+    !artifact.path || !(artifact.bytes > 0) || !/^[a-f0-9]{64}$/.test(artifact.sha256 ?? ''),
+  )
+  addCheck('Reviewer proof summary includes SHA-256 digests for visual and source proof artifacts.', missingDigestPaths.length === 0 &&
+    duplicateDigestPaths.length === 0 &&
+    malformedDigestEntries.length === 0, {
+    digestCount: reviewerSummary.artifactDigests?.length,
+    missingDigestPaths,
+    duplicateDigestPaths,
+    malformedDigestEntries,
+  })
 
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []
