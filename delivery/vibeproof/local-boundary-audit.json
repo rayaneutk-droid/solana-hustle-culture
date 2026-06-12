@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:36:47.909Z",
+  "generatedAt": "2026-06-12T20:39:49.146Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -114,6 +114,53 @@
       "ok": true,
       "details": {
         "config": "vibeproof-studio/vercel.json"
+      }
+    },
+    {
+      "label": "Vercel config gives hashed assets immutable cache headers and nosniff.",
+      "ok": true,
+      "details": {
+        "cacheControl": "public, max-age=31536000, immutable",
+        "xContentTypeOptions": "nosniff"
+      }
+    },
+    {
+      "label": "Vercel config keeps service worker and manifest revalidatable.",
+      "ok": true,
+      "details": {
+        "swCacheControl": "public, max-age=0, must-revalidate",
+        "manifestCacheControl": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "label": "Vercel config blocks sensitive browser prompts and sets baseline static security headers.",
+      "ok": true,
+      "details": {
+        "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "xContentTypeOptions": "nosniff"
+      }
+    },
+    {
+      "label": "Vercel config does not force COOP/COEP headers that could block WebLLM/PGlite assets.",
+      "ok": true,
+      "details": {
+        "disallowedIsolationHeaders": []
+      }
+    },
+    {
+      "label": "Vercel SPA rewrite preserves direct access to assets, service worker, manifest, and icons.",
+      "ok": true,
+      "details": {
+        "staticBypassRewrite": "/((?!assets/|sw.js|workbox-.*\\.js|manifest.webmanifest|favicon.svg|icons.svg).*)",
+        "staticBypassTokens": [
+          "assets/",
+          "sw.js",
+          "workbox-.*\\.js",
+          "manifest.webmanifest",
+          "favicon.svg",
+          "icons.svg"
+        ]
       }
     },
     {
