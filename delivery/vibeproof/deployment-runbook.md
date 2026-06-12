@@ -50,7 +50,7 @@ Expected:
 - Root TypeScript check exits 0.
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
-- `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the root Proof Brief plus `#studio` route on the configured URL.
+- `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route on the configured URL.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 
 ## GitHub Scope

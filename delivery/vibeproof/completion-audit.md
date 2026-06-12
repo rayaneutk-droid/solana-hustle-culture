@@ -33,7 +33,7 @@ Current implemented flow:
 | Premium Liquid Glass-inspired responsive frontend | Done locally | `vibeproof-studio/src/App.css`; screenshots under `delivery/vibeproof/` |
 | Reduced-motion support | Done locally | CSS `@media (prefers-reduced-motion: reduce)` and Chrome CDP reduced-motion check in `proof-first-responsive-report.json` |
 | Browser/responsive verification | Done locally | `delivery/vibeproof/proof-first-responsive-report.json` plus Browser connector state documented in `delivery/vibesterz-submission.md` |
-| Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks root Proof Brief, `#studio`, PWA assets, local backend, network proof, and no account/wallet/API-key prompt |
+| Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks desktop and mobile root Proof Brief, `#studio`, PWA assets, local backend, network proof, touch targets, and no account/wallet/API-key prompt |
 | Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |
 | Public-scope preflight | Prepared locally | `delivery/vibeproof/public-preflight.json` records branch, required files, gated placeholders, and dirty-file scope before public actions |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |

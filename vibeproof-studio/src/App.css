@@ -556,6 +556,10 @@ button:disabled {
   padding: 0 10px;
 }
 
+.category-scroll button {
+  min-width: 44px;
+}
+
 .segmented button.active,
 .tab-group button.active,
 .category-scroll button.active {

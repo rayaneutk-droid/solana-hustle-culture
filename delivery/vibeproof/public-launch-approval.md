@@ -87,7 +87,7 @@ Expected:
 - Delivery audit validates required screenshots, visuals, proof reports, and active docs.
 - Public preflight confirms branch, required launch files, public placeholders, and that dirty files are limited to the explicitly excluded `delivery/social/` scope.
 - Public preflight writes `delivery/vibeproof/public-preflight.json` for reviewer/auditor evidence before push or deploy.
-- URL verification writes `delivery/vibeproof/public-url-verification.json`; after Vercel approval, rerun it with `VIBEPROOF_URL` set to the preview URL.
+- URL verification writes `delivery/vibeproof/public-url-verification.json`; after Vercel approval, rerun it with `VIBEPROOF_URL` set to the preview URL to recheck desktop/mobile routes and mobile touch targets.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
 ## Screenshot And Visual Refresh

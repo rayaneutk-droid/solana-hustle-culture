@@ -14,6 +14,8 @@ const appUrl = rawUrl.endsWith('/') || rawUrl.includes('#') ? rawUrl : `${rawUrl
 const studioUrl = `${appUrl.replace(/#.*$/, '')}#studio`
 const targetHostname = new URL(appUrl).hostname
 const isLocalTarget = ['127.0.0.1', 'localhost'].includes(targetHostname)
+const desktopViewport = { name: 'desktop', width: 1440, height: 900, mobile: false }
+const mobileViewport = { name: 'mobile', width: 390, height: 844, mobile: true }
 
 const checks = []
 
@@ -96,13 +98,33 @@ async function evalJs(client, expression) {
   return result.result.value
 }
 
-async function inspectRoute(client, url) {
+async function inspectRoute(client, url, viewport) {
+  await client.send('Emulation.setDeviceMetricsOverride', {
+    width: viewport.width,
+    height: viewport.height,
+    deviceScaleFactor: 1,
+    mobile: viewport.mobile,
+  })
   await client.send('Page.navigate', { url })
   await new Promise((resolve) => setTimeout(resolve, 900))
   return evalJs(client, `(() => {
     const root = document.documentElement;
     const text = document.body.innerText;
+    const controls = [...document.querySelectorAll('button, a, input, select, textarea, [role="button"]')]
+      .map((el) => {
+        const rect = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        return {
+          text: (el.textContent || el.getAttribute('aria-label') || '').replace(/\\s+/g, ' ').trim(),
+          width: Math.round(rect.width),
+          height: Math.round(rect.height),
+          visible: rect.width > 0 && rect.height > 0 && style.visibility !== 'hidden' && style.display !== 'none',
+        };
+      })
+      .filter((item) => item.visible);
+    const smallTouchTargets = controls.filter((item) => item.width < 38 || item.height < 38);
     return {
+      viewport: ${JSON.stringify(viewport)},
       url: location.href,
       hash: location.hash,
       title: document.title,
@@ -115,10 +137,13 @@ async function inspectRoute(client, url) {
       hasLocalBackend: /Local backend/.test(text),
       hasPwaPanel: /PWA cache/.test(text) || /PWA\\/offline boundary/.test(text),
       hasNetworkProof: /Network proof/.test(text) || /No cloud AI requests observed/.test(text),
+      hasMobileTabbar: Boolean(document.querySelector('.mobile-tabbar')),
       hasForbiddenAccountPrompt: /sign in|connect wallet|api key|openrouter|gemini|groq/i.test(text),
       horizontalOverflow: root.scrollWidth > root.clientWidth + 1,
       clientWidth: root.clientWidth,
-      scrollWidth: root.scrollWidth
+      scrollWidth: root.scrollWidth,
+      visibleControlCount: controls.length,
+      smallTouchTargets
     };
   })()`)
 }
@@ -170,24 +195,28 @@ async function main() {
     client = await cdp(pageTarget.webSocketDebuggerUrl)
     await client.send('Page.enable')
     await client.send('Runtime.enable')
-    await client.send('Emulation.setDeviceMetricsOverride', {
-      width: 1440,
-      height: 900,
-      deviceScaleFactor: 1,
-      mobile: false,
-    })
 
-    const proofBrief = await inspectRoute(client, appUrl)
+    const proofBrief = await inspectRoute(client, appUrl, desktopViewport)
     addCheck('Root route opens the reviewer Proof Brief.', proofBrief.hasProofBrief, proofBrief)
     addCheck('Proof Brief exposes the Studio CTA.', proofBrief.hasStudioCta, proofBrief)
     addCheck('Proof Brief exposes verification path and cloud boundary.', proofBrief.hasVerificationPath && proofBrief.hasCloudBoundary, proofBrief)
     addCheck('Proof Brief has no horizontal overflow.', !proofBrief.horizontalOverflow, proofBrief)
 
-    const studio = await inspectRoute(client, studioUrl)
+    const studio = await inspectRoute(client, studioUrl, desktopViewport)
     addCheck('Studio route opens the usable builder.', studio.hasStudio && studio.hasBuilderPanel, studio)
     addCheck('Studio exposes local backend, PWA, and network proof panels.', studio.hasLocalBackend && studio.hasPwaPanel && studio.hasNetworkProof, studio)
     addCheck('Studio route has no horizontal overflow.', !studio.horizontalOverflow, studio)
     addCheck('No account, wallet, API key, or cloud-provider prompt is visible.', !studio.hasForbiddenAccountPrompt, studio)
+
+    const mobileProofBrief = await inspectRoute(client, appUrl, mobileViewport)
+    addCheck('Mobile root opens the Proof Brief with Studio CTA.', mobileProofBrief.hasProofBrief && mobileProofBrief.hasStudioCta, mobileProofBrief)
+    addCheck('Mobile Proof Brief has no horizontal overflow.', !mobileProofBrief.horizontalOverflow, mobileProofBrief)
+    addCheck('Mobile Proof Brief controls are touch-sized.', mobileProofBrief.smallTouchTargets.length === 0, mobileProofBrief)
+
+    const mobileStudio = await inspectRoute(client, studioUrl, mobileViewport)
+    addCheck('Mobile Studio opens with builder and mobile navigation.', mobileStudio.hasStudio && mobileStudio.hasBuilderPanel && mobileStudio.hasMobileTabbar, mobileStudio)
+    addCheck('Mobile Studio has no horizontal overflow.', !mobileStudio.horizontalOverflow, mobileStudio)
+    addCheck('Mobile Studio controls are touch-sized.', mobileStudio.smallTouchTargets.length === 0, mobileStudio)
   } catch (error) {
     addCheck('Chrome route inspection completed.', false, { error: error.message })
   } finally {
