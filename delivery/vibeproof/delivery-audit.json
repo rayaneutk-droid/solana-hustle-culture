@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:20:01.683Z",
+  "generatedAt": "2026-06-12T21:44:58.044Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 35,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 37,
+    "checkCount": 38,
     "failedChecks": 0
   },
   "checks": [
@@ -195,6 +195,16 @@
           "generatedZipLocalToolCount": 68,
           "generatedZipCloudAiPromptApis": false
         }
+      }
+    },
+    {
+      "label": "Reviewer proof summary includes SHA-256 digests for visual and source proof artifacts.",
+      "ok": true,
+      "details": {
+        "digestCount": 17,
+        "missingDigestPaths": [],
+        "duplicateDigestPaths": [],
+        "malformedDigestEntries": []
       }
     },
     {

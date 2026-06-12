@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:19:48.940Z",
+  "generatedAt": "2026-06-12T21:44:57.722Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -103,7 +103,7 @@
     "deliveryAuditStatus": "pass",
     "deliveryAuditFailedChecks": 0,
     "preflightStatus": "pass",
-    "generatedEvidenceDirtyEntries": 0,
+    "generatedEvidenceDirtyEntries": 6,
     "publicPlaceholders": {
       "github_source_url": "TODO after explicit approval",
       "vercel_demo_url": "TODO after explicit approval",
@@ -119,5 +119,92 @@
     "responsiveReport": "delivery/vibeproof/proof-first-responsive-report.json",
     "deliveryAudit": "delivery/vibeproof/delivery-audit.json",
     "publicPreflight": "delivery/vibeproof/public-preflight.json"
-  }
+  },
+  "artifactDigests": [
+    {
+      "path": "delivery/vibeproof/local-boundary-audit.json",
+      "bytes": 7586,
+      "sha256": "eb1f4dd717061d33813100587c7f15b23f422ca0696093bb80306d792c956dff"
+    },
+    {
+      "path": "delivery/vibeproof/public-url-verification.json",
+      "bytes": 26498,
+      "sha256": "d259c0fd90fb395386bfe8a3546e70bee708644ae037e04c1995310e2366e25b"
+    },
+    {
+      "path": "delivery/vibeproof/production-url-verification.json",
+      "bytes": 26505,
+      "sha256": "949c31f08d6ee77a14a0637aa761fc27f273c552bf2e65ec9b7e65029b2e44a2"
+    },
+    {
+      "path": "delivery/vibeproof/proof-first-responsive-report.json",
+      "bytes": 6439,
+      "sha256": "47ed431bfd0afff7b8d18f2eeb611598199e20bff28a6cea99eaf8e78767e924"
+    },
+    {
+      "path": "delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png",
+      "bytes": 959579,
+      "sha256": "29dff462158dff67edf768fcc6d2b5d454cd4635d8f57210c6f2b3580f123a30"
+    },
+    {
+      "path": "delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png",
+      "bytes": 724048,
+      "sha256": "3760cf7871374b97f06be64dc4dcef83442c73274fbd15bcbbe8452c8c07de8f"
+    },
+    {
+      "path": "delivery/vibeproof/vibeproof-proof-brief-tablet-834.png",
+      "bytes": 767258,
+      "sha256": "67bd1019a3eadf27c76c3879f9504937fbd0266e01f35aa69a114c6c1f20da86"
+    },
+    {
+      "path": "delivery/vibeproof/vibeproof-proof-brief-mobile-390.png",
+      "bytes": 314823,
+      "sha256": "9304bb1c837d68d0220aed3e078909ad6934ef5a4f055ce63d9e1e4d9c63f081"
+    },
+    {
+      "path": "delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png",
+      "bytes": 907864,
+      "sha256": "bf9930faf15ea7747c4f3fc82791d5b0067da04fe7c01652b121c661c1ba5946"
+    },
+    {
+      "path": "delivery/vibeproof/submission-cover-16x9.png",
+      "bytes": 1091314,
+      "sha256": "43e6f75f66ad2cee774dbd72dbc74f97527621320c05387989b26ba6218a94c3"
+    },
+    {
+      "path": "delivery/vibeproof/submission-square-card.png",
+      "bytes": 644810,
+      "sha256": "82ef3e7a37eeefbf99fd62ff2547cffd7f8c015202002aca92280016e4293c8c"
+    },
+    {
+      "path": "delivery/vibeproof/submission-story-card.png",
+      "bytes": 930165,
+      "sha256": "4b0eec12a2b5d443cf05eba124e612b4ce3251488b3a8e882fcfe760a391ec1e"
+    },
+    {
+      "path": "delivery/vibeproof/figma-proof-frame-local.png",
+      "bytes": 1609361,
+      "sha256": "3c80cbd88d6b69edb75708f1bd86d45d867a4ba31f8150dc0d9de8031e23e826"
+    },
+    {
+      "path": "delivery/vibeproof/submission-cover-16x9.html",
+      "bytes": 5423,
+      "sha256": "c76c1a929ca880d7a6a80944d71c15676cf7c22d5e82de1c38d9629dc5edeb69"
+    },
+    {
+      "path": "delivery/vibeproof/submission-square-card.html",
+      "bytes": 4074,
+      "sha256": "87ee31050b52270bf9148c217548c73876f689947a24bd3e5c479b782d2f677b"
+    },
+    {
+      "path": "delivery/vibeproof/submission-story-card.html",
+      "bytes": 4397,
+      "sha256": "35998e42dfe208b986048c4ecadc7910d67d617933356d8018d0df925ad438a6"
+    },
+    {
+      "path": "delivery/vibeproof/figma-proof-frame-local.html",
+      "bytes": 5812,
+      "sha256": "3767d74ba3b8d9ab34c06f5c1ae66cc51e0c0bc8da24711bb571bf9a45a8a652"
+    }
+  ]
 }
