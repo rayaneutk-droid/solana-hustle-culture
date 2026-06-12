@@ -7,7 +7,7 @@ function runGit(args) {
 
 function parseStatusLine(line) {
   const status = line.slice(0, 2)
-  const rawPath = line.slice(3).trim()
+  const rawPath = line.slice(2).trim()
   return { status, path: rawPath.replace(/\\/g, '/') }
 }
 
