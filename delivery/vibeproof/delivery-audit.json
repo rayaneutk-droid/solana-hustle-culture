@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:10:28.416Z",
+  "generatedAt": "2026-06-12T21:14:11.659Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
-    "artifactCount": 31,
+    "artifactCount": 33,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 27,
+    "checkCount": 30,
     "failedChecks": 0
   },
   "checks": [
@@ -174,6 +174,39 @@
       }
     },
     {
+      "label": "Production preview URL verification report status is pass.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "target": "http://127.0.0.1:4173/",
+        "failedProductionUrlChecks": []
+      }
+    },
+    {
+      "label": "Production preview serves a real service worker asset, not the dev HTML fallback.",
+      "ok": true,
+      "details": {
+        "serviceWorker": {
+          "ok": true,
+          "status": 200,
+          "contentType": "text/javascript",
+          "devFallback": false
+        }
+      }
+    },
+    {
+      "label": "Production preview verification proves generated app ZIP export contents.",
+      "ok": true,
+      "details": {
+        "exportZipCheck": {
+          "ok": true,
+          "missingEntries": [],
+          "localToolCount": 68,
+          "cloudAiPromptApis": false
+        }
+      }
+    },
+    {
       "label": "Submission visual manifest has all expected renders.",
       "ok": true,
       "details": {
@@ -198,8 +231,8 @@
       "label": "Submission manifest lists build before proof audit because proof audit scans dist artifacts.",
       "ok": true,
       "details": {
-        "manifestBuildIndex": 6,
-        "manifestProofAuditIndex": 7
+        "manifestBuildIndex": 7,
+        "manifestProofAuditIndex": 8
       }
     },
     {

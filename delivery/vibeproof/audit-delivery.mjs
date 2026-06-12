@@ -172,6 +172,33 @@ async function main() {
       : null,
   })
 
+  const productionUrlVerification = await readJson(toAbs('delivery/vibeproof/production-url-verification.json'))
+  const failedProductionUrlChecks = (productionUrlVerification.checks ?? []).filter((check) => !check.ok)
+  const productionSwCheck = (productionUrlVerification.checks ?? []).find((check) =>
+    check.label === 'Service worker asset is reachable, or local dev fallback is documented.'
+  )
+  const productionExportZipCheck = (productionUrlVerification.checks ?? []).find((check) =>
+    check.label === 'Generated app ZIP export includes source files, README, and proof manifest.'
+  )
+  addCheck('Production preview URL verification report status is pass.', productionUrlVerification.status === 'pass', {
+    status: productionUrlVerification.status,
+    target: productionUrlVerification.target,
+    failedProductionUrlChecks: failedProductionUrlChecks.map((check) => check.label),
+  })
+  addCheck('Production preview serves a real service worker asset, not the dev HTML fallback.', Boolean(productionSwCheck?.ok) && productionSwCheck.details?.devFallback !== true, {
+    serviceWorker: productionSwCheck?.details ?? null,
+  })
+  addCheck('Production preview verification proves generated app ZIP export contents.', Boolean(productionExportZipCheck?.ok), {
+    exportZipCheck: productionExportZipCheck
+      ? {
+          ok: productionExportZipCheck.ok,
+          missingEntries: productionExportZipCheck.details?.missingEntries,
+          localToolCount: productionExportZipCheck.details?.localToolCount,
+          cloudAiPromptApis: productionExportZipCheck.details?.cloudAiPromptApis,
+        }
+      : null,
+  })
+
   const visuals = await readJson(toAbs('delivery/vibeproof/submission-visuals-manifest.json'))
   const expectedVisuals = ['submission-cover-16x9', 'submission-square-card', 'submission-story-card', 'figma-proof-frame-local']
   const renderedNames = (visuals.rendered ?? []).map((item) => item.name)

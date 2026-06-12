@@ -50,6 +50,7 @@ Expected:
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
 - `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route, `Compile proof`, and sandboxed LocalKit iframe proof on the configured URL.
+- `vibeproof:prod-url-verify` serves the local production build with `vite preview`, writes `delivery/vibeproof/production-url-verification.json`, and confirms the same route/export checks against built artifacts with a real service-worker asset.
 - Generated evidence reports may refresh during this command; source/docs changes outside those generated reports still fail the public preflight.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 

@@ -50,6 +50,14 @@ Full local check set from the repository root:
 npm run vibeproof:launch-check
 ```
 
+Production-style local URL check from the repository root:
+
+```bash
+npm run vibeproof:prod-url-verify
+```
+
+This serves the built `vibeproof-studio/dist` with `vite preview`, reruns the route/export verifier against `http://127.0.0.1:4173/`, and writes `../delivery/vibeproof/production-url-verification.json`.
+
 Equivalent expanded commands:
 
 ```bash
@@ -85,8 +93,10 @@ Local visual evidence is stored in `../delivery/vibeproof/`:
 - `vibeproof-studio-workspace-desktop-1440.png`
 - `proof-first-responsive-report.json`
 - `public-url-verification.json`
+- `production-url-verification.json`
 
 `public-url-verification.json` also captures the real generated-app ZIP Blob from the `Download generated app` button and verifies the required source files, README, and `proof-manifest.json`.
+`production-url-verification.json` repeats that check against the built app served by `vite preview`, including a real service-worker asset instead of the dev-server HTML fallback.
 
 ## Runtime Boundary
 

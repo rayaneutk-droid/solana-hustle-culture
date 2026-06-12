@@ -20,6 +20,8 @@ Responsive proof report:
 - `delivery/vibeproof/proof-first-responsive-report.json`
 Root/Studio URL verification:
 - `delivery/vibeproof/public-url-verification.json`
+Production preview URL verification:
+- `delivery/vibeproof/production-url-verification.json`
 Deployment runbook:
 - `delivery/vibeproof/deployment-runbook.md`
 
@@ -41,6 +43,7 @@ Why it satisfies the bounty:
 - Visible network proof panel lists runtime resource requests and reports known cloud AI/prompt API host matches.
 - Workspace proof panel includes a reviewer checklist for local runtime, no hosted AI route, LocalKit, PWA, and network visibility.
 - Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, no remote static asset loads in the built index/CSS, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
+- `npm run vibeproof:prod-url-verify` serves the production build locally and verifies the proof brief, Studio, LocalKit iframe proof, generated-app ZIP export, mobile touch targets, and real service-worker asset.
 - PWA proof panel shows service-worker status and states the offline boundary honestly: app shell after first cache; model weights after first model download/browser cache.
 
 Important honesty note: first model load downloads WebLLM/model assets from model/CDN hosts. The app does not send prompts, generated code, files, toolbox input, or preview data to a cloud AI API.
@@ -70,6 +73,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Browser connector used for interactive inspection.
 - [x] Local Chrome CDP desktop/laptop/tablet/mobile responsive report captured.
 - [x] Root/Studio URL verification command prepared and run locally for desktop/mobile routes, touch targets, Compile proof, and LocalKit iframe proof.
+- [x] Production preview URL verification prepared and run locally against the built app.
 - [x] Integrated proof brief desktop/mobile screenshots captured.
 - [x] Local preview LocalKit store and DB actions verified by iframe auto-proof.
 - [ ] GitHub public source prepared and approved.

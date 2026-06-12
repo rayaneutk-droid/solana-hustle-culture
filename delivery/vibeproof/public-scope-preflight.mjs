@@ -18,6 +18,7 @@ const generatedEvidencePaths = [
   'delivery/vibeproof/delivery-audit.json',
   'delivery/vibeproof/local-boundary-audit.json',
   'delivery/vibeproof/public-url-verification.json',
+  'delivery/vibeproof/production-url-verification.json',
 ]
 const generatedReportPath = generatedEvidencePaths[0]
 const requiredFiles = [
@@ -29,6 +30,7 @@ const requiredFiles = [
   'delivery/vibeproof/delivery-audit.json',
   'delivery/vibeproof/local-boundary-audit.json',
   'delivery/vibeproof/public-url-verification.json',
+  'delivery/vibeproof/production-url-verification.json',
   'delivery/vibeproof/proof-first-responsive-report.json',
 ]
 

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-12T21:13:58.498Z",
+  "generatedAt": "2026-06-12T21:13:45.247Z",
   "project": "VibeProof Studio",
-  "target": "http://127.0.0.1:5173/",
+  "target": "http://127.0.0.1:4173/",
   "mode": "local",
   "status": "pass",
   "checks": [
@@ -10,7 +10,7 @@
       "ok": true,
       "details": {
         "status": 200,
-        "url": "http://127.0.0.1:5173/"
+        "url": "http://127.0.0.1:4173/"
       }
     },
     {
@@ -28,8 +28,8 @@
       "details": {
         "ok": true,
         "status": 200,
-        "contentType": "text/html",
-        "devFallback": true
+        "contentType": "text/javascript",
+        "devFallback": false
       }
     },
     {
@@ -42,7 +42,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -74,7 +74,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -106,7 +106,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -138,7 +138,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -170,7 +170,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -192,55 +192,55 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Premium app",
-            "width": 101,
+            "width": 102,
             "height": 32,
             "visible": true
           },
           {
             "text": "Data tool",
-            "width": 76,
+            "width": 77,
             "height": 32,
             "visible": true
           },
           {
             "text": "Micro SaaS",
-            "width": 87,
+            "width": 88,
             "height": 32,
             "visible": true
           },
           {
             "text": "Portfolio system",
-            "width": 119,
+            "width": 120,
             "height": 32,
             "visible": true
           },
           {
             "text": "Reset seed files",
-            "width": 33,
+            "width": 34,
             "height": 38,
             "visible": true
           },
           {
             "text": "HTML",
-            "width": 79,
+            "width": 80,
             "height": 32,
             "visible": true
           },
           {
             "text": "CSS",
-            "width": 65,
+            "width": 66,
             "height": 32,
             "visible": true
           },
@@ -317,7 +317,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -339,55 +339,55 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Premium app",
-            "width": 101,
+            "width": 102,
             "height": 32,
             "visible": true
           },
           {
             "text": "Data tool",
-            "width": 76,
+            "width": 77,
             "height": 32,
             "visible": true
           },
           {
             "text": "Micro SaaS",
-            "width": 87,
+            "width": 88,
             "height": 32,
             "visible": true
           },
           {
             "text": "Portfolio system",
-            "width": 119,
+            "width": 120,
             "height": 32,
             "visible": true
           },
           {
             "text": "Reset seed files",
-            "width": 33,
+            "width": 34,
             "height": 38,
             "visible": true
           },
           {
             "text": "HTML",
-            "width": 79,
+            "width": 80,
             "height": 32,
             "visible": true
           },
           {
             "text": "CSS",
-            "width": 65,
+            "width": 66,
             "height": 32,
             "visible": true
           },
@@ -464,7 +464,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -486,55 +486,55 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Premium app",
-            "width": 101,
+            "width": 102,
             "height": 32,
             "visible": true
           },
           {
             "text": "Data tool",
-            "width": 76,
+            "width": 77,
             "height": 32,
             "visible": true
           },
           {
             "text": "Micro SaaS",
-            "width": 87,
+            "width": 88,
             "height": 32,
             "visible": true
           },
           {
             "text": "Portfolio system",
-            "width": 119,
+            "width": 120,
             "height": 32,
             "visible": true
           },
           {
             "text": "Reset seed files",
-            "width": 33,
+            "width": 34,
             "height": 38,
             "visible": true
           },
           {
             "text": "HTML",
-            "width": 79,
+            "width": 80,
             "height": 32,
             "visible": true
           },
           {
             "text": "CSS",
-            "width": 65,
+            "width": 66,
             "height": 32,
             "visible": true
           },
@@ -611,7 +611,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -633,55 +633,55 @@
         "smallTouchTargets": [
           {
             "text": "Proof brief",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Studio",
-            "width": 127,
+            "width": 128,
             "height": 36,
             "visible": true
           },
           {
             "text": "Premium app",
-            "width": 101,
+            "width": 102,
             "height": 32,
             "visible": true
           },
           {
             "text": "Data tool",
-            "width": 76,
+            "width": 77,
             "height": 32,
             "visible": true
           },
           {
             "text": "Micro SaaS",
-            "width": 87,
+            "width": 88,
             "height": 32,
             "visible": true
           },
           {
             "text": "Portfolio system",
-            "width": 119,
+            "width": 120,
             "height": 32,
             "visible": true
           },
           {
             "text": "Reset seed files",
-            "width": 33,
+            "width": 34,
             "height": 38,
             "visible": true
           },
           {
             "text": "HTML",
-            "width": 79,
+            "width": 80,
             "height": 32,
             "visible": true
           },
           {
             "text": "CSS",
-            "width": 65,
+            "width": 66,
             "height": 32,
             "visible": true
           },
@@ -793,7 +793,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -825,7 +825,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -857,7 +857,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -889,7 +889,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "http://127.0.0.1:4173/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -921,7 +921,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -953,7 +953,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -985,7 +985,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "http://127.0.0.1:4173/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,

@@ -7,7 +7,9 @@ import { fileURLToPath } from 'node:url'
 
 const chromePath = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const here = path.dirname(fileURLToPath(import.meta.url))
-const reportPath = path.join(here, 'public-url-verification.json')
+const reportPath = process.env.VIBEPROOF_URL_REPORT
+  ? path.resolve(process.cwd(), process.env.VIBEPROOF_URL_REPORT)
+  : path.join(here, 'public-url-verification.json')
 const port = 9243
 const userDataDir = path.join(tmpdir(), `vibeproof-public-url-${Date.now()}`)
 const rawUrl = process.env.VIBEPROOF_URL || 'http://127.0.0.1:5173/'

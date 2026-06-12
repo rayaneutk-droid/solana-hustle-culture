@@ -9,11 +9,12 @@
     "list": "tsx src/cli.ts list",
     "pitch": "tsx src/cli.ts pitch",
     "check": "tsc --noEmit",
-    "vibeproof:verify": "npm --prefix vibeproof-studio run lint && npm --prefix vibeproof-studio run build && npm --prefix vibeproof-studio run proof:audit && npm run check && npm run vibeproof:delivery:audit",
+    "vibeproof:verify": "npm --prefix vibeproof-studio run lint && npm --prefix vibeproof-studio run build && npm --prefix vibeproof-studio run proof:audit && npm run vibeproof:prod-url-verify && npm run check && npm run vibeproof:delivery:audit",
     "vibeproof:launch-check": "npm run vibeproof:verify && npm run vibeproof:url-verify && npm run vibeproof:delivery:audit && npm run vibeproof:public-preflight",
     "vibeproof:delivery:audit": "node delivery/vibeproof/audit-delivery.mjs",
     "vibeproof:public-preflight": "node delivery/vibeproof/public-scope-preflight.mjs",
     "vibeproof:url-verify": "node delivery/vibeproof/verify-public-url.mjs",
+    "vibeproof:prod-url-verify": "node delivery/vibeproof/verify-production-preview.mjs",
     "vibeproof:capture": "node delivery/vibeproof/capture-proof-first.mjs",
     "vibeproof:visuals": "node delivery/vibeproof/render-submission-visuals.mjs",
     "vibeproof:assets": "npm run vibeproof:capture && npm run vibeproof:visuals"
