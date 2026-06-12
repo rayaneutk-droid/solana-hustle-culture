@@ -22,11 +22,38 @@ const forbiddenRuntimePackages = [
   'together-ai',
 ]
 
+const forbiddenTelemetryPackages = [
+  '@sentry/browser',
+  '@sentry/react',
+  '@vercel/analytics',
+  '@vercel/speed-insights',
+  'posthog-js',
+  'mixpanel-browser',
+  'amplitude-js',
+  '@amplitude/analytics-browser',
+  'plausible-tracker',
+  'firebase',
+  '@firebase/analytics',
+]
+
+const forbiddenWalletPackages = [
+  '@solana/web3.js',
+  '@solana/wallet-adapter-react',
+  '@solana/wallet-adapter-wallets',
+  '@walletconnect/sign-client',
+  '@walletconnect/ethereum-provider',
+  '@rainbow-me/rainbowkit',
+  'wagmi',
+  'viem',
+  'ethers',
+]
+
 const forbiddenNetworkApis = [
   /\bfetch\s*\(/,
   /\bXMLHttpRequest\b/,
   /\bWebSocket\s*\(/,
   /\bEventSource\s*\(/,
+  /\bnavigator\.sendBeacon\s*\(/,
 ]
 
 const cloudHostHints = [
@@ -41,6 +68,20 @@ const cloudHostHints = [
   'api.together.xyz',
   'api.fireworks.ai',
   'api.perplexity.ai',
+]
+
+const telemetryHostHints = [
+  'sentry.io',
+  'ingest.sentry.io',
+  'posthog.com',
+  'app.posthog.com',
+  'plausible.io',
+  'www.google-analytics.com',
+  'www.googletagmanager.com',
+  'api.segment.io',
+  'api2.amplitude.com',
+  'api.mixpanel.com',
+  'vitals.vercel-insights.com',
 ]
 
 const forbiddenBuiltPromptEndpointPatterns = [
@@ -145,6 +186,8 @@ const distEntries = await Promise.all(
 )
 
 const packageHits = forbiddenRuntimePackages.filter((name) => Object.hasOwn(dependencies, name))
+const telemetryPackageHits = forbiddenTelemetryPackages.filter((name) => Object.hasOwn(dependencies, name))
+const walletPackageHits = forbiddenWalletPackages.filter((name) => Object.hasOwn(dependencies, name))
 const networkApiHits = sourceEntries.flatMap((entry) =>
   forbiddenNetworkApis
     .filter((pattern) => pattern.test(entry.text))
@@ -155,6 +198,14 @@ const networkApiHits = sourceEntries.flatMap((entry) =>
 )
 const cloudHostHits = sourceEntries.flatMap((entry) =>
   cloudHostHints
+    .filter((host) => entry.text.includes(host))
+    .map((host) => ({
+      file: entry.relativePath,
+      host,
+    })),
+)
+const telemetryHostHits = [...sourceEntries, ...distEntries].flatMap((entry) =>
+  telemetryHostHints
     .filter((host) => entry.text.includes(host))
     .map((host) => ({
       file: entry.relativePath,
@@ -209,6 +260,12 @@ const staticBypassRewrite = rewrites.find((rewrite) => rewrite.destination === '
 const staticBypassTokens = ['assets/', 'sw.js', 'workbox-.*\\.js', 'manifest.webmanifest', 'favicon.svg', 'icons.svg']
 const checks = [
   check(packageHits.length === 0, 'No cloud AI runtime packages are installed.', { packageHits }),
+  check(telemetryPackageHits.length === 0, 'No telemetry or analytics packages are installed.', {
+    telemetryPackageHits,
+  }),
+  check(walletPackageHits.length === 0, 'No wallet or chain connector packages are installed.', {
+    walletPackageHits,
+  }),
   check(networkApiHits.length === 0, 'No direct browser network APIs are used in app source.', { networkApiHits }),
   check(
     cloudHostFiles.size === 1 && cloudHostFiles.has('src/App.tsx'),
@@ -290,6 +347,9 @@ const checks = [
   check(builtSecretMarkerHits.length === 0, 'Built artifacts do not contain cloud AI secret or bearer-token markers.', {
     builtSecretMarkerHits,
   }),
+  check(telemetryHostHits.length === 0, 'Source and built artifacts do not contain telemetry collection hosts.', {
+    telemetryHostHits,
+  }),
   check(externalScriptHits.length === 0, 'Built index.html does not load remote scripts.', {
     externalScriptHits,
   }),
@@ -304,13 +364,16 @@ const report = {
     distFilesScanned: distEntries.length,
     toolCount,
     forbiddenRuntimePackageHits: packageHits.length,
+    telemetryPackageHits: telemetryPackageHits.length,
+    walletPackageHits: walletPackageHits.length,
     directNetworkApiHits: networkApiHits.length,
     knownCloudAiHostStrings: cloudHostHits.length,
     builtPromptEndpointHits: builtPromptEndpointHits.length,
     builtSecretMarkerHits: builtSecretMarkerHits.length,
+    telemetryHostHits: telemetryHostHits.length,
   },
   checks,
-  note: 'Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config.',
+  note: 'Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, telemetry packages/hosts, wallet connector packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config.',
 }
 
 await writeFile(deliveryPath, `${JSON.stringify(report, null, 2)}\n`)

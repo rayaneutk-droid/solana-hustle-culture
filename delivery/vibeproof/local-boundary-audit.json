@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:55:24.106Z",
+  "generatedAt": "2026-06-12T20:57:32.331Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -7,10 +7,13 @@
     "distFilesScanned": 13,
     "toolCount": 68,
     "forbiddenRuntimePackageHits": 0,
+    "telemetryPackageHits": 0,
+    "walletPackageHits": 0,
     "directNetworkApiHits": 0,
     "knownCloudAiHostStrings": 11,
     "builtPromptEndpointHits": 0,
-    "builtSecretMarkerHits": 0
+    "builtSecretMarkerHits": 0,
+    "telemetryHostHits": 0
   },
   "checks": [
     {
@@ -18,6 +21,20 @@
       "ok": true,
       "details": {
         "packageHits": []
+      }
+    },
+    {
+      "label": "No telemetry or analytics packages are installed.",
+      "ok": true,
+      "details": {
+        "telemetryPackageHits": []
+      }
+    },
+    {
+      "label": "No wallet or chain connector packages are installed.",
+      "ok": true,
+      "details": {
+        "walletPackageHits": []
       }
     },
     {
@@ -185,6 +202,13 @@
       }
     },
     {
+      "label": "Source and built artifacts do not contain telemetry collection hosts.",
+      "ok": true,
+      "details": {
+        "telemetryHostHits": []
+      }
+    },
+    {
       "label": "Built index.html does not load remote scripts.",
       "ok": true,
       "details": {
@@ -192,5 +216,5 @@
       }
     }
   ],
-  "note": "Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config."
+  "note": "Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, telemetry packages/hosts, wallet connector packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config."
 }

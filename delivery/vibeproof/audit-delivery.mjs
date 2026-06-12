@@ -90,8 +90,17 @@ async function main() {
   addCheck('No forbidden cloud runtime package hits.', boundaryAudit.summary?.forbiddenRuntimePackageHits === 0, {
     forbiddenRuntimePackageHits: boundaryAudit.summary?.forbiddenRuntimePackageHits,
   })
+  addCheck('No telemetry or analytics package hits.', boundaryAudit.summary?.telemetryPackageHits === 0, {
+    telemetryPackageHits: boundaryAudit.summary?.telemetryPackageHits,
+  })
+  addCheck('No wallet or chain connector package hits.', boundaryAudit.summary?.walletPackageHits === 0, {
+    walletPackageHits: boundaryAudit.summary?.walletPackageHits,
+  })
   addCheck('No direct prompt API network hits.', boundaryAudit.summary?.directNetworkApiHits === 0, {
     directNetworkApiHits: boundaryAudit.summary?.directNetworkApiHits,
+  })
+  addCheck('No telemetry collection host hits in source or built artifacts.', boundaryAudit.summary?.telemetryHostHits === 0, {
+    telemetryHostHits: boundaryAudit.summary?.telemetryHostHits,
   })
 
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
