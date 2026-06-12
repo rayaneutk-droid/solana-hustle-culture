@@ -18,6 +18,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - URL verification report: `delivery/vibeproof/public-url-verification.json`
 - Launch readiness report: `delivery/vibeproof/launch-readiness.json`
 - Public action checklist: `delivery/vibeproof/public-action-checklist.json`
+- Pump.fun reply template: `delivery/vibeproof/pump-fun-reply-template.md`
 - Post-approval public submission verifier: `npm run vibeproof:public-submission:verify`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
@@ -136,6 +137,8 @@ Expected:
 - Pump.fun reply remains marked TODO until the final explicit submit approval.
 
 ## Pump.fun Reply Template
+
+Short copy-paste source: `delivery/vibeproof/pump-fun-reply-template.md`.
 
 ```text
 Built: VibeProof Studio

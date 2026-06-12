@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T22:02:45.243Z",
+  "generatedAt": "2026-06-12T22:04:25.791Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
-    "artifactCount": 39,
+    "artifactCount": 40,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 42,
+    "checkCount": 43,
     "failedChecks": 0
   },
   "checks": [
@@ -241,6 +241,14 @@
         "actionCount": 7,
         "nonPendingPublicActions": [],
         "actionsWithoutApprovalRequirements": []
+      }
+    },
+    {
+      "label": "Pump.fun reply template is concise, honest, and waits for public URLs.",
+      "ok": true,
+      "details": {
+        "missingPumpFunTemplateRequirements": [],
+        "pumpFunTemplateForbiddenHits": []
       }
     },
     {

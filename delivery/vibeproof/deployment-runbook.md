@@ -165,4 +165,5 @@ Submit only after all are true:
 - Deployed root proof brief and `#studio` Studio URL are verified.
 - Current screenshots exist for the deployed URL.
 - Optional Figma/Canva support assets are linked or intentionally skipped.
+- `delivery/vibeproof/pump-fun-reply-template.md` has been filled with the real GitHub and Vercel URLs.
 - User explicitly approves the final Pump.fun reply.

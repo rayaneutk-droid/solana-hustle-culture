@@ -280,6 +280,30 @@ async function main() {
     actionsWithoutApprovalRequirements,
   })
 
+  const pumpFunReplyTemplate = await readFile(toAbs('delivery/vibeproof/pump-fun-reply-template.md'), 'utf8')
+  const pumpFunTemplateRequirements = [
+    /<VERCEL_URL>/,
+    /<GITHUB_URL>/,
+    /WebLLM local model worker/i,
+    /LocalKit\.store/i,
+    /LocalKit\.db\.query/i,
+    /PGlite local backend/i,
+    /68 local tools/i,
+    /0 cloud AI \/ prompt API requests/i,
+    /first model load may download WebLLM\/model\/WASM assets/i,
+    /not sent to hosted AI prompt APIs/i,
+    /npm run vibeproof:public-submission:verify/i,
+  ]
+  const missingPumpFunTemplateRequirements = pumpFunTemplateRequirements
+    .filter((pattern) => !pattern.test(pumpFunReplyTemplate))
+    .map((pattern) => pattern.source)
+  const pumpFunTemplateForbiddenHits = [...pumpFunReplyTemplate.matchAll(/https?:\/\/(?:localhost|127\.0\.0\.1|::1)/gi)].map((match) => match[0])
+  addCheck('Pump.fun reply template is concise, honest, and waits for public URLs.', missingPumpFunTemplateRequirements.length === 0 &&
+    pumpFunTemplateForbiddenHits.length === 0, {
+    missingPumpFunTemplateRequirements,
+    pumpFunTemplateForbiddenHits,
+  })
+
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []
   const requiredCaptures = [
@@ -398,6 +422,7 @@ async function main() {
     'delivery/vibeproof/public-action-briefs.md',
     'delivery/vibeproof/deployment-runbook.md',
     'delivery/vibeproof/public-launch-approval.md',
+    'delivery/vibeproof/pump-fun-reply-template.md',
     'delivery/vibeproof/figma-proof-frame-brief.md',
     'delivery/vibeproof/canva-cover-brief.md',
     'vibeproof-studio/README.md',
