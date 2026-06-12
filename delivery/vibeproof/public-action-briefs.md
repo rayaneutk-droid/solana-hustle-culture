@@ -36,7 +36,7 @@ Adds VibeProof Studio, an isolated Vite React TypeScript app for the Vibesterz b
 - CodeMirror HTML/CSS/JS workspace with sandboxed live preview
 - Local Glass Workbench premium UI with iOS/macOS-inspired gradients, glass panels, and Windows-friendly density
 - Proof-first root route with `#studio` one click away
-- Tablet/mobile proof-first responsive flow with touch-sized controls and iOS-style bottom tab bar
+- Tablet/mobile proof-first responsive flow with touch-sized controls; Studio mobile keeps the app navigation tab bar
 - 68-tool local toolbox with deterministic and local-model-only AI tools
 - PWA/offline, network, model, and local backend proof panels
 - Known cloud-AI host classifier inside the network proof panel
