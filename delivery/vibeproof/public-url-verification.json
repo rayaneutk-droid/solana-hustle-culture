@@ -1,0 +1,212 @@
+{
+  "generatedAt": "2026-06-12T20:24:21.366Z",
+  "project": "VibeProof Studio",
+  "target": "http://127.0.0.1:5173/",
+  "mode": "local",
+  "status": "pass",
+  "checks": [
+    {
+      "label": "App URL responds successfully.",
+      "ok": true,
+      "details": {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/"
+      }
+    },
+    {
+      "label": "PWA manifest is reachable.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "status": 200,
+        "contentType": "application/manifest+json"
+      }
+    },
+    {
+      "label": "Service worker asset is reachable, or local dev fallback is documented.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "status": 200,
+        "contentType": "text/html",
+        "devFallback": true
+      }
+    },
+    {
+      "label": "Root route opens the reviewer Proof Brief.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasVerificationPath": true,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": false,
+        "hasLocalBackend": false,
+        "hasPwaPanel": false,
+        "hasNetworkProof": false,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Proof Brief exposes the Studio CTA.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasVerificationPath": true,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": false,
+        "hasLocalBackend": false,
+        "hasPwaPanel": false,
+        "hasNetworkProof": false,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Proof Brief exposes verification path and cloud boundary.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasVerificationPath": true,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": false,
+        "hasLocalBackend": false,
+        "hasPwaPanel": false,
+        "hasNetworkProof": false,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Proof Brief has no horizontal overflow.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasVerificationPath": true,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": false,
+        "hasLocalBackend": false,
+        "hasPwaPanel": false,
+        "hasNetworkProof": false,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Studio route opens the usable builder.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/#studio",
+        "hash": "#studio",
+        "title": "VibeProof Studio",
+        "hasProofBrief": false,
+        "hasStudioCta": false,
+        "hasVerificationPath": false,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": true,
+        "hasLocalBackend": true,
+        "hasPwaPanel": true,
+        "hasNetworkProof": true,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Studio exposes local backend, PWA, and network proof panels.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/#studio",
+        "hash": "#studio",
+        "title": "VibeProof Studio",
+        "hasProofBrief": false,
+        "hasStudioCta": false,
+        "hasVerificationPath": false,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": true,
+        "hasLocalBackend": true,
+        "hasPwaPanel": true,
+        "hasNetworkProof": true,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "Studio route has no horizontal overflow.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/#studio",
+        "hash": "#studio",
+        "title": "VibeProof Studio",
+        "hasProofBrief": false,
+        "hasStudioCta": false,
+        "hasVerificationPath": false,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": true,
+        "hasLocalBackend": true,
+        "hasPwaPanel": true,
+        "hasNetworkProof": true,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    },
+    {
+      "label": "No account, wallet, API key, or cloud-provider prompt is visible.",
+      "ok": true,
+      "details": {
+        "url": "http://127.0.0.1:5173/#studio",
+        "hash": "#studio",
+        "title": "VibeProof Studio",
+        "hasProofBrief": false,
+        "hasStudioCta": false,
+        "hasVerificationPath": false,
+        "hasCloudBoundary": true,
+        "hasStudio": true,
+        "hasBuilderPanel": true,
+        "hasLocalBackend": true,
+        "hasPwaPanel": true,
+        "hasNetworkProof": true,
+        "hasForbiddenAccountPrompt": false,
+        "horizontalOverflow": false,
+        "clientWidth": 1425,
+        "scrollWidth": 1425
+      }
+    }
+  ]
+}

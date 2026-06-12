@@ -15,6 +15,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Boundary audit: `delivery/vibeproof/local-boundary-audit.json`
 - Delivery audit: `delivery/vibeproof/delivery-audit.json`
 - Public preflight report: `delivery/vibeproof/public-preflight.json`
+- URL verification report: `delivery/vibeproof/public-url-verification.json`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
 Unrelated `delivery/social/` changes are intentionally excluded from this launch scope.
@@ -62,6 +63,7 @@ Run from repository root:
 ```bash
 npm run vibeproof:verify
 npm run vibeproof:public-preflight
+npm run vibeproof:url-verify
 ```
 
 Equivalent expanded commands:
@@ -75,6 +77,7 @@ cd ..
 npm run check
 npm run vibeproof:delivery:audit
 npm run vibeproof:public-preflight
+npm run vibeproof:url-verify
 ```
 
 Expected:
@@ -84,6 +87,7 @@ Expected:
 - Delivery audit validates required screenshots, visuals, proof reports, and active docs.
 - Public preflight confirms branch, required launch files, public placeholders, and that dirty files are limited to the explicitly excluded `delivery/social/` scope.
 - Public preflight writes `delivery/vibeproof/public-preflight.json` for reviewer/auditor evidence before push or deploy.
+- URL verification writes `delivery/vibeproof/public-url-verification.json`; after Vercel approval, rerun it with `VIBEPROOF_URL` set to the preview URL.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
 ## Screenshot And Visual Refresh
@@ -100,6 +104,7 @@ For deployed evidence after Vercel approval, point the capture script at the dep
 
 ```powershell
 $env:VIBEPROOF_URL = 'https://YOUR-VERCEL-PREVIEW-URL'
+npm run vibeproof:url-verify
 npm run vibeproof:capture
 Remove-Item Env:VIBEPROOF_URL
 ```
@@ -133,6 +138,7 @@ Verification artifacts:
 - delivery/vibeproof/local-boundary-audit.json
 - delivery/vibeproof/delivery-audit.json
 - delivery/vibeproof/public-preflight.json
+- delivery/vibeproof/public-url-verification.json
 - delivery/vibeproof/proof-first-responsive-report.json
 - delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png
 - delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png

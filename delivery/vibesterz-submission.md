@@ -18,6 +18,8 @@ Local boundary audit:
 - `delivery/vibeproof/local-boundary-audit.json`
 Responsive proof report:
 - `delivery/vibeproof/proof-first-responsive-report.json`
+Root/Studio URL verification:
+- `delivery/vibeproof/public-url-verification.json`
 Deployment runbook:
 - `delivery/vibeproof/deployment-runbook.md`
 
@@ -64,6 +66,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Root `npm run check` passes.
 - [x] Browser connector used for interactive inspection.
 - [x] Local Chrome CDP desktop/laptop/tablet/mobile responsive report captured.
+- [x] Root/Studio URL verification command prepared and run locally.
 - [x] Integrated proof brief desktop/mobile screenshots captured.
 - [x] Local preview LocalKit store and DB actions verified by iframe auto-proof.
 - [ ] GitHub public source prepared and approved.
@@ -114,6 +117,7 @@ Full verification from the repository root:
 
 ```bash
 npm run vibeproof:verify
+npm run vibeproof:url-verify
 ```
 
 Asset refresh from the repository root, with the local dev server running:

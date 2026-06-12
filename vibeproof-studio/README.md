@@ -48,6 +48,7 @@ Full local check set from the repository root:
 
 ```bash
 npm run vibeproof:verify
+npm run vibeproof:url-verify
 ```
 
 Equivalent expanded commands:
@@ -83,6 +84,7 @@ Local visual evidence is stored in `../delivery/vibeproof/`:
 - `vibeproof-proof-brief-mobile-390.png`
 - `vibeproof-studio-workspace-desktop-1440.png`
 - `proof-first-responsive-report.json`
+- `public-url-verification.json`
 
 ## Runtime Boundary
 
@@ -114,4 +116,5 @@ After the preview URL is available:
 2. Click `Launch Local Studio` and confirm `#studio` renders the usable builder.
 3. Confirm no hosted AI route, account, wallet, or telemetry prompt appears.
 4. Confirm the network panel reports `0 cloud AI / prompt API requests` after normal app use.
-5. Capture deployed proof brief desktop/laptop/tablet/mobile screenshots plus Studio desktop before any Pump.fun reply.
+5. From the repository root, rerun `npm run vibeproof:url-verify` with `VIBEPROOF_URL` set to the preview URL.
+6. Capture deployed proof brief desktop/laptop/tablet/mobile screenshots plus Studio desktop before any Pump.fun reply.

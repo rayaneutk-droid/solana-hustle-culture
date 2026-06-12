@@ -25,6 +25,7 @@ Run from the repository root:
 ```bash
 npm run vibeproof:verify
 npm run vibeproof:public-preflight
+npm run vibeproof:url-verify
 ```
 
 Equivalent expanded commands:
@@ -38,6 +39,7 @@ cd ..
 npm run check
 npm run vibeproof:delivery:audit
 npm run vibeproof:public-preflight
+npm run vibeproof:url-verify
 ```
 
 Expected:
@@ -48,6 +50,7 @@ Expected:
 - Root TypeScript check exits 0.
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
+- `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the root Proof Brief plus `#studio` route on the configured URL.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 
 ## GitHub Scope
@@ -112,6 +115,7 @@ To refresh deployed screenshots from the repository root after approval:
 
 ```powershell
 $env:VIBEPROOF_URL = 'https://YOUR-VERCEL-PREVIEW-URL'
+npm run vibeproof:url-verify
 npm run vibeproof:capture
 Remove-Item Env:VIBEPROOF_URL
 ```

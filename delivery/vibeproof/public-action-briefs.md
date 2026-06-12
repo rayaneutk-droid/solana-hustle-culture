@@ -80,7 +80,8 @@ Post-deploy verification:
 7. Confirm the network proof reports `0 cloud AI / prompt API requests`.
 8. Confirm the reviewer checklist proof panel renders in the Studio.
 9. Run `npm run proof:audit` locally and keep `delivery/vibeproof/local-boundary-audit.json`.
-10. Capture proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop from the deployed URL.
+10. From the repository root, run `VIBEPROOF_URL=<preview-url> npm run vibeproof:url-verify` or the PowerShell equivalent.
+11. Capture proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop from the deployed URL.
 
 Headers/config checks:
 

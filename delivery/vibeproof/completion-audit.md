@@ -33,6 +33,7 @@ Current implemented flow:
 | Premium Liquid Glass-inspired responsive frontend | Done locally | `vibeproof-studio/src/App.css`; screenshots under `delivery/vibeproof/` |
 | Reduced-motion support | Done locally | CSS `@media (prefers-reduced-motion: reduce)` and Chrome CDP reduced-motion check in `proof-first-responsive-report.json` |
 | Browser/responsive verification | Done locally | `delivery/vibeproof/proof-first-responsive-report.json` plus Browser connector state documented in `delivery/vibesterz-submission.md` |
+| Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks root Proof Brief, `#studio`, PWA assets, local backend, network proof, and no account/wallet/API-key prompt |
 | Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |
 | Public-scope preflight | Prepared locally | `delivery/vibeproof/public-preflight.json` records branch, required files, gated placeholders, and dirty-file scope before public actions |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |
@@ -48,6 +49,7 @@ Current implemented flow:
 - `delivery/vibeproof/local-boundary-audit.json`
 - `delivery/vibeproof/delivery-audit.json`
 - `delivery/vibeproof/public-preflight.json`
+- `delivery/vibeproof/public-url-verification.json`
 - `delivery/vibeproof/proof-first-responsive-report.json`
 - `delivery/vibeproof/submission-assets-manifest.json`
 - `delivery/vibeproof/public-launch-approval.md`
@@ -69,10 +71,12 @@ Before public push/deploy approval, run:
 
 ```bash
 npm run vibeproof:public-preflight
+npm run vibeproof:url-verify
 ```
 
 This is expected to pass when VibeProof files are committed and any remaining dirty files are limited to the explicitly excluded `delivery/social/` scope.
 It also writes `delivery/vibeproof/public-preflight.json` so the launch gate has a reviewable artifact, not only terminal output.
+The URL verification defaults to the local dev server and can be rerun after Vercel approval with `VIBEPROOF_URL` to refresh the same report against the deployed app.
 
 ## Asset Refresh Commands
 

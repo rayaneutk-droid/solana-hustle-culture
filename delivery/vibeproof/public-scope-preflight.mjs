@@ -21,6 +21,7 @@ const requiredFiles = [
   'delivery/vibeproof/completion-audit.md',
   'delivery/vibeproof/delivery-audit.json',
   'delivery/vibeproof/local-boundary-audit.json',
+  'delivery/vibeproof/public-url-verification.json',
   'delivery/vibeproof/proof-first-responsive-report.json',
 ]
 
