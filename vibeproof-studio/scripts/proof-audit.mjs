@@ -161,11 +161,22 @@ function check(condition, label, details) {
   }
 }
 
+function packageNameFromLockPath(packagePath) {
+  const parts = packagePath.split('node_modules/').filter(Boolean)
+  return parts.at(-1) ?? ''
+}
+
 const packageJson = JSON.parse(await readFile(path.join(projectRoot, 'package.json'), 'utf8'))
+const packageLock = JSON.parse(await readFile(path.join(projectRoot, 'package-lock.json'), 'utf8'))
 const dependencies = {
   ...packageJson.dependencies,
   ...packageJson.devDependencies,
 }
+const lockPackageNames = Object.keys(packageLock.packages ?? {})
+  .filter((packagePath) => packagePath.includes('node_modules/'))
+  .map(packageNameFromLockPath)
+  .filter(Boolean)
+const lockPackageSet = new Set(lockPackageNames)
 
 const sourceFiles = await walk(sourceRoot)
 const sourceEntries = await Promise.all(
@@ -188,6 +199,10 @@ const distEntries = await Promise.all(
 const packageHits = forbiddenRuntimePackages.filter((name) => Object.hasOwn(dependencies, name))
 const telemetryPackageHits = forbiddenTelemetryPackages.filter((name) => Object.hasOwn(dependencies, name))
 const walletPackageHits = forbiddenWalletPackages.filter((name) => Object.hasOwn(dependencies, name))
+const lockCloudPackageHits = forbiddenRuntimePackages.filter((name) => lockPackageSet.has(name))
+const lockTelemetryPackageHits = forbiddenTelemetryPackages.filter((name) => lockPackageSet.has(name))
+const lockWalletPackageHits = forbiddenWalletPackages.filter((name) => lockPackageSet.has(name))
+const workboxGoogleAnalyticsPresent = lockPackageSet.has('workbox-google-analytics')
 const networkApiHits = sourceEntries.flatMap((entry) =>
   forbiddenNetworkApis
     .filter((pattern) => pattern.test(entry.text))
@@ -262,6 +277,19 @@ const checks = [
   check(packageHits.length === 0, 'No cloud AI runtime packages are installed.', { packageHits }),
   check(telemetryPackageHits.length === 0, 'No telemetry or analytics packages are installed.', {
     telemetryPackageHits,
+  }),
+  check(lockCloudPackageHits.length === 0, 'Lockfile contains no forbidden cloud AI runtime packages.', {
+    lockCloudPackageHits,
+  }),
+  check(lockTelemetryPackageHits.length === 0, 'Lockfile contains no forbidden telemetry or analytics SDK packages.', {
+    lockTelemetryPackageHits,
+    ignoredTransitivePackages: workboxGoogleAnalyticsPresent ? ['workbox-google-analytics'] : [],
+    ignoredReason: workboxGoogleAnalyticsPresent
+      ? 'Workbox ships this optional module transitively; the app does not configure Google Analytics or include GA collection hosts.'
+      : undefined,
+  }),
+  check(lockWalletPackageHits.length === 0, 'Lockfile contains no forbidden wallet or chain connector packages.', {
+    lockWalletPackageHits,
   }),
   check(walletPackageHits.length === 0, 'No wallet or chain connector packages are installed.', {
     walletPackageHits,
@@ -366,6 +394,9 @@ const report = {
     forbiddenRuntimePackageHits: packageHits.length,
     telemetryPackageHits: telemetryPackageHits.length,
     walletPackageHits: walletPackageHits.length,
+    lockCloudPackageHits: lockCloudPackageHits.length,
+    lockTelemetryPackageHits: lockTelemetryPackageHits.length,
+    lockWalletPackageHits: lockWalletPackageHits.length,
     directNetworkApiHits: networkApiHits.length,
     knownCloudAiHostStrings: cloudHostHits.length,
     builtPromptEndpointHits: builtPromptEndpointHits.length,

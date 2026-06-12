@@ -93,6 +93,15 @@ async function main() {
   addCheck('No telemetry or analytics package hits.', boundaryAudit.summary?.telemetryPackageHits === 0, {
     telemetryPackageHits: boundaryAudit.summary?.telemetryPackageHits,
   })
+  addCheck('No forbidden cloud AI package hits in lockfile.', boundaryAudit.summary?.lockCloudPackageHits === 0, {
+    lockCloudPackageHits: boundaryAudit.summary?.lockCloudPackageHits,
+  })
+  addCheck('No forbidden telemetry or analytics SDK package hits in lockfile.', boundaryAudit.summary?.lockTelemetryPackageHits === 0, {
+    lockTelemetryPackageHits: boundaryAudit.summary?.lockTelemetryPackageHits,
+  })
+  addCheck('No forbidden wallet or chain connector package hits in lockfile.', boundaryAudit.summary?.lockWalletPackageHits === 0, {
+    lockWalletPackageHits: boundaryAudit.summary?.lockWalletPackageHits,
+  })
   addCheck('No wallet or chain connector package hits.', boundaryAudit.summary?.walletPackageHits === 0, {
     walletPackageHits: boundaryAudit.summary?.walletPackageHits,
   })

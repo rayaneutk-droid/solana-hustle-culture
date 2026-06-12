@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T20:58:18.119Z",
+  "generatedAt": "2026-06-12T21:00:14.646Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 31,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 21,
+    "checkCount": 24,
     "failedChecks": 0
   },
   "checks": [
@@ -57,6 +57,27 @@
       "ok": true,
       "details": {
         "telemetryPackageHits": 0
+      }
+    },
+    {
+      "label": "No forbidden cloud AI package hits in lockfile.",
+      "ok": true,
+      "details": {
+        "lockCloudPackageHits": 0
+      }
+    },
+    {
+      "label": "No forbidden telemetry or analytics SDK package hits in lockfile.",
+      "ok": true,
+      "details": {
+        "lockTelemetryPackageHits": 0
+      }
+    },
+    {
+      "label": "No forbidden wallet or chain connector package hits in lockfile.",
+      "ok": true,
+      "details": {
+        "lockWalletPackageHits": 0
       }
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:58:06.054Z",
+  "generatedAt": "2026-06-12T21:00:14.303Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
@@ -9,6 +9,9 @@
     "forbiddenRuntimePackageHits": 0,
     "telemetryPackageHits": 0,
     "walletPackageHits": 0,
+    "lockCloudPackageHits": 0,
+    "lockTelemetryPackageHits": 0,
+    "lockWalletPackageHits": 0,
     "directNetworkApiHits": 0,
     "knownCloudAiHostStrings": 11,
     "builtPromptEndpointHits": 0,
@@ -28,6 +31,31 @@
       "ok": true,
       "details": {
         "telemetryPackageHits": []
+      }
+    },
+    {
+      "label": "Lockfile contains no forbidden cloud AI runtime packages.",
+      "ok": true,
+      "details": {
+        "lockCloudPackageHits": []
+      }
+    },
+    {
+      "label": "Lockfile contains no forbidden telemetry or analytics SDK packages.",
+      "ok": true,
+      "details": {
+        "lockTelemetryPackageHits": [],
+        "ignoredTransitivePackages": [
+          "workbox-google-analytics"
+        ],
+        "ignoredReason": "Workbox ships this optional module transitively; the app does not configure Google Analytics or include GA collection hosts."
+      }
+    },
+    {
+      "label": "Lockfile contains no forbidden wallet or chain connector packages.",
+      "ok": true,
+      "details": {
+        "lockWalletPackageHits": []
       }
     },
     {
