@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:10:44.608Z",
+  "generatedAt": "2026-06-12T21:10:52.969Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "branch": "codex/vibeproof-studio",
@@ -41,12 +41,7 @@
       "path": "delivery/social/solana_hustle_portrait.png"
     }
   ],
-  "generatedEvidenceDirtyEntries": [
-    {
-      "status": " M",
-      "path": "delivery/vibeproof/public-preflight.json"
-    }
-  ],
+  "generatedEvidenceDirtyEntries": [],
   "checks": [
     {
       "label": "Current branch is the VibeProof branch.",
