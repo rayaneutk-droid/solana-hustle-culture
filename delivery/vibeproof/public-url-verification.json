@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:31:18.276Z",
+  "generatedAt": "2026-06-12T20:33:36.889Z",
   "project": "VibeProof Studio",
   "target": "http://127.0.0.1:5173/",
   "mode": "local",
@@ -790,6 +790,19 @@
             "visible": true
           }
         ]
+      }
+    },
+    {
+      "label": "Compile proof runs and sandboxed LocalKit iframe proof completes.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "hasPreviewReload": true,
+        "hasDeterministicCompile": true,
+        "hasLocalKitIframeProof": true,
+        "doneStepCount": 5,
+        "hasNoCloudCopy": true,
+        "consoleTail": "info\nPreview reloaded with deterministic proof app.\n\ninfo\nDeterministic proof compile replaced workspace files.\n\ninfo\nLocalKit iframe proof OK"
       }
     },
     {

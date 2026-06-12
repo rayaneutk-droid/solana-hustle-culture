@@ -49,7 +49,7 @@ Expected:
 - Root TypeScript check exits 0.
 - `vibeproof:delivery:audit` writes `delivery/vibeproof/delivery-audit.json` and exits 0.
 - `vibeproof:public-preflight` confirms public scope is clean except explicitly excluded `delivery/social/` changes.
-- `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route on the configured URL.
+- `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route, `Compile proof`, and sandboxed LocalKit iframe proof on the configured URL.
 - Generated evidence reports may refresh during this command; source/docs changes outside those generated reports still fail the public preflight.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 

@@ -66,7 +66,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Root `npm run check` passes.
 - [x] Browser connector used for interactive inspection.
 - [x] Local Chrome CDP desktop/laptop/tablet/mobile responsive report captured.
-- [x] Root/Studio URL verification command prepared and run locally for desktop/mobile routes and touch targets.
+- [x] Root/Studio URL verification command prepared and run locally for desktop/mobile routes, touch targets, Compile proof, and LocalKit iframe proof.
 - [x] Integrated proof brief desktop/mobile screenshots captured.
 - [x] Local preview LocalKit store and DB actions verified by iframe auto-proof.
 - [ ] GitHub public source prepared and approved.

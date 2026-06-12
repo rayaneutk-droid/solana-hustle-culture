@@ -148,6 +148,71 @@ async function inspectRoute(client, url, viewport) {
   })()`)
 }
 
+async function waitForPageState(client, expression, timeout = 7000) {
+  const started = Date.now()
+  let lastState
+  while (Date.now() - started < timeout) {
+    lastState = await evalJs(client, expression)
+    if (lastState?.ok) return lastState
+    await new Promise((resolve) => setTimeout(resolve, 250))
+  }
+  return lastState ?? { ok: false, error: 'No page state returned.' }
+}
+
+async function runCompileProofCheck(client) {
+  await client.send('Emulation.setDeviceMetricsOverride', {
+    width: desktopViewport.width,
+    height: desktopViewport.height,
+    deviceScaleFactor: 1,
+    mobile: desktopViewport.mobile,
+  })
+  await client.send('Page.navigate', { url: studioUrl })
+  await new Promise((resolve) => setTimeout(resolve, 900))
+
+  const readyState = await waitForPageState(client, `(() => {
+    const button = [...document.querySelectorAll('button')]
+      .find((item) => /Compile proof/.test(item.textContent || ''));
+    const bodyText = document.body.innerText;
+    return {
+      ok: Boolean(button) && !button.disabled,
+      hasButton: Boolean(button),
+      disabled: Boolean(button?.disabled),
+      localBackendConnected: /Local backend\\s+Connected/.test(bodyText) || /Connected/.test(bodyText),
+    };
+  })()`, 10000)
+
+  if (!readyState.ok) return { ok: false, clicked: false, reason: 'Compile proof button did not become enabled.', readyState }
+
+  const clickState = await evalJs(client, `(() => {
+    const button = [...document.querySelectorAll('button')]
+      .find((item) => /Compile proof/.test(item.textContent || ''));
+    if (!button) return { clicked: false, reason: 'Compile proof button not found after readiness check.' };
+    if (button.disabled) return { clicked: false, reason: 'Compile proof button is disabled after readiness check.' };
+    button.click();
+    return { clicked: true };
+  })()`)
+
+  if (!clickState.clicked) return { ok: false, ...clickState }
+
+  return waitForPageState(client, `(() => {
+    const consoleText = document.querySelector('.console-log')?.innerText || '';
+    const bodyText = document.body.innerText;
+    const doneStepCount = [...document.querySelectorAll('.pipeline-step.done')].length;
+    const state = {
+      hasPreviewReload: /Preview reloaded with deterministic proof app/.test(consoleText),
+      hasDeterministicCompile: /Deterministic proof compile replaced workspace files/.test(consoleText),
+      hasLocalKitIframeProof: /LocalKit iframe proof OK/.test(consoleText),
+      doneStepCount,
+      hasNoCloudCopy: /Verified without cloud AI/.test(bodyText),
+      consoleTail: consoleText.slice(-900),
+    };
+    return {
+      ok: state.hasPreviewReload && state.hasDeterministicCompile && state.hasLocalKitIframeProof && state.doneStepCount >= 5,
+      ...state,
+    };
+  })()`)
+}
+
 async function checkStaticAsset(relativePath) {
   try {
     const result = await fetch(new URL(relativePath, appUrl))
@@ -207,6 +272,9 @@ async function main() {
     addCheck('Studio exposes local backend, PWA, and network proof panels.', studio.hasLocalBackend && studio.hasPwaPanel && studio.hasNetworkProof, studio)
     addCheck('Studio route has no horizontal overflow.', !studio.horizontalOverflow, studio)
     addCheck('No account, wallet, API key, or cloud-provider prompt is visible.', !studio.hasForbiddenAccountPrompt, studio)
+
+    const compileProof = await runCompileProofCheck(client)
+    addCheck('Compile proof runs and sandboxed LocalKit iframe proof completes.', compileProof.ok, compileProof)
 
     const mobileProofBrief = await inspectRoute(client, appUrl, mobileViewport)
     addCheck('Mobile root opens the Proof Brief with Studio CTA.', mobileProofBrief.hasProofBrief && mobileProofBrief.hasStudioCta, mobileProofBrief)
