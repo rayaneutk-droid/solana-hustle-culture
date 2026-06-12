@@ -1,13 +1,16 @@
 {
-  "generatedAt": "2026-06-12T20:34:00.709Z",
+  "generatedAt": "2026-06-12T20:36:47.909Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "sourceFilesScanned": 9,
+    "distFilesScanned": 13,
     "toolCount": 68,
     "forbiddenRuntimePackageHits": 0,
     "directNetworkApiHits": 0,
-    "knownCloudAiHostStrings": 11
+    "knownCloudAiHostStrings": 11,
+    "builtPromptEndpointHits": 0,
+    "builtSecretMarkerHits": 0
   },
   "checks": [
     {
@@ -112,7 +115,35 @@
       "details": {
         "config": "vibeproof-studio/vercel.json"
       }
+    },
+    {
+      "label": "Production build artifacts are present for audit.",
+      "ok": true,
+      "details": {
+        "distFilesScanned": 13
+      }
+    },
+    {
+      "label": "Built artifacts do not contain cloud prompt API endpoint paths.",
+      "ok": true,
+      "details": {
+        "builtPromptEndpointHits": []
+      }
+    },
+    {
+      "label": "Built artifacts do not contain cloud AI secret or bearer-token markers.",
+      "ok": true,
+      "details": {
+        "builtSecretMarkerHits": []
+      }
+    },
+    {
+      "label": "Built index.html does not load remote scripts.",
+      "ok": true,
+      "details": {
+        "externalScriptHits": []
+      }
     }
   ],
-  "note": "Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source for cloud AI runtime packages, direct prompt API network calls, LocalKit/PGlite proof wiring, and serverless function config."
+  "note": "Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source and built static artifacts for cloud AI runtime packages, direct prompt API network calls, cloud prompt endpoints, secret markers, LocalKit/PGlite proof wiring, and serverless function config."
 }
