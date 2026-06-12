@@ -34,11 +34,15 @@ npm run lint
 npm run build
 npm run proof:audit
 cd ..
+npm run vibeproof:prod-url-verify
 npm run check
+npm run vibeproof:summary
 npm run vibeproof:delivery:audit
 npm run vibeproof:url-verify
-npm run vibeproof:delivery:audit
+npm run vibeproof:summary
 npm run vibeproof:public-preflight
+npm run vibeproof:readiness
+npm run vibeproof:delivery:audit
 ```
 
 Expected:
@@ -52,6 +56,7 @@ Expected:
 - `vibeproof:url-verify` writes `delivery/vibeproof/public-url-verification.json` and confirms the desktop/mobile root Proof Brief plus `#studio` route, `Compile proof`, and sandboxed LocalKit iframe proof on the configured URL.
 - `vibeproof:prod-url-verify` serves the local production build with `vite preview`, writes `delivery/vibeproof/production-url-verification.json`, and confirms the same route/export checks against built artifacts with a real service-worker asset.
 - `vibeproof:summary` writes `delivery/vibeproof/reviewer-proof-summary.json`, a compact reviewer-facing summary of the local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 artifact digests.
+- `vibeproof:readiness` writes `delivery/vibeproof/launch-readiness.json`, a compact launch gate showing local readiness and the public actions still pending explicit approval.
 - Generated evidence reports may refresh during this command; source/docs changes outside those generated reports still fail the public preflight.
 - Build warnings about large chunks and PGlite direct `eval` can be accepted as dependency/runtime artifacts, not hosted AI fallback.
 

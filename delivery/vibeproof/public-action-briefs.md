@@ -44,6 +44,7 @@ Adds VibeProof Studio, an isolated Vite React TypeScript app for the Vibesterz b
 - Reproducible `npm run proof:audit` local-boundary report
 - Integrated proof brief bounty submission dossier on the root route
 - Browser-inspected workspace plus local Chrome CDP responsive screenshots/report
+- Launch readiness report showing local package ready and public actions gated
 - Bounty submission pack under delivery/
 
 Checks:
@@ -82,6 +83,7 @@ Post-deploy verification:
 9. Run `npm run proof:audit` locally and keep `delivery/vibeproof/local-boundary-audit.json`.
 10. From the repository root, run `VIBEPROOF_URL=<preview-url> npm run vibeproof:url-verify` or the PowerShell equivalent.
 11. Capture proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop from the deployed URL.
+12. Refresh `delivery/vibeproof/launch-readiness.json` after verification and before final submission copy.
 
 Headers/config checks:
 

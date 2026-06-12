@@ -38,6 +38,7 @@ Current implemented flow:
 | Production preview URL verification | Done locally, deployment-ready | `delivery/vibeproof/production-url-verification.json` repeats the URL/export verification against the built app served by `vite preview` and confirms a real service-worker asset |
 | Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |
 | Reviewer proof summary | Done locally | `delivery/vibeproof/reviewer-proof-summary.json` condenses local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 digests for visual/source proof artifacts; delivery audit verifies its key counters |
+| Launch readiness report | Done locally | `delivery/vibeproof/launch-readiness.json` records `local_ready_public_gated`, current dirty-scope status, and pending public action gates |
 | Public-scope preflight | Prepared locally | `delivery/vibeproof/public-preflight.json` records branch, required files, gated placeholders, and dirty-file scope before public actions |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |
 | Root check passes | Done locally | Last run: `npm run check` exited 0 |
@@ -55,6 +56,7 @@ Current implemented flow:
 - `delivery/vibeproof/public-url-verification.json`
 - `delivery/vibeproof/production-url-verification.json`
 - `delivery/vibeproof/reviewer-proof-summary.json`
+- `delivery/vibeproof/launch-readiness.json`
 - `delivery/vibeproof/proof-first-responsive-report.json`
 - `delivery/vibeproof/submission-assets-manifest.json`
 - `delivery/vibeproof/public-launch-approval.md`

@@ -166,6 +166,18 @@ async function main() {
     malformedDigestEntries,
   })
 
+  const launchReadiness = await readJson(toAbs('delivery/vibeproof/launch-readiness.json'))
+  const failedReadinessChecks = (launchReadiness.checks ?? []).filter((check) => !check.ok)
+  addCheck('Launch readiness report confirms local package is ready and public actions are gated.', launchReadiness.status === 'local_ready_public_gated' &&
+    launchReadiness.localReady === true &&
+    launchReadiness.publicActionStatus === 'pending_explicit_approval' &&
+    failedReadinessChecks.length === 0, {
+    status: launchReadiness.status,
+    localReady: launchReadiness.localReady,
+    publicActionStatus: launchReadiness.publicActionStatus,
+    failedReadinessChecks: failedReadinessChecks.map((check) => check.label),
+  })
+
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []
   const requiredCaptures = [

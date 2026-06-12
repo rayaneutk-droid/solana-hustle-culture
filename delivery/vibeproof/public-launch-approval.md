@@ -16,6 +16,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Delivery audit: `delivery/vibeproof/delivery-audit.json`
 - Public preflight report: `delivery/vibeproof/public-preflight.json`
 - URL verification report: `delivery/vibeproof/public-url-verification.json`
+- Launch readiness report: `delivery/vibeproof/launch-readiness.json`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
 Unrelated `delivery/social/` changes are intentionally excluded from this launch scope.
@@ -75,8 +76,11 @@ cd ..
 npm run check
 npm run vibeproof:delivery:audit
 npm run vibeproof:url-verify
-npm run vibeproof:delivery:audit
+npm run vibeproof:prod-url-verify
+npm run vibeproof:summary
 npm run vibeproof:public-preflight
+npm run vibeproof:readiness
+npm run vibeproof:delivery:audit
 ```
 
 Expected:
@@ -86,6 +90,7 @@ Expected:
 - Delivery audit validates required screenshots, visuals, proof reports, and active docs.
 - Public preflight confirms branch, required launch files, public placeholders, and that dirty files are limited to the explicitly excluded `delivery/social/` scope.
 - Public preflight writes `delivery/vibeproof/public-preflight.json` for reviewer/auditor evidence before push or deploy, while allowing generated evidence reports to refresh.
+- Launch readiness writes `delivery/vibeproof/launch-readiness.json`, confirming the local package is ready while GitHub/Vercel/Figma/Canva/Pump.fun remain pending explicit approval.
 - URL verification writes `delivery/vibeproof/public-url-verification.json`; after Vercel approval, rerun it with `VIBEPROOF_URL` set to the preview URL to recheck desktop/mobile routes, mobile touch targets, `Compile proof`, and sandboxed LocalKit iframe proof.
 - No OpenAI, Gemini, Groq, OpenRouter, BYOK cloud mode, account, wallet, telemetry, or server AI route appears in the app.
 
