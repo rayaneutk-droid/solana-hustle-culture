@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:45:24.139Z",
+  "generatedAt": "2026-06-12T21:50:21.754Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
-    "artifactCount": 35,
+    "artifactCount": 37,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 38,
+    "checkCount": 39,
     "failedChecks": 0
   },
   "checks": [
@@ -208,6 +208,16 @@
       }
     },
     {
+      "label": "Launch readiness report confirms local package is ready and public actions are gated.",
+      "ok": true,
+      "details": {
+        "status": "local_ready_public_gated",
+        "localReady": true,
+        "publicActionStatus": "pending_explicit_approval",
+        "failedReadinessChecks": []
+      }
+    },
+    {
       "label": "Responsive report has all required captures.",
       "ok": true,
       "details": {
@@ -351,8 +361,8 @@
       "label": "Submission manifest lists build before proof audit because proof audit scans dist artifacts.",
       "ok": true,
       "details": {
-        "manifestBuildIndex": 8,
-        "manifestProofAuditIndex": 9
+        "manifestBuildIndex": 9,
+        "manifestProofAuditIndex": 10
       }
     },
     {

@@ -1,0 +1,229 @@
+{
+  "generatedAt": "2026-06-12T21:50:21.406Z",
+  "project": "VibeProof Studio",
+  "status": "local_ready_public_gated",
+  "localReady": true,
+  "publicActionStatus": "pending_explicit_approval",
+  "publicGates": [
+    {
+      "action": "github_source_publication",
+      "status": "pending_explicit_approval",
+      "placeholder": "TODO after explicit approval"
+    },
+    {
+      "action": "vercel_deployment",
+      "status": "pending_explicit_approval",
+      "placeholder": "TODO after explicit approval"
+    },
+    {
+      "action": "figma_proof_frame",
+      "status": "pending_explicit_approval",
+      "placeholder": "TODO after explicit approval"
+    },
+    {
+      "action": "canva_submission_visuals",
+      "status": "pending_explicit_approval",
+      "placeholder": "TODO after explicit approval"
+    },
+    {
+      "action": "pump_fun_submission",
+      "status": "pending_explicit_approval",
+      "placeholder": "TODO after explicit approval"
+    }
+  ],
+  "proofRoutes": {
+    "reviewerEntry": "/",
+    "studio": "/#studio"
+  },
+  "checks": [
+    {
+      "label": "Pure-local boundary audit is passing.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "toolCount": 68,
+        "forbiddenRuntimePackageHits": 0,
+        "directNetworkApiHits": 0,
+        "builtPromptEndpointHits": 0,
+        "telemetryHostHits": 0
+      }
+    },
+    {
+      "label": "Reviewer summary is passing and includes artifact digests.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "artifactDigestCount": 17
+      }
+    },
+    {
+      "label": "Root opens the reviewer Proof Brief.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "hasStudioCta": true
+      }
+    },
+    {
+      "label": "Studio route opens the usable builder.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "hasBuilderPanel": true,
+        "hasLocalBackend": true,
+        "hasNetworkProof": true
+      }
+    },
+    {
+      "label": "LocalKit iframe proof completes from the public URL verifier.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "consoleTail": "info\nPreview reloaded with deterministic proof app.\n\ninfo\nDeterministic proof compile replaced workspace files.\n\ninfo\nLocalKit iframe proof OK"
+      }
+    },
+    {
+      "label": "Runtime browser requests avoid cloud AI prompt API hosts.",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "hosts": [
+          "127.0.0.1"
+        ],
+        "cloudAiRequestHits": []
+      }
+    },
+    {
+      "label": "Production preview serves a real service worker and exportable ZIP.",
+      "ok": true,
+      "details": {
+        "serviceWorker": {
+          "ok": true,
+          "status": 200,
+          "contentType": "text/javascript",
+          "devFallback": false
+        },
+        "exportZip": {
+          "ok": true,
+          "localToolCount": 68,
+          "cloudAiPromptApis": false,
+          "missingEntries": []
+        }
+      }
+    },
+    {
+      "label": "Responsive proof covers desktop, laptop, tablet, mobile, and Studio.",
+      "ok": true,
+      "details": {
+        "captures": [
+          {
+            "name": "proof-brief-desktop",
+            "width": 1440,
+            "height": 900,
+            "horizontalOverflow": false,
+            "smallTouchTargetCount": 0
+          },
+          {
+            "name": "proof-brief-laptop",
+            "width": 1280,
+            "height": 720,
+            "horizontalOverflow": false,
+            "smallTouchTargetCount": 0
+          },
+          {
+            "name": "proof-brief-tablet",
+            "width": 834,
+            "height": 1194,
+            "horizontalOverflow": false,
+            "smallTouchTargetCount": 0
+          },
+          {
+            "name": "proof-brief-mobile",
+            "width": 390,
+            "height": 844,
+            "horizontalOverflow": false,
+            "smallTouchTargetCount": 0
+          },
+          {
+            "name": "studio-desktop",
+            "width": 1440,
+            "height": 900,
+            "horizontalOverflow": false,
+            "smallTouchTargetCount": 19
+          }
+        ],
+        "reducedMotion": true
+      }
+    },
+    {
+      "label": "Public preflight is passing.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "generatedEvidenceDirtyEntries": [
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/delivery-audit.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/local-boundary-audit.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/production-url-verification.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/public-preflight.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/public-url-verification.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/reviewer-proof-summary.json"
+          },
+          {
+            "status": "??",
+            "path": "delivery/vibeproof/launch-readiness.json"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Current worktree has no dirty VibeProof source or docs outside generated evidence.",
+      "ok": true,
+      "details": {
+        "disallowedDirtyEntries": [],
+        "allowedDirtyPrefixes": [
+          "delivery/social/"
+        ],
+        "generatedEvidencePaths": [
+          "delivery/vibeproof/public-preflight.json",
+          "delivery/vibeproof/delivery-audit.json",
+          "delivery/vibeproof/local-boundary-audit.json",
+          "delivery/vibeproof/public-url-verification.json",
+          "delivery/vibeproof/production-url-verification.json",
+          "delivery/vibeproof/reviewer-proof-summary.json",
+          "delivery/vibeproof/launch-readiness.json"
+        ]
+      }
+    },
+    {
+      "label": "Public actions remain gated placeholders.",
+      "ok": true,
+      "details": {
+        "public_actions_require_confirmation": true,
+        "publicPlaceholders": {
+          "github_source_url": "TODO after explicit approval",
+          "vercel_demo_url": "TODO after explicit approval",
+          "figma_frame_url": "TODO after explicit approval",
+          "canva_design_url": "TODO after explicit approval",
+          "pump_fun_reply": "TODO after explicit approval"
+        }
+      }
+    }
+  ]
+}
