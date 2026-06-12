@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-06-12T19:13:47.187Z",
+  "project": "VibeProof Studio",
+  "status": "pass",
+  "summary": {
+    "sourceFilesScanned": 9,
+    "toolCount": 68,
+    "forbiddenRuntimePackageHits": 0,
+    "directNetworkApiHits": 0,
+    "knownCloudAiHostStrings": 11
+  },
+  "checks": [
+    {
+      "label": "No cloud AI runtime packages are installed.",
+      "ok": true,
+      "details": {
+        "packageHits": []
+      }
+    },
+    {
+      "label": "No direct browser network APIs are used in app source.",
+      "ok": true,
+      "details": {
+        "networkApiHits": []
+      }
+    },
+    {
+      "label": "Known cloud AI host strings are confined to the in-app network classifier.",
+      "ok": true,
+      "details": {
+        "cloudHostHits": [
+          {
+            "file": "src/App.tsx",
+            "host": "api.openai.com"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "generativelanguage.googleapis.com"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "gemini.googleapis.com"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.groq.com"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "openrouter.ai"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.anthropic.com"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.cohere.ai"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.mistral.ai"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.together.xyz"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.fireworks.ai"
+          },
+          {
+            "file": "src/App.tsx",
+            "host": "api.perplexity.ai"
+          }
+        ]
+      }
+    },
+    {
+      "label": "WebLLM is the local model runtime.",
+      "ok": true,
+      "details": {
+        "importsWebLlm": true
+      }
+    },
+    {
+      "label": "PGlite is initialized in IndexedDB.",
+      "ok": true,
+      "details": {
+        "pgliteIndexedDb": true
+      }
+    },
+    {
+      "label": "LocalKit store and db.query bridge is injected into the sandbox preview.",
+      "ok": true,
+      "details": {
+        "hasLocalKit": true,
+        "hasStoreSet": true,
+        "hasDbQuery": true
+      }
+    },
+    {
+      "label": "Local toolbox has at least 62 tools.",
+      "ok": true,
+      "details": {
+        "toolCount": 68
+      }
+    },
+    {
+      "label": "Vercel config does not define serverless functions.",
+      "ok": true,
+      "details": {
+        "config": "vibeproof-studio/vercel.json"
+      }
+    }
+  ],
+  "note": "Model downloads may contact WebLLM/model asset hosts. This audit checks the submitted app source for cloud AI runtime packages, direct prompt API network calls, LocalKit/PGlite proof wiring, and serverless function config."
+}
