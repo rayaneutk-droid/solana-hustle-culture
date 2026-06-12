@@ -23,6 +23,12 @@ Do not include unrelated `delivery/social` changes in the VibeProof publish scop
 Run from the repository root:
 
 ```bash
+npm run vibeproof:verify
+```
+
+Equivalent expanded commands:
+
+```bash
 cd vibeproof-studio
 npm run lint
 npm run proof:audit

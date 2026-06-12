@@ -58,6 +58,12 @@ Approve only the actions you want executed.
 Run from repository root:
 
 ```bash
+npm run vibeproof:verify
+```
+
+Equivalent expanded commands:
+
+```bash
 cd vibeproof-studio
 npm run lint
 npm run proof:audit

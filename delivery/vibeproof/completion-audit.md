@@ -50,6 +50,16 @@ Current implemented flow:
 - `delivery/vibeproof/deployment-runbook.md`
 - `delivery/vibesterz-submission.md`
 
+## Verification Command
+
+Run from repository root:
+
+```bash
+npm run vibeproof:verify
+```
+
+This runs the app lint, local-boundary audit, production build, and root TypeScript check in sequence.
+
 ## Current Screenshot Set
 
 - `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`

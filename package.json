@@ -8,7 +8,8 @@
     "bounty": "tsx src/cli.ts",
     "list": "tsx src/cli.ts list",
     "pitch": "tsx src/cli.ts pitch",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "vibeproof:verify": "npm --prefix vibeproof-studio run lint && npm --prefix vibeproof-studio run proof:audit && npm --prefix vibeproof-studio run build && npm run check"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

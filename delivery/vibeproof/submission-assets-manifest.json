@@ -36,6 +36,7 @@
     "delivery/vibeproof/figma-proof-frame-local.html"
   ],
   "local_checks": [
+    "npm run vibeproof:verify",
     "cd vibeproof-studio && npm run lint",
     "cd vibeproof-studio && npm run proof:audit",
     "cd vibeproof-studio && npm run build",

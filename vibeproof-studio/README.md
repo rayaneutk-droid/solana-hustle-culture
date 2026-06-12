@@ -47,6 +47,12 @@ Expected result: TypeScript build and Vite production build pass. The proof audi
 Full local check set from the repository root:
 
 ```bash
+npm run vibeproof:verify
+```
+
+Equivalent expanded commands:
+
+```bash
 cd vibeproof-studio
 npm run lint
 npm run proof:audit

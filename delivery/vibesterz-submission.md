@@ -110,6 +110,12 @@ Root check:
 npm run check
 ```
 
+Full verification from the repository root:
+
+```bash
+npm run vibeproof:verify
+```
+
 ## Browser QA Script
 
 1. Open local Vite URL.
