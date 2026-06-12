@@ -55,8 +55,8 @@ Equivalent expanded commands:
 ```bash
 cd vibeproof-studio
 npm run lint
-npm run proof:audit
 npm run build
+npm run proof:audit
 cd ..
 npm run check
 ```
@@ -104,8 +104,8 @@ Suggested preview flow after approval:
 ```bash
 cd vibeproof-studio
 npm run lint
-npm run proof:audit
 npm run build
+npm run proof:audit
 vercel deploy
 ```
 

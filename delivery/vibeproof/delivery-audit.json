@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T20:49:53.220Z",
+  "generatedAt": "2026-06-12T20:51:51.098Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 31,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 15,
+    "checkCount": 17,
     "failedChecks": 0
   },
   "checks": [
@@ -109,6 +109,21 @@
       "ok": true,
       "details": {
         "staleHits": []
+      }
+    },
+    {
+      "label": "Active launch docs run build before proof audit when commands are sequenced.",
+      "ok": true,
+      "details": {
+        "staleCommandOrderHits": []
+      }
+    },
+    {
+      "label": "Submission manifest lists build before proof audit because proof audit scans dist artifacts.",
+      "ok": true,
+      "details": {
+        "manifestBuildIndex": 6,
+        "manifestProofAuditIndex": 7
       }
     },
     {

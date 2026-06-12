@@ -48,8 +48,8 @@ Adds VibeProof Studio, an isolated Vite React TypeScript app for the Vibesterz b
 
 Checks:
 - cd vibeproof-studio && npm run lint
-- cd vibeproof-studio && npm run proof:audit
 - cd vibeproof-studio && npm run build
+- cd vibeproof-studio && npm run proof:audit
 - npm run check
 - delivery/vibeproof/proof-first-responsive-report.json
 ```

@@ -144,13 +144,33 @@ async function main() {
     'vibeproof-studio/README.md',
   ]
   const staleHits = []
+  const staleCommandOrderPatterns = [
+    /npm run proof:audit\s*\r?\n\s*npm run build/i,
+    /cd vibeproof-studio && npm run proof:audit\s*\r?\n\s*-\s*cd vibeproof-studio && npm run build/i,
+  ]
+  const staleCommandOrderHits = []
   for (const relativePath of docsToScan) {
     const text = await readFile(toAbs(relativePath), 'utf8')
     for (const pattern of stalePatterns) {
       if (pattern.test(text)) staleHits.push({ file: relativePath, pattern: pattern.source })
     }
+    for (const pattern of staleCommandOrderPatterns) {
+      if (pattern.test(text)) staleCommandOrderHits.push({ file: relativePath, pattern: pattern.source })
+    }
   }
   addCheck('Active delivery docs avoid stale workspace-first artifact references.', staleHits.length === 0, { staleHits })
+  addCheck('Active launch docs run build before proof audit when commands are sequenced.', staleCommandOrderHits.length === 0, {
+    staleCommandOrderHits,
+  })
+
+  const manifestChecks = manifest.local_checks ?? []
+  const manifestBuildIndex = manifestChecks.indexOf('cd vibeproof-studio && npm run build')
+  const manifestProofAuditIndex = manifestChecks.indexOf('cd vibeproof-studio && npm run proof:audit')
+  addCheck(
+    'Submission manifest lists build before proof audit because proof audit scans dist artifacts.',
+    manifestBuildIndex >= 0 && manifestProofAuditIndex >= 0 && manifestBuildIndex < manifestProofAuditIndex,
+    { manifestBuildIndex, manifestProofAuditIndex },
+  )
 
   const publicPlaceholders = manifest.public_placeholders ?? {}
   const placeholderValues = Object.values(publicPlaceholders)

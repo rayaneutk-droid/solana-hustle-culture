@@ -48,8 +48,8 @@
     "npm run vibeproof:public-preflight",
     "npm run vibeproof:url-verify",
     "cd vibeproof-studio && npm run lint",
-    "cd vibeproof-studio && npm run proof:audit",
     "cd vibeproof-studio && npm run build",
+    "cd vibeproof-studio && npm run proof:audit",
     "npm run check"
   ],
   "asset_refresh_commands": [

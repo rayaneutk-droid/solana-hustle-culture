@@ -102,8 +102,8 @@ WebLLM and CyberChef:
 ```bash
 cd vibeproof-studio
 npm install
-npm run proof:audit
 npm run build
+npm run proof:audit
 npm run dev
 ```
 
