@@ -182,11 +182,31 @@ const appSource = sourceEntries.find((entry) => entry.relativePath === 'src/App.
 const workerSource = sourceEntries.find((entry) => entry.relativePath === 'src/engine/aiWorker.ts')?.text ?? ''
 const toolboxSource = sourceEntries.find((entry) => entry.relativePath === 'src/lib/toolbox.ts')?.text ?? ''
 const vercelConfig = await readFile(path.join(projectRoot, 'vercel.json'), 'utf8')
+const vercelConfigJson = JSON.parse(vercelConfig)
 const builtIndexHtml = distEntries.find((entry) => entry.relativePath === 'dist/index.html')?.text ?? ''
 const externalScriptHits = [...builtIndexHtml.matchAll(/<script[^>]+src=["']https?:\/\//gi)].map((match) => match[0])
 
 const toolCount = countToolDefinitions(toolboxSource)
 const cloudHostFiles = new Set(cloudHostHits.map((hit) => hit.file))
+const vercelHeaders = vercelConfigJson.headers ?? []
+const allVercelHeaderPairs = vercelHeaders.flatMap((entry) =>
+  (entry.headers ?? []).map((header) => ({
+    source: entry.source,
+    key: header.key,
+    value: header.value,
+  })),
+)
+const headerValue = (source, key) =>
+  allVercelHeaderPairs.find(
+    (header) => header.source === source && header.key.toLowerCase() === key.toLowerCase(),
+  )?.value ?? ''
+const hasHeaderValue = (source, key, pattern) => pattern.test(headerValue(source, key))
+const disallowedIsolationHeaders = allVercelHeaderPairs.filter((header) =>
+  /cross-origin-(opener|embedder)-policy/i.test(header.key),
+)
+const rewrites = vercelConfigJson.rewrites ?? []
+const staticBypassRewrite = rewrites.find((rewrite) => rewrite.destination === '/index.html')?.source ?? ''
+const staticBypassTokens = ['assets/', 'sw.js', 'workbox-.*\\.js', 'manifest.webmanifest', 'favicon.svg', 'icons.svg']
 const checks = [
   check(packageHits.length === 0, 'No cloud AI runtime packages are installed.', { packageHits }),
   check(networkApiHits.length === 0, 'No direct browser network APIs are used in app source.', { networkApiHits }),
@@ -215,6 +235,51 @@ const checks = [
     !/"functions"\s*:/.test(vercelConfig) && !/"builds"\s*:/.test(vercelConfig),
     'Vercel config does not define serverless functions.',
     { config: 'vibeproof-studio/vercel.json' },
+  ),
+  check(
+    hasHeaderValue('/assets/(.*)', 'Cache-Control', /max-age=31536000/i) &&
+      hasHeaderValue('/assets/(.*)', 'Cache-Control', /immutable/i) &&
+      hasHeaderValue('/assets/(.*)', 'X-Content-Type-Options', /^nosniff$/i),
+    'Vercel config gives hashed assets immutable cache headers and nosniff.',
+    {
+      cacheControl: headerValue('/assets/(.*)', 'Cache-Control'),
+      xContentTypeOptions: headerValue('/assets/(.*)', 'X-Content-Type-Options'),
+    },
+  ),
+  check(
+    hasHeaderValue('/sw.js', 'Cache-Control', /max-age=0/i) &&
+      hasHeaderValue('/sw.js', 'Cache-Control', /must-revalidate/i) &&
+      hasHeaderValue('/manifest.webmanifest', 'Cache-Control', /max-age=0/i) &&
+      hasHeaderValue('/manifest.webmanifest', 'Cache-Control', /must-revalidate/i),
+    'Vercel config keeps service worker and manifest revalidatable.',
+    {
+      swCacheControl: headerValue('/sw.js', 'Cache-Control'),
+      manifestCacheControl: headerValue('/manifest.webmanifest', 'Cache-Control'),
+    },
+  ),
+  check(
+    hasHeaderValue('/(.*)', 'Permissions-Policy', /camera=\(\)/i) &&
+      hasHeaderValue('/(.*)', 'Permissions-Policy', /microphone=\(\)/i) &&
+      hasHeaderValue('/(.*)', 'Permissions-Policy', /geolocation=\(\)/i) &&
+      hasHeaderValue('/(.*)', 'Permissions-Policy', /payment=\(\)/i) &&
+      hasHeaderValue('/(.*)', 'Referrer-Policy', /^strict-origin-when-cross-origin$/i) &&
+      hasHeaderValue('/(.*)', 'X-Content-Type-Options', /^nosniff$/i),
+    'Vercel config blocks sensitive browser prompts and sets baseline static security headers.',
+    {
+      permissionsPolicy: headerValue('/(.*)', 'Permissions-Policy'),
+      referrerPolicy: headerValue('/(.*)', 'Referrer-Policy'),
+      xContentTypeOptions: headerValue('/(.*)', 'X-Content-Type-Options'),
+    },
+  ),
+  check(
+    disallowedIsolationHeaders.length === 0,
+    'Vercel config does not force COOP/COEP headers that could block WebLLM/PGlite assets.',
+    { disallowedIsolationHeaders },
+  ),
+  check(
+    staticBypassTokens.every((token) => staticBypassRewrite.includes(token)),
+    'Vercel SPA rewrite preserves direct access to assets, service worker, manifest, and icons.',
+    { staticBypassRewrite, staticBypassTokens },
   ),
   check(distEntries.length > 0, 'Production build artifacts are present for audit.', {
     distFilesScanned: distEntries.length,
