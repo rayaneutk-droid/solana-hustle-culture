@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:44:57.722Z",
+  "generatedAt": "2026-06-12T21:45:23.806Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -103,7 +103,7 @@
     "deliveryAuditStatus": "pass",
     "deliveryAuditFailedChecks": 0,
     "preflightStatus": "pass",
-    "generatedEvidenceDirtyEntries": 6,
+    "generatedEvidenceDirtyEntries": 0,
     "publicPlaceholders": {
       "github_source_url": "TODO after explicit approval",
       "vercel_demo_url": "TODO after explicit approval",
