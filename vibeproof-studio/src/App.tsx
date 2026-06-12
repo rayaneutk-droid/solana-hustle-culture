@@ -635,10 +635,12 @@ function App() {
   return (
     <div className={`studio-shell ${viewMode === 'brief' ? 'brief-mode' : ''}`}>
       <aside className="system-rail glass-panel">
-        <div className="window-strip" aria-hidden="true">
-          <span />
-          <span />
-          <span />
+        <div className="pass-rail" aria-label="Five-pass pipeline status">
+          {pipeline.map((item) => (
+            <span className={`pass-dot ${item.status}`} key={item.pass} title={item.title}>
+              <i />
+            </span>
+          ))}
         </div>
 
         <div className="brand-block">
@@ -1106,7 +1108,9 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
     <main className="brief-page glass-panel" id="submission-dossier">
       <section className="brief-hero">
         <div className="brief-kicker">
-          <span className="window-strip compact" aria-hidden="true">
+          <span className="dossier-signal" aria-hidden="true">
+            <span />
+            <span />
             <span />
           </span>
           <p className="label">Bounty submission dossier</p>

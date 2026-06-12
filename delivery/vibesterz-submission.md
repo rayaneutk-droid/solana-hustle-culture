@@ -9,6 +9,10 @@ Built: VibeProof Studio
 Public demo: TODO after Vercel approval
 Source: TODO after GitHub approval
 Proof screenshots:
+- `delivery/vibeproof/vibeproof-local-glass-workspace-desktop-1440.png`
+- `delivery/vibeproof/vibeproof-local-glass-workspace-laptop-1280.png`
+- `delivery/vibeproof/vibeproof-local-glass-workspace-tablet-834.png`
+- `delivery/vibeproof/vibeproof-local-glass-workspace-mobile-390.png`
 - `delivery/vibeproof/vibeproof-desktop-proof.png`
 - `delivery/vibeproof/vibeproof-tablet-proof.png`
 - `delivery/vibeproof/vibeproof-mobile-proof.png`
@@ -16,11 +20,14 @@ Proof screenshots:
 - `delivery/vibeproof/vibeproof-proof-brief-mobile.png`
 Local boundary audit:
 - `delivery/vibeproof/local-boundary-audit.json`
+Responsive proof report:
+- `delivery/vibeproof/local-glass-workbench-responsive-report.json`
 
 Why it satisfies the bounty:
 
 - Browser-native AI app builder with a real workspace as the first screen.
-- Mobile workspace uses an iOS-style bottom tab bar for Build, Model, Tools, and Proof.
+- Premium Local Glass Workbench UI: iOS/macOS-inspired gradients and glass, but still credible on Windows 11.
+- Tablet and mobile workspace render the builder first, then proof/model/tool panels, with touch-sized controls and an iOS-style bottom tab bar.
 - Integrated submission dossier at `/#proof` explaining the build, verification path, local/runtime boundary, and competitor edge.
 - WebLLM local model worker with `loadModel`, `runPipeline`, and `complete`.
 - Default local model: `Qwen2.5-Coder-0.5B-Instruct-q4f16_1-MLC`.
@@ -53,11 +60,12 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Workspace reviewer checklist proof panel implemented.
 - [x] Integrated `/#proof` bounty dossier implemented as the shareable explanation page.
 - [x] CodeMirror editor integrated for a stronger MVP workspace feel.
+- [x] Local Glass Workbench premium theme implemented.
+- [x] Tablet/mobile workspace-first order implemented.
 - [x] `npm run lint` passes in `vibeproof-studio/`.
 - [x] Root `npm run check` passes.
-- [x] Browser desktop screenshot captured.
-- [x] Browser tablet-like screenshot captured.
-- [x] Browser mobile screenshot captured.
+- [x] Browser connector used for interactive inspection.
+- [x] Local Chrome CDP desktop/laptop/tablet/mobile responsive report captured.
 - [x] Integrated proof brief desktop/mobile screenshots captured.
 - [x] Local preview LocalKit store and DB actions verified by iframe auto-proof.
 - [ ] GitHub public source prepared and approved.
@@ -122,6 +130,20 @@ npm run check
 14. Open `/#proof` and confirm the integrated bounty dossier renders cleanly on desktop and mobile.
 
 ## Browser Verification Evidence
+
+Browser connector was used for interactive local inspection. Final repeated viewport screenshots were captured with local Chrome CDP because the Browser connector intermittently timed out during repeated `Page.captureScreenshot` calls.
+
+Responsive Chrome CDP report:
+
+```json
+{
+  "report": "delivery/vibeproof/local-glass-workbench-responsive-report.json",
+  "viewports": ["1440x900", "1280x720", "834x1194", "390x844"],
+  "workspace": "no horizontal overflow on all checked viewports",
+  "tabletMobileTouchTargets": "no visible controls below 38px on 834x1194 and 390x844",
+  "localBackend": "Connected / PGlite events observed"
+}
+```
 
 Desktop Browser state:
 

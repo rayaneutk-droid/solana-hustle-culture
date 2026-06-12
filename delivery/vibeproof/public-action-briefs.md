@@ -17,7 +17,7 @@ Do not include unrelated `delivery/social` changes unless the user explicitly as
 Suggested commit title:
 
 ```text
-Add VibeProof Studio local AI bounty MVP
+Ship VibeProof Studio local AI bounty MVP
 ```
 
 Suggested PR/body summary:
@@ -28,14 +28,15 @@ Adds VibeProof Studio, an isolated Vite React TypeScript app for the Vibesterz b
 - WebLLM worker with loadModel, runPipeline, and complete
 - LocalKit store and PGlite query bridge for sandboxed generated apps
 - CodeMirror HTML/CSS/JS workspace with sandboxed live preview
-- iOS-style mobile bottom tab bar for Build, Model, Tools, and Proof
+- Local Glass Workbench premium UI with iOS/macOS-inspired gradients, glass panels, and Windows-friendly density
+- Tablet/mobile workspace-first responsive flow with touch-sized controls and iOS-style bottom tab bar
 - 68-tool local toolbox with deterministic and local-model-only AI tools
 - PWA/offline, network, model, and local backend proof panels
 - Known cloud-AI host classifier inside the network proof panel
 - Workspace reviewer checklist proof panel
 - Reproducible `npm run proof:audit` local-boundary report
 - Integrated `/#proof` bounty submission dossier
-- Browser-verified desktop and mobile screenshots
+- Browser-inspected workspace plus local Chrome CDP responsive screenshots/report
 - Bounty submission pack under delivery/
 
 Checks:
@@ -43,6 +44,7 @@ Checks:
 - cd vibeproof-studio && npm run proof:audit
 - cd vibeproof-studio && npm run build
 - npm run check
+- delivery/vibeproof/local-glass-workbench-responsive-report.json
 ```
 
 ## Vercel
@@ -71,7 +73,7 @@ Post-deploy verification:
 7. Confirm the reviewer checklist proof panel renders in the workspace.
 8. Run `npm run proof:audit` locally and keep `delivery/vibeproof/local-boundary-audit.json`.
 9. Open `/#proof` and confirm the integrated bounty submission dossier renders.
-10. Capture desktop, tablet-like, and mobile Browser screenshots from the deployed URL and deployed `/#proof`.
+10. Capture desktop, laptop, tablet-like, and mobile screenshots from the deployed URL and deployed `/#proof`.
 
 Headers/config checks:
 
@@ -95,22 +97,23 @@ VibeProof Studio - Bounty Proof Layout
 Frame sections:
 
 1. Desktop workspace screenshot.
-2. Tablet-like workspace screenshot.
-3. Mobile workspace screenshot.
-4. Desktop and mobile `/#proof` bounty dossier screenshots.
-5. Runtime boundary strip:
+2. Laptop/Windows-like workspace screenshot.
+3. Tablet-like workspace screenshot.
+4. Mobile workspace screenshot.
+5. Desktop and mobile `/#proof` bounty dossier screenshots.
+6. Runtime boundary strip:
    - Local WebLLM in tab
    - No server AI route
    - PGlite in IndexedDB
    - PWA after first cache
-6. Competitor comparison:
+7. Competitor comparison:
    - OnDevAI: public/source, weaker proof surface
    - ForgeBox: strong local tech, source not found
    - Zentro: cloud provider routes weaken local claim
-7. Verification checklist:
+8. Verification checklist:
    - lint/build/root check
    - npm run proof:audit
-   - Browser desktop/tablet/mobile
+   - Browser inspection and local Chrome CDP desktop/laptop/tablet/mobile report
    - iframe LocalKit proof
    - network cloud-AI boundary
    - workspace reviewer checklist

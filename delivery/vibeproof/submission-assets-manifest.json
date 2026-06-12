@@ -1,0 +1,50 @@
+{
+  "project": "VibeProof Studio",
+  "status": "prepared_local_only",
+  "public_actions_require_confirmation": true,
+  "app_path": "vibeproof-studio/",
+  "core_artifacts": [
+    "delivery/vibesterz-submission.md",
+    "delivery/vibeproof/public-action-briefs.md",
+    "delivery/vibeproof/local-glass-workbench-theme.md",
+    "delivery/vibeproof/local-boundary-audit.json",
+    "delivery/vibeproof/local-glass-workbench-responsive-report.json",
+    "delivery/vibeproof/figma-proof-frame-brief.md",
+    "delivery/vibeproof/canva-cover-brief.md"
+  ],
+  "screenshots": [
+    "delivery/vibeproof/before-local-glass-workbench-desktop.png",
+    "delivery/vibeproof/before-local-glass-workbench-mobile.png",
+    "delivery/vibeproof/vibeproof-local-glass-workspace-desktop-1440.png",
+    "delivery/vibeproof/vibeproof-local-glass-workspace-laptop-1280.png",
+    "delivery/vibeproof/vibeproof-local-glass-workspace-tablet-834.png",
+    "delivery/vibeproof/vibeproof-local-glass-workspace-mobile-390.png",
+    "delivery/vibeproof/vibeproof-local-glass-proof-brief-desktop-1440.png",
+    "delivery/vibeproof/vibeproof-local-glass-proof-brief-mobile-390.png",
+    "delivery/vibeproof/vibeproof-desktop-proof.png",
+    "delivery/vibeproof/vibeproof-tablet-proof.png",
+    "delivery/vibeproof/vibeproof-mobile-proof.png",
+    "delivery/vibeproof/vibeproof-proof-brief-desktop.png",
+    "delivery/vibeproof/vibeproof-proof-brief-mobile.png"
+  ],
+  "local_checks": [
+    "cd vibeproof-studio && npm run lint",
+    "cd vibeproof-studio && npm run proof:audit",
+    "cd vibeproof-studio && npm run build",
+    "npm run check"
+  ],
+  "public_placeholders": {
+    "github_source_url": "TODO after explicit approval",
+    "vercel_demo_url": "TODO after explicit approval",
+    "figma_frame_url": "TODO after explicit approval",
+    "canva_design_url": "TODO after explicit approval",
+    "pump_fun_reply": "TODO after explicit approval"
+  },
+  "runtime_boundary": {
+    "cloud_ai_runtime_packages": false,
+    "server_ai_routes": false,
+    "wallet_hooks": false,
+    "telemetry": false,
+    "model_download_note": "First WebLLM model load may contact model/CDN hosts; prompts, generated code, toolbox input, and preview data are not sent to hosted AI APIs by this app."
+  }
+}

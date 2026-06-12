@@ -1,0 +1,518 @@
+{
+  "generatedAt": "2026-06-12T19:31:26.460Z",
+  "runner": "local-chrome-cdp",
+  "report": [
+    {
+      "name": "desktop-workspace",
+      "fileName": "vibeproof-local-glass-workspace-desktop-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scroll": {
+        "width": 1425,
+        "height": 1786,
+        "clientWidth": 1425,
+        "clientHeight": 900
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [
+        {
+          "tag": "button",
+          "text": "Docs",
+          "x": 1448,
+          "y": 117,
+          "w": 50,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Dev",
+          "x": 1503,
+          "y": 117,
+          "w": 44,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "AI",
+          "x": 1553,
+          "y": 117,
+          "w": 33,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        }
+      ],
+      "tinyVisibleTouchTargets": [
+        {
+          "tag": "button",
+          "text": "Workspace",
+          "x": 33,
+          "y": 137,
+          "w": 128,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Proof brief",
+          "x": 167,
+          "y": 137,
+          "w": 128,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Premium app",
+          "x": 544,
+          "y": 34,
+          "w": 102,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Data tool",
+          "x": 569,
+          "y": 72,
+          "w": 77,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Micro SaaS",
+          "x": 558,
+          "y": 110,
+          "w": 88,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Portfolio system",
+          "x": 526,
+          "y": 148,
+          "w": 120,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "HTML",
+          "x": 350,
+          "y": 600,
+          "w": 80,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "CSS",
+          "x": 436,
+          "y": 600,
+          "w": 66,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        }
+      ],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "Prompt, compile, verify, repair.",
+        "Preview",
+        "Runtime console",
+        "Local backend",
+        "Connected",
+        "PWA cache",
+        "offline ready",
+        "Network proof",
+        "24 resource requests observed",
+        "Reviewer checklist",
+        "Toolbox"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "2 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache",
+        "Sandboxed iframe",
+        "Connected",
+        "offline ready",
+        "24 resource requests observed",
+        "Workspace is first screen",
+        "No cloud AI requests observed",
+        "WebGPU exposed",
+        "LocalKit bridge visible",
+        "PWA/offline boundary shown",
+        "Network resources listed"
+      ]
+    },
+    {
+      "name": "laptop-workspace",
+      "fileName": "vibeproof-local-glass-workspace-laptop-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "scroll": {
+        "width": 1265,
+        "height": 2647,
+        "clientWidth": 1265,
+        "clientHeight": 720
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [],
+      "tinyVisibleTouchTargets": [
+        {
+          "tag": "button",
+          "text": "Workspace",
+          "x": 33,
+          "y": 162,
+          "w": 111,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Proof brief",
+          "x": 150,
+          "y": 162,
+          "w": 111,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Premium app",
+          "x": 591,
+          "y": 34,
+          "w": 102,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Data tool",
+          "x": 523,
+          "y": 72,
+          "w": 77,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Micro SaaS",
+          "x": 606,
+          "y": 72,
+          "w": 88,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Portfolio system",
+          "x": 573,
+          "y": 110,
+          "w": 120,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "HTML",
+          "x": 326,
+          "y": 592,
+          "w": 80,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "CSS",
+          "x": 412,
+          "y": 592,
+          "w": 66,
+          "h": 32,
+          "display": "flex",
+          "visibility": "visible"
+        }
+      ],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "Prompt, compile, verify, repair.",
+        "Preview",
+        "Runtime console",
+        "Local backend",
+        "Connected",
+        "PWA cache",
+        "registered",
+        "Network proof",
+        "24 resource requests observed",
+        "Reviewer checklist",
+        "Toolbox"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "3 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache",
+        "Sandboxed iframe",
+        "Connected",
+        "registered",
+        "24 resource requests observed",
+        "Workspace is first screen",
+        "No cloud AI requests observed",
+        "WebGPU exposed",
+        "LocalKit bridge visible",
+        "PWA/offline boundary shown",
+        "Network resources listed"
+      ]
+    },
+    {
+      "name": "tablet-workspace",
+      "fileName": "vibeproof-local-glass-workspace-tablet-834.png",
+      "viewport": {
+        "width": 834,
+        "height": 1194
+      },
+      "scroll": {
+        "width": 819,
+        "height": 4153,
+        "clientWidth": 819,
+        "clientHeight": 1194
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [],
+      "tinyVisibleTouchTargets": [],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "Prompt, compile, verify, repair.",
+        "Preview",
+        "Runtime console",
+        "Local backend",
+        "Connected",
+        "PWA cache",
+        "registered",
+        "Network proof",
+        "24 resource requests observed",
+        "Reviewer checklist",
+        "Toolbox"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "5 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache",
+        "Sandboxed iframe",
+        "Connected",
+        "registered",
+        "24 resource requests observed",
+        "Workspace is first screen",
+        "No cloud AI requests observed",
+        "WebGPU exposed",
+        "LocalKit bridge visible",
+        "PWA/offline boundary shown",
+        "Network resources listed"
+      ]
+    },
+    {
+      "name": "mobile-workspace",
+      "fileName": "vibeproof-local-glass-workspace-mobile-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scroll": {
+        "width": 390,
+        "height": 5505,
+        "clientWidth": 390,
+        "clientHeight": 844
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [],
+      "tinyVisibleTouchTargets": [],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "Prompt, compile, verify, repair.",
+        "Preview",
+        "Runtime console",
+        "Local backend",
+        "Connected",
+        "PWA cache",
+        "registered",
+        "Network proof",
+        "24 resource requests observed",
+        "Reviewer checklist",
+        "Toolbox"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "7 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache",
+        "Sandboxed iframe",
+        "Connected",
+        "registered",
+        "24 resource requests observed",
+        "Workspace is first screen",
+        "No cloud AI requests observed",
+        "WebGPU exposed",
+        "LocalKit bridge visible",
+        "PWA/offline boundary shown",
+        "Network resources listed"
+      ]
+    },
+    {
+      "name": "desktop-proof-brief",
+      "fileName": "vibeproof-local-glass-proof-brief-desktop-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scroll": {
+        "width": 1425,
+        "height": 2017,
+        "clientWidth": 1425,
+        "clientHeight": 900
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [],
+      "tinyVisibleTouchTargets": [
+        {
+          "tag": "button",
+          "text": "Workspace",
+          "x": 33,
+          "y": 137,
+          "w": 126,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        },
+        {
+          "tag": "button",
+          "text": "Proof brief",
+          "x": 165,
+          "y": 137,
+          "w": 126,
+          "h": 36,
+          "display": "flex",
+          "visibility": "visible"
+        }
+      ],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "One URL for the product, the proof, and the reviewer path.",
+        "Browser local",
+        "68+",
+        "PGlite",
+        "None",
+        "What Was Built",
+        "Browser-native AI builder",
+        "Premium workspace",
+        "Local generated-app backend",
+        "Proof-first reviewer flow",
+        "Verification Path"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "8 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache"
+      ]
+    },
+    {
+      "name": "mobile-proof-brief",
+      "fileName": "vibeproof-local-glass-proof-brief-mobile-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scroll": {
+        "width": 390,
+        "height": 4809,
+        "clientWidth": 390,
+        "clientHeight": 844
+      },
+      "horizontalOverflow": false,
+      "viewportOffenders": [],
+      "tinyVisibleTouchTargets": [],
+      "visibleHeadings": [
+        "Local app builder",
+        "Model",
+        "Proof Pack",
+        "One URL for the product, the proof, and the reviewer path.",
+        "Browser local",
+        "68+",
+        "PGlite",
+        "None",
+        "What Was Built",
+        "Browser-native AI builder",
+        "Premium workspace",
+        "Local generated-app backend",
+        "Proof-first reviewer flow",
+        "Verification Path"
+      ],
+      "proofStatus": [
+        "Local proof mode",
+        "8 PGlite events",
+        "No server AI route",
+        "First screen is workspace",
+        "WebLLM worker wired",
+        "68 local tools",
+        "LocalKit store and DB",
+        "PWA after first cache"
+      ]
+    }
+  ]
+}
