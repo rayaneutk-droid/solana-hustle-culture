@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T19:51:14.863Z",
+  "generatedAt": "2026-06-12T20:44:51.049Z",
   "runner": "local-chrome-cdp",
   "appUrl": "http://127.0.0.1:5173/",
   "captured": [
@@ -23,23 +23,10 @@
         "hasCloudBoundary": true,
         "scrollWidth": 1425,
         "clientWidth": 1425,
-        "scrollHeight": 2257,
+        "scrollHeight": 2204,
         "clientHeight": 900,
         "horizontalOverflow": false,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 126,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "smallTouchTargets": []
       }
     },
     {
@@ -62,23 +49,10 @@
         "hasCloudBoundary": true,
         "scrollWidth": 1265,
         "clientWidth": 1265,
-        "scrollHeight": 2496,
+        "scrollHeight": 2375,
         "clientHeight": 720,
         "horizontalOverflow": false,
-        "smallTouchTargets": [
-          {
-            "text": "Proof brief",
-            "width": 111,
-            "height": 36,
-            "visible": true
-          },
-          {
-            "text": "Studio",
-            "width": 111,
-            "height": 36,
-            "visible": true
-          }
-        ]
+        "smallTouchTargets": []
       }
     },
     {
@@ -101,7 +75,7 @@
         "hasCloudBoundary": true,
         "scrollWidth": 834,
         "clientWidth": 834,
-        "scrollHeight": 3556,
+        "scrollHeight": 2790,
         "clientHeight": 1194,
         "horizontalOverflow": false,
         "smallTouchTargets": []
@@ -127,7 +101,7 @@
         "hasCloudBoundary": true,
         "scrollWidth": 390,
         "clientWidth": 390,
-        "scrollHeight": 5874,
+        "scrollHeight": 5055,
         "clientHeight": 844,
         "horizontalOverflow": false,
         "smallTouchTargets": []
@@ -219,43 +193,43 @@
           },
           {
             "text": "All",
-            "width": 37,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Code",
-            "width": 51,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Data",
-            "width": 49,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Security",
-            "width": 69,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Writing",
-            "width": 67,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Media",
-            "width": 58,
+            "width": 44,
             "height": 32,
             "visible": true
           },
           {
             "text": "Docs",
-            "width": 50,
+            "width": 44,
             "height": 32,
             "visible": true
           },
@@ -267,7 +241,7 @@
           },
           {
             "text": "AI",
-            "width": 33,
+            "width": 44,
             "height": 32,
             "visible": true
           }
