@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T21:56:18.197Z",
+  "generatedAt": "2026-06-12T21:58:04.189Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 38,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 40,
+    "checkCount": 41,
     "failedChecks": 0
   },
   "checks": [
@@ -29,6 +29,13 @@
       "ok": true,
       "details": {
         "badPngs": []
+      }
+    },
+    {
+      "label": "Reviewer screenshots and submission visuals have expected dimensions.",
+      "ok": true,
+      "details": {
+        "pngDimensionMismatches": []
       }
     },
     {

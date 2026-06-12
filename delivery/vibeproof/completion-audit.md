@@ -34,6 +34,7 @@ Current implemented flow:
 | Premium Liquid Glass-inspired responsive frontend | Done locally | `vibeproof-studio/src/App.css`; screenshots under `delivery/vibeproof/` |
 | Reduced-motion support | Done locally | CSS `@media (prefers-reduced-motion: reduce)` and Chrome CDP reduced-motion check in `proof-first-responsive-report.json` |
 | Browser/responsive verification | Done locally | `delivery/vibeproof/proof-first-responsive-report.json` plus Browser connector state documented in `delivery/vibesterz-submission.md` |
+| Screenshot and submission visual dimensions | Done locally | Delivery audit validates exact PNG dimensions for desktop/laptop/tablet/mobile Proof Brief captures, Studio desktop, 16:9 cover, square card, story card, and local Figma proof frame |
 | Root/Studio URL verification | Done locally, deployment-ready | `delivery/vibeproof/public-url-verification.json` checks desktop and mobile root Proof Brief, `#studio`, PWA assets, local backend, network proof, touch targets, compile proof, sandboxed LocalKit iframe proof, generated-app ZIP export contents, runtime browser request hosts, and no account/wallet/API-key prompt |
 | Production preview URL verification | Done locally, deployment-ready | `delivery/vibeproof/production-url-verification.json` repeats the URL/export verification against the built app served by `vite preview` and confirms a real service-worker asset |
 | Delivery artifact audit | Done locally | `delivery/vibeproof/delivery-audit.json` validates manifest files, screenshots, visuals, proof reports, and stale references |

@@ -52,6 +52,19 @@ async function hasPngSignature(relativePath) {
   )
 }
 
+async function pngDimensions(relativePath) {
+  const bytes = await readFile(toAbs(relativePath))
+  if (!(await hasPngSignature(relativePath)) || bytes.length < 24) {
+    return { relativePath, width: 0, height: 0 }
+  }
+
+  return {
+    relativePath,
+    width: bytes.readUInt32BE(16),
+    height: bytes.readUInt32BE(20),
+  }
+}
+
 async function main() {
   const manifest = await readJson(manifestPath)
   const allArtifacts = [
@@ -83,6 +96,28 @@ async function main() {
     if (!(await hasPngSignature(relativePath))) badPngs.push(relativePath)
   }
   addCheck('All screenshot and visual PNGs have PNG signatures.', badPngs.length === 0, { badPngs })
+
+  const expectedPngDimensions = {
+    'delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png': { width: 1440, height: 900 },
+    'delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png': { width: 1280, height: 720 },
+    'delivery/vibeproof/vibeproof-proof-brief-tablet-834.png': { width: 834, height: 1194 },
+    'delivery/vibeproof/vibeproof-proof-brief-mobile-390.png': { width: 390, height: 844 },
+    'delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png': { width: 1440, height: 900 },
+    'delivery/vibeproof/submission-cover-16x9.png': { width: 1920, height: 1080 },
+    'delivery/vibeproof/submission-square-card.png': { width: 1080, height: 1080 },
+    'delivery/vibeproof/submission-story-card.png': { width: 1080, height: 1920 },
+    'delivery/vibeproof/figma-proof-frame-local.png': { width: 1920, height: 1400 },
+  }
+  const pngDimensionMismatches = []
+  for (const [relativePath, expected] of Object.entries(expectedPngDimensions)) {
+    const actual = await pngDimensions(relativePath)
+    if (actual.width !== expected.width || actual.height !== expected.height) {
+      pngDimensionMismatches.push({ relativePath, expected, actual })
+    }
+  }
+  addCheck('Reviewer screenshots and submission visuals have expected dimensions.', pngDimensionMismatches.length === 0, {
+    pngDimensionMismatches,
+  })
 
   const boundaryAudit = await readJson(toAbs('delivery/vibeproof/local-boundary-audit.json'))
   addCheck('Local boundary audit status is pass.', boundaryAudit.status === 'pass', {
