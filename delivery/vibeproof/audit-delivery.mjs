@@ -12,6 +12,9 @@ const stalePatterns = [
   /\/#proof/i,
   /local-glass-workbench-responsive/i,
   /vibeproof-local-glass-workspace/i,
+  /bottom tab bar for Proof and Studio on the brief/i,
+  /bottom tab bar jumps between Proof and Studio/i,
+  /Tablet\/mobile keep touch-sized controls and a bottom tab bar/i,
 ]
 
 const checks = []
