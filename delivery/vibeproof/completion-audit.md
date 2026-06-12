@@ -41,6 +41,7 @@ Current implemented flow:
 | Vercel static deployment config | Done locally | Delivery audit now surfaces local-boundary checks proving no serverless functions/builds, immutable hashed assets, revalidatable `sw.js`/manifest, static security headers, no forced COOP/COEP, and SPA rewrites that preserve asset/service-worker paths |
 | Reviewer proof summary | Done locally | `delivery/vibeproof/reviewer-proof-summary.json` condenses local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 digests for visual/source proof artifacts; delivery audit verifies its key counters and recomputes each artifact hash |
 | Launch readiness report | Done locally | `delivery/vibeproof/launch-readiness.json` records `local_ready_public_gated`, current dirty-scope status, and pending public action gates |
+| Public action checklist | Done locally | `delivery/vibeproof/public-action-checklist.json` lists GitHub, Vercel, deployed screenshots, Figma, Canva, final verification, and Pump.fun actions as `pending_explicit_approval` with required before/after evidence |
 | Public-scope preflight | Prepared locally | `delivery/vibeproof/public-preflight.json` records branch, required files, gated placeholders, and dirty-file scope before public actions |
 | Production build passes | Done locally | Last run: `cd vibeproof-studio && npm run build` exited 0 |
 | Root check passes | Done locally | Last run: `npm run check` exited 0 |

@@ -1,0 +1,167 @@
+{
+  "project": "VibeProof Studio",
+  "status": "prepared_local_only",
+  "publicActionsRequireExplicitApproval": true,
+  "note": "No GitHub push, Vercel deploy, Figma publish, Canva publish, or Pump.fun submission is approved from this file. Use it only after the user explicitly approves the named action.",
+  "actions": [
+    {
+      "id": "github_source_publication",
+      "label": "Publish GitHub source",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Makes the VibeProof source and delivery artifacts available through GitHub.",
+      "scope": [
+        "vibeproof-studio/",
+        "delivery/vibeproof/",
+        "delivery/vibesterz-submission.md"
+      ],
+      "excludedScope": [
+        "delivery/social/",
+        "existing $HUSTLE site files"
+      ],
+      "preparedCommand": "git push origin codex/vibeproof-studio",
+      "requiredBefore": [
+        "npm run vibeproof:launch-check passes",
+        "public-preflight status is pass",
+        "user explicitly approves GitHub publication"
+      ],
+      "requiredAfter": [
+        "Record GitHub source URL in delivery/vibeproof/submission-assets-manifest.json"
+      ]
+    },
+    {
+      "id": "vercel_preview_deployment",
+      "label": "Deploy Vercel preview",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Creates a public Vercel preview URL for the Vite app.",
+      "scope": [
+        "vibeproof-studio/"
+      ],
+      "excludedScope": [
+        "delivery/social/"
+      ],
+      "preparedCommand": "cd vibeproof-studio && vercel deploy",
+      "requiredBefore": [
+        "npm run vibeproof:launch-check passes",
+        "user explicitly approves Vercel deployment"
+      ],
+      "requiredAfter": [
+        "Set VIBEPROOF_URL to the Vercel preview URL",
+        "Run npm run vibeproof:url-verify",
+        "Record Vercel demo URL in delivery/vibeproof/submission-assets-manifest.json"
+      ]
+    },
+    {
+      "id": "deployed_screenshot_refresh",
+      "label": "Refresh deployed screenshots and visuals",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Updates local evidence to show the deployed URL rather than localhost.",
+      "scope": [
+        "delivery/vibeproof/proof-first-responsive-report.json",
+        "delivery/vibeproof/*.png",
+        "delivery/vibeproof/submission-visuals-manifest.json"
+      ],
+      "excludedScope": [
+        "delivery/social/"
+      ],
+      "preparedCommand": "$env:VIBEPROOF_URL='https://YOUR-VERCEL-PREVIEW-URL'; npm run vibeproof:capture; npm run vibeproof:visuals; Remove-Item Env:VIBEPROOF_URL",
+      "requiredBefore": [
+        "Vercel preview URL exists",
+        "user explicitly approves deployed screenshot refresh"
+      ],
+      "requiredAfter": [
+        "npm run vibeproof:delivery:audit passes",
+        "Updated screenshots are reviewed"
+      ]
+    },
+    {
+      "id": "figma_proof_frame",
+      "label": "Create or publish Figma proof frame",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Creates or shares a Figma proof frame for reviewer scanning.",
+      "scope": [
+        "delivery/vibeproof/figma-proof-frame-brief.md",
+        "delivery/vibeproof/figma-proof-frame-local.png",
+        "real VibeProof screenshots"
+      ],
+      "excludedScope": [
+        "fake Apple marks",
+        "unverified marketing claims"
+      ],
+      "preparedCommand": "Use Figma connector after explicit approval",
+      "requiredBefore": [
+        "user explicitly approves Figma creation or publication"
+      ],
+      "requiredAfter": [
+        "Record Figma URL in delivery/vibeproof/submission-assets-manifest.json, or leave optional/TODO if skipped"
+      ]
+    },
+    {
+      "id": "canva_submission_visuals",
+      "label": "Create or publish Canva submission visuals",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Creates Canva support visuals for the bounty submission.",
+      "scope": [
+        "delivery/vibeproof/canva-cover-brief.md",
+        "delivery/vibeproof/submission-cover-16x9.png",
+        "delivery/vibeproof/submission-square-card.png",
+        "delivery/vibeproof/submission-story-card.png"
+      ],
+      "excludedScope": [
+        "core bounty proof",
+        "fake OS or Apple branding"
+      ],
+      "preparedCommand": "Use Canva connector after explicit approval",
+      "requiredBefore": [
+        "user explicitly approves Canva creation or publication"
+      ],
+      "requiredAfter": [
+        "Record Canva URL in delivery/vibeproof/submission-assets-manifest.json, or leave optional/TODO if skipped"
+      ]
+    },
+    {
+      "id": "public_submission_verification",
+      "label": "Verify final public submission package",
+      "status": "pending_explicit_approval",
+      "publicEffect": "No direct public effect; verifies public URLs before Pump.fun submission.",
+      "scope": [
+        "delivery/vibeproof/submission-assets-manifest.json",
+        "delivery/vibeproof/public-url-verification.json",
+        "delivery/vibeproof/public-submission-verification.json"
+      ],
+      "excludedScope": [],
+      "preparedCommand": "npm run vibeproof:public-submission:verify",
+      "requiredBefore": [
+        "GitHub source URL is filled",
+        "Vercel demo URL is filled",
+        "public-url-verification was regenerated against Vercel",
+        "user explicitly approves final public verification run"
+      ],
+      "requiredAfter": [
+        "public-submission-verification status is public_submission_ready"
+      ]
+    },
+    {
+      "id": "pump_fun_submission",
+      "label": "Submit Pump.fun reply",
+      "status": "pending_explicit_approval",
+      "publicEffect": "Publishes the final bounty reply on Pump.fun.",
+      "scope": [
+        "delivery/vibesterz-submission.md",
+        "delivery/vibeproof/public-launch-approval.md"
+      ],
+      "excludedScope": [
+        "automatic submission without final user approval"
+      ],
+      "preparedCommand": "Manual/Browser submission only after explicit final approval",
+      "requiredBefore": [
+        "GitHub source URL exists",
+        "Vercel URL is verified",
+        "npm run vibeproof:public-submission:verify passes",
+        "user explicitly approves final Pump.fun copy"
+      ],
+      "requiredAfter": [
+        "Record Pump.fun reply URL in delivery/vibeproof/submission-assets-manifest.json if available"
+      ]
+    }
+  ]
+}

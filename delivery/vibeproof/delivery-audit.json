@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T22:00:12.183Z",
+  "generatedAt": "2026-06-12T22:02:24.014Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
-    "artifactCount": 38,
+    "artifactCount": 39,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 41,
+    "checkCount": 42,
     "failedChecks": 0
   },
   "checks": [
@@ -231,6 +231,16 @@
         "localReady": true,
         "publicActionStatus": "pending_explicit_approval",
         "failedReadinessChecks": []
+      }
+    },
+    {
+      "label": "Public action checklist keeps every public action pending explicit approval.",
+      "ok": true,
+      "details": {
+        "status": "prepared_local_only",
+        "actionCount": 7,
+        "nonPendingPublicActions": [],
+        "actionsWithoutApprovalRequirements": []
       }
     },
     {

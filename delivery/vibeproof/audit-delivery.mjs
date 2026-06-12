@@ -264,6 +264,22 @@ async function main() {
     failedReadinessChecks: failedReadinessChecks.map((check) => check.label),
   })
 
+  const publicActionChecklist = await readJson(toAbs('delivery/vibeproof/public-action-checklist.json'))
+  const checklistActions = publicActionChecklist.actions ?? []
+  const nonPendingPublicActions = checklistActions.filter((action) => action.status !== 'pending_explicit_approval')
+  const actionsWithoutApprovalRequirements = checklistActions.filter((action) =>
+    !(action.requiredBefore ?? []).some((requirement) => /explicitly approves|explicit approval|final approval/i.test(requirement)),
+  )
+  addCheck('Public action checklist keeps every public action pending explicit approval.', publicActionChecklist.publicActionsRequireExplicitApproval === true &&
+    checklistActions.length >= 7 &&
+    nonPendingPublicActions.length === 0 &&
+    actionsWithoutApprovalRequirements.length === 0, {
+    status: publicActionChecklist.status,
+    actionCount: checklistActions.length,
+    nonPendingPublicActions,
+    actionsWithoutApprovalRequirements,
+  })
+
   const responsive = await readJson(toAbs('delivery/vibeproof/proof-first-responsive-report.json'))
   const captures = responsive.captured ?? []
   const requiredCaptures = [

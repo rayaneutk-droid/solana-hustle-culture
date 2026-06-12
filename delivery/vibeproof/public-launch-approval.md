@@ -17,6 +17,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Public preflight report: `delivery/vibeproof/public-preflight.json`
 - URL verification report: `delivery/vibeproof/public-url-verification.json`
 - Launch readiness report: `delivery/vibeproof/launch-readiness.json`
+- Public action checklist: `delivery/vibeproof/public-action-checklist.json`
 - Post-approval public submission verifier: `npm run vibeproof:public-submission:verify`
 - Completion audit: `delivery/vibeproof/completion-audit.md`
 
@@ -25,6 +26,8 @@ Unrelated `delivery/social/` changes are intentionally excluded from this launch
 ## Approval Options
 
 Approve only the actions you want executed.
+
+Machine-readable action checklist: `delivery/vibeproof/public-action-checklist.json`.
 
 1. GitHub source publication
    - Action: push branch `codex/vibeproof-studio`.
