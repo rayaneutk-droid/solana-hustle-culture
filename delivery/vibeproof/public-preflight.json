@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T20:29:23.398Z",
+  "generatedAt": "2026-06-12T20:31:19.078Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "branch": "codex/vibeproof-studio",
@@ -41,7 +41,20 @@
       "path": "delivery/social/solana_hustle_portrait.png"
     }
   ],
-  "generatedReportWasDirtyBeforeRun": true,
+  "generatedEvidenceDirtyEntries": [
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/delivery-audit.json"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/local-boundary-audit.json"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/public-url-verification.json"
+    }
+  ],
   "checks": [
     {
       "label": "Current branch is the VibeProof branch.",
@@ -59,7 +72,12 @@
         "allowedDirtyPrefixes": [
           "delivery/social/"
         ],
-        "generatedReportPath": "delivery/vibeproof/public-preflight.json"
+        "generatedEvidencePaths": [
+          "delivery/vibeproof/public-preflight.json",
+          "delivery/vibeproof/delivery-audit.json",
+          "delivery/vibeproof/local-boundary-audit.json",
+          "delivery/vibeproof/public-url-verification.json"
+        ]
       }
     },
     {
