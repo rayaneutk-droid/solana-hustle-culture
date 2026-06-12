@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-12T20:54:54.723Z",
+  "generatedAt": "2026-06-12T20:55:36.596Z",
   "project": "VibeProof Studio",
-  "status": "fail",
+  "status": "pass",
   "branch": "codex/vibeproof-studio",
   "dirtyEntries": [
     {
@@ -15,14 +15,6 @@
     {
       "status": " D",
       "path": "delivery/social/watch-this-man-portrait-raw.png"
-    },
-    {
-      "status": " M",
-      "path": "delivery/vibeproof/audit-delivery.mjs"
-    },
-    {
-      "status": " M",
-      "path": "delivery/vibeproof/verify-public-url.mjs"
     },
     {
       "status": "??",
@@ -74,18 +66,9 @@
     },
     {
       "label": "No dirty files outside the explicitly excluded delivery/social scope.",
-      "ok": false,
+      "ok": true,
       "details": {
-        "disallowedDirty": [
-          {
-            "status": " M",
-            "path": "delivery/vibeproof/audit-delivery.mjs"
-          },
-          {
-            "status": " M",
-            "path": "delivery/vibeproof/verify-public-url.mjs"
-          }
-        ],
+        "disallowedDirty": [],
         "allowedDirtyPrefixes": [
           "delivery/social/"
         ],
