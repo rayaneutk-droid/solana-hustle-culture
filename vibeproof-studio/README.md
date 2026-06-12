@@ -4,16 +4,16 @@ Premium MVP bounty submission for the Vibesterz replication bounty.
 
 VibeProof Studio is a browser-native AI app builder. The submitted app is designed to run the LLM locally in the tab with WebLLM, generate browser apps into a sandboxed preview, inject a local backend through `window.LocalKit`, and show a visible proof pack for model, network, database, PWA, and toolbox behavior.
 
-The default route opens the usable workspace. A reviewer-facing proof brief is available at `/#proof` without replacing the workspace-first requirement.
+The default route opens the reviewer proof brief first. The actual usable builder is one click away at `#studio`, so reviewers see the evidence before entering the workspace.
 
 Visual direction: `Local Glass Workbench`, an iOS/macOS-inspired glass workspace with platform-neutral density so it still feels credible on Windows 11.
 
 ## What It Proves
 
-- First screen is the usable workspace, not a landing page.
-- Desktop layout exposes the builder, preview, proof cards, and toolbox in one dense workspace.
-- Tablet and mobile layouts open on the builder first, then proof/model/tool panels.
-- Mobile layout adds a bottom tab bar for Build, Model, Tools, and Proof.
+- First screen is a proof/control-room brief, not a generic marketing page.
+- `#studio` exposes the builder, preview, proof cards, and toolbox in one dense workspace.
+- Tablet and mobile layouts open on the proof brief first, then keep the Studio path touch-friendly.
+- Mobile layout adds a bottom tab bar for Proof and Studio on the brief, then Build, Model, Tools, and Proof inside the Studio.
 - Local model worker exposes `loadModel`, `runPipeline`, and `complete`.
 - Default model is `Qwen2.5-Coder-0.5B-Instruct-q4f16_1-MLC`, with larger optional WebLLM models.
 - No OpenAI, Gemini, Groq, OpenRouter, hosted AI API, account, wallet, or server inference route is used by the app.
@@ -24,7 +24,7 @@ Visual direction: `Local Glass Workbench`, an iOS/macOS-inspired glass workspace
 - The toolbox includes 62+ local tools. Deterministic tools run immediately; AI tools stay locked until a local model is loaded.
 - PWA/service-worker status is visible. Offline scope is honest: app shell after first cache; model weights after first model download/browser cache.
 - Network proof panel lists runtime resource requests and explicitly reports whether known cloud AI/prompt API hosts were observed.
-- Workspace proof panels include a reviewer checklist for workspace-first, no hosted AI route, WebGPU handling, LocalKit, PWA, and network visibility.
+- Workspace proof panels include a reviewer checklist for proof-first routing, no hosted AI route, WebGPU handling, LocalKit, PWA, and network visibility.
 
 ## Local Run
 
@@ -57,27 +57,26 @@ npm run check
 
 Manual browser checks:
 
-1. Open the workspace.
-2. Confirm the PGlite panel reaches `Connected`.
-3. Click `Compile proof`.
-4. Confirm the runtime console shows `LocalKit iframe proof OK`.
-5. Optionally click `Write LocalKit store` and `Query PGlite` manually in the preview.
-6. Confirm the toolbox count is above 62 and deterministic tools run without a model.
-7. Try `Load local model` in a WebGPU browser. If WebGPU is unavailable, the app disables model loading, explains the requirement, and keeps deterministic proof mode available.
-8. Reload after service-worker registration and confirm the PWA proof panel updates.
-9. Check desktop, laptop, tablet-like, and mobile layouts. On tablet/mobile, confirm the builder appears before the proof/model/tool panels.
-10. Confirm the network proof reports `0 cloud AI / prompt API requests` while still listing app/PWA/model resources.
-11. Open `/#proof` and confirm the integrated proof brief explains the work without horizontal overflow on desktop or mobile.
+1. Open the root route and confirm the proof brief appears first.
+2. Click `Launch Local Studio` and confirm the URL moves to `#studio`.
+3. Confirm the PGlite panel reaches `Connected`.
+4. Click `Compile proof`.
+5. Confirm the runtime console shows `LocalKit iframe proof OK`.
+6. Optionally click `Write LocalKit store` and `Query PGlite` manually in the preview.
+7. Confirm the toolbox count is above 62 and deterministic tools run without a model.
+8. Try `Load local model` in a WebGPU browser. If WebGPU is unavailable, the app disables model loading, explains the requirement, and keeps deterministic proof mode available.
+9. Reload after service-worker registration and confirm the PWA proof panel updates.
+10. Check desktop, laptop, tablet-like, and mobile layouts. Confirm the proof brief has no horizontal overflow and the Studio remains usable.
+11. Confirm the network proof reports `0 cloud AI / prompt API requests` while still listing app/PWA/model resources.
 
 Local visual evidence is stored in `../delivery/vibeproof/`:
 
-- `vibeproof-local-glass-workspace-desktop-1440.png`
-- `vibeproof-local-glass-workspace-laptop-1280.png`
-- `vibeproof-local-glass-workspace-tablet-834.png`
-- `vibeproof-local-glass-workspace-mobile-390.png`
-- `vibeproof-local-glass-proof-brief-desktop-1440.png`
-- `vibeproof-local-glass-proof-brief-mobile-390.png`
-- `local-glass-workbench-responsive-report.json`
+- `vibeproof-proof-brief-desktop-1440.png`
+- `vibeproof-proof-brief-laptop-1280.png`
+- `vibeproof-proof-brief-tablet-834.png`
+- `vibeproof-proof-brief-mobile-390.png`
+- `vibeproof-studio-workspace-desktop-1440.png`
+- `proof-first-responsive-report.json`
 
 ## Runtime Boundary
 
@@ -105,8 +104,8 @@ vercel deploy
 
 After the preview URL is available:
 
-1. Open the deployed workspace.
-2. Confirm `/#proof` renders.
+1. Open the deployed root route and confirm the proof brief renders first.
+2. Click `Launch Local Studio` and confirm `#studio` renders the usable builder.
 3. Confirm no hosted AI route, account, wallet, or telemetry prompt appears.
 4. Confirm the network panel reports `0 cloud AI / prompt API requests` after normal app use.
-5. Capture deployed desktop, laptop, tablet, and mobile screenshots before any Pump.fun reply.
+5. Capture deployed proof brief desktop/laptop/tablet/mobile screenshots plus Studio desktop before any Pump.fun reply.

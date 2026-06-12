@@ -148,6 +148,10 @@ const initialPrompt =
 
 const strategies = ['Premium app', 'Data tool', 'Micro SaaS', 'Portfolio system']
 
+function viewModeFromHash(): ViewMode {
+  return window.location.hash === '#studio' ? 'studio' : 'brief'
+}
+
 function App() {
   const [prompt, setPrompt] = useState(initialPrompt)
   const [strategy, setStrategy] = useState(strategies[0])
@@ -174,9 +178,7 @@ function App() {
   const [toolInput, setToolInput] = useState(toolDefinitions[0].placeholder)
   const [toolOutput, setToolOutput] = useState('Run a local tool to see output here.')
   const [isToolRunning, setIsToolRunning] = useState(false)
-  const [viewMode, setViewMode] = useState<ViewMode>(() =>
-    window.location.hash === '#proof' ? 'brief' : 'studio',
-  )
+  const [viewMode, setViewMode] = useState<ViewMode>(() => viewModeFromHash())
 
   const previewRef = useRef<HTMLIFrameElement | null>(null)
   const dbRef = useRef<PGlite | null>(null)
@@ -197,11 +199,8 @@ function App() {
 
   const switchView = useCallback((nextView: ViewMode) => {
     setViewMode(nextView)
-    if (nextView === 'brief') {
-      window.history.replaceState(null, '', '#proof')
-    } else {
-      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
-    }
+    const basePath = `${window.location.pathname}${window.location.search}`
+    window.history.replaceState(null, '', nextView === 'studio' ? `${basePath}#studio` : basePath)
     window.setTimeout(() => {
       window.scrollTo({ top: 0, behavior: preferredScrollBehavior() })
     }, 80)
@@ -215,7 +214,7 @@ function App() {
   }, [switchView])
 
   useEffect(() => {
-    const syncHash = () => setViewMode(window.location.hash === '#proof' ? 'brief' : 'studio')
+    const syncHash = () => setViewMode(viewModeFromHash())
     window.addEventListener('hashchange', syncHash)
     return () => window.removeEventListener('hashchange', syncHash)
   }, [])
@@ -656,19 +655,19 @@ function App() {
         <div className="view-switch" role="tablist" aria-label="VibeProof views">
           <button
             type="button"
-            className={viewMode === 'studio' ? 'active' : ''}
-            onClick={() => switchView('studio')}
-          >
-            <Monitor size={15} />
-            Workspace
-          </button>
-          <button
-            type="button"
             className={viewMode === 'brief' ? 'active' : ''}
             onClick={() => switchView('brief')}
           >
             <ShieldCheck size={15} />
             Proof brief
+          </button>
+          <button
+            type="button"
+            className={viewMode === 'studio' ? 'active' : ''}
+            onClick={() => switchView('studio')}
+          >
+            <Monitor size={15} />
+            Studio
           </button>
         </div>
 
@@ -721,7 +720,8 @@ function App() {
             <ShieldCheck size={18} />
             <h2>Proof Pack</h2>
           </div>
-          <ProofRow icon={<Monitor size={16} />} label="First screen is workspace" done />
+          <ProofRow icon={<FileCheck2 size={16} />} label="Proof brief opens first" done />
+          <ProofRow icon={<Monitor size={16} />} label="Studio is one click away" done />
           <ProofRow icon={<Bot size={16} />} label="WebLLM worker wired" done />
           <ProofRow icon={<Wrench size={16} />} label={`${LOCAL_TOOL_COUNT} local tools`} done />
           <ProofRow icon={<Database size={16} />} label="LocalKit store and DB" done={dbState === 'ready'} />
@@ -913,7 +913,8 @@ function App() {
               <h2>Reviewer checklist</h2>
             </div>
             <div className="reviewer-checklist">
-              <ProofRow icon={<Monitor size={16} />} label="Workspace is first screen" done />
+              <ProofRow icon={<FileCheck2 size={16} />} label="Proof brief is first screen" done />
+              <ProofRow icon={<Monitor size={16} />} label="Studio remains one click away" done />
               <ProofRow
                 icon={<Lock size={16} />}
                 label={cloudAiEvents.length === 0 ? 'No cloud AI requests observed' : 'Cloud AI request detected'}
@@ -979,7 +980,16 @@ function App() {
       </aside>
       </>
       ) : (
-        <ProofBrief onOpenStudio={() => switchView('studio')} />
+        <ProofBrief
+          onOpenStudio={() => switchView('studio')}
+          modelState={modelState}
+          hasWebGpu={hasWebGpu}
+          dbState={dbState}
+          dbEvents={dbEvents}
+          pwaState={pwaState}
+          networkEvents={networkEvents.length}
+          cloudAiEvents={cloudAiEvents.length}
+        />
       )}
       <nav className="mobile-tabbar glass-panel" aria-label="Mobile workspace navigation">
         {viewMode === 'studio' ? (
@@ -1005,11 +1015,11 @@ function App() {
           <>
             <button type="button" onClick={() => navigateMobile('brief', 'submission-dossier')}>
               <FileCheck2 size={18} />
-              <span>Dossier</span>
+              <span>Proof</span>
             </button>
             <button type="button" onClick={() => navigateMobile('studio', 'builder-panel')}>
               <Monitor size={18} />
-              <span>Workspace</span>
+              <span>Studio</span>
             </button>
           </>
         )}
@@ -1053,7 +1063,39 @@ function ProofRow({
   )
 }
 
-function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
+function ProofBrief({
+  onOpenStudio,
+  modelState,
+  hasWebGpu,
+  dbState,
+  dbEvents,
+  pwaState,
+  networkEvents,
+  cloudAiEvents,
+}: {
+  onOpenStudio: () => void
+  modelState: ModelState
+  hasWebGpu: boolean
+  dbState: DbState
+  dbEvents: number
+  pwaState: PwaState
+  networkEvents: number
+  cloudAiEvents: number
+}) {
+  const modelLabel =
+    modelState === 'ready'
+      ? 'Local model ready'
+      : modelState === 'loading'
+        ? 'Loading in tab'
+        : hasWebGpu
+          ? 'Local proof mode'
+          : 'WebGPU blocked gracefully'
+  const modelTone = modelState === 'error' && !hasWebGpu ? 'warn' : modelState === 'ready' ? 'good' : 'quiet'
+  const dbLabel = dbState === 'ready' ? `${dbEvents} local events` : dbState
+  const networkLabel =
+    cloudAiEvents === 0 ? `0 prompt API hits / ${networkEvents} resources` : `${cloudAiEvents} suspect hits`
+  const pwaLabel = pwaState.replace('-', ' ')
+
   const workItems = [
     {
       icon: <Bot size={18} />,
@@ -1062,8 +1104,8 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
     },
     {
       icon: <Code2 size={18} />,
-      title: 'Premium workspace',
-      body: 'Prompt, five-pass pipeline, CodeMirror editors, live preview, runtime console, and export controls are available on the first screen.',
+      title: 'Usable Studio one click away',
+      body: 'Prompt, five-pass pipeline, CodeMirror editors, live preview, runtime console, and export controls stay inside the product.',
     },
     {
       icon: <Database size={18} />,
@@ -1079,8 +1121,12 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
 
   const verificationItems = [
     {
-      label: 'Run the product',
-      detail: 'The default route opens directly to the usable workspace, not a marketing page.',
+      label: 'Open the proof brief',
+      detail: 'The root route starts with the reviewer dossier and shows the core local-runtime claims immediately.',
+    },
+    {
+      label: 'Launch the Studio',
+      detail: 'The primary CTA moves to #studio, where the actual builder, editor, preview, toolbox, and proof panels remain usable.',
     },
     {
       label: 'Compile proof',
@@ -1096,7 +1142,7 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
     },
     {
       label: 'Check offline claim',
-      detail: 'The PWA panel states the real boundary: app shell first, model cache after first model download.',
+      detail: `The PWA panel states the real boundary: app shell first, model cache after first model download. Current state: ${pwaLabel}.`,
     },
     {
       label: 'Open the toolbox',
@@ -1107,46 +1153,81 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
   return (
     <main className="brief-page glass-panel" id="submission-dossier">
       <section className="brief-hero">
-        <div className="brief-kicker">
-          <span className="dossier-signal" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-          <p className="label">Bounty submission dossier</p>
+        <div className="brief-hero-copy">
+          <div className="brief-kicker">
+            <span className="dossier-signal" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </span>
+            <p className="label">Reviewer proof entry</p>
+          </div>
+          <h1>VibeProof Studio</h1>
+          <p className="brief-tagline">Local AI app builder that runs in your browser tab.</p>
+          <p className="brief-lede">
+            This first screen is the bounty proof control room: what was built, why it wins the local
+            runtime claim, how to verify it, and one clean path into the working Studio.
+          </p>
+          <div className="brief-hero-pills" aria-label="Core proof pillars">
+            <BriefPill icon={<Cpu size={15} />} label="Local WebLLM" />
+            <BriefPill icon={<Lock size={15} />} label="0 cloud AI prompt APIs" />
+            <BriefPill icon={<Database size={15} />} label="PGlite local backend" />
+            <BriefPill icon={<WifiOff size={15} />} label="PWA/offline after cache" />
+          </div>
+          <div className="brief-actions">
+            <button type="button" className="primary-action" onClick={onOpenStudio}>
+              <Monitor size={16} />
+              Launch Local Studio
+              <ArrowRight size={16} />
+            </button>
+            <a className="secondary-link" href="#verification-checklist">
+              Verification checklist
+            </a>
+            <a className="secondary-link" href="#evidence-pack">
+              Evidence pack
+            </a>
+          </div>
+          <p className="brief-honesty">
+            First model load may request model, WASM, or app resources. Prompts, generated code,
+            toolbox input, LocalKit data, and preview state should not be sent to hosted AI prompt APIs.
+          </p>
         </div>
-        <h2>One URL for the product, the proof, and the reviewer path.</h2>
-        <p className="brief-lede">
-          VibeProof Studio still opens to the actual local builder first. This integrated proof page gives
-          judges the complete audit map: what was built, where data stays local, how generated apps persist
-          state, and exactly which panels prove the bounty requirements.
-        </p>
-        <div className="brief-hero-pills" aria-label="Core proof pillars">
-          <BriefPill icon={<Cpu size={15} />} label="Local WebLLM" />
-          <BriefPill icon={<Database size={15} />} label="PGlite backend" />
-          <BriefPill icon={<FileCheck2 size={15} />} label="Proof pack" />
-          <BriefPill icon={<WifiOff size={15} />} label="PWA boundary" />
-        </div>
-        <div className="brief-actions">
-          <button type="button" className="primary-action" onClick={onOpenStudio}>
-            <Monitor size={16} />
-            Open workspace
-            <ArrowRight size={16} />
-          </button>
-          <a className="secondary-link" href="#proof">
-            Share #proof
-          </a>
+        <div className="brief-hero-visual">
+          <BriefWorkspacePreview />
+          <div className="brief-live-grid" aria-label="Live proof evidence">
+            <BriefLiveCard icon={<Bot size={17} />} label="Model status" value={modelLabel} tone={modelTone} />
+            <BriefLiveCard
+              icon={<Network size={17} />}
+              label="Network proof"
+              value={networkLabel}
+              tone={cloudAiEvents === 0 ? 'good' : 'danger'}
+            />
+            <BriefLiveCard
+              icon={<Database size={17} />}
+              label="Local backend"
+              value={dbLabel}
+              tone={dbState === 'ready' ? 'good' : dbState === 'error' ? 'danger' : 'quiet'}
+            />
+            <BriefLiveCard
+              icon={<ShieldCheck size={17} />}
+              label="Reviewer path"
+              value="Proof first -> Studio"
+              tone="good"
+            />
+          </div>
         </div>
       </section>
 
       <section className="brief-metrics">
+        <BriefMetric label="Root route" value="Proof first" />
         <BriefMetric label="Runtime" value="Browser local" />
         <BriefMetric label="Tools" value={`${LOCAL_TOOL_COUNT}+`} />
         <BriefMetric label="Backend" value="PGlite" />
-        <BriefMetric label="Cloud AI" value="None" />
       </section>
 
-      <section className="brief-section">
+      <section className="brief-section" id="evidence-pack">
         <div className="section-heading">
           <Layers3 size={19} />
           <h2>What Was Built</h2>
@@ -1158,7 +1239,7 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
         </div>
       </section>
 
-      <section className="brief-section">
+      <section className="brief-section" id="verification-checklist">
         <div className="section-heading">
           <ShieldCheck size={19} />
           <h2>Verification Path</h2>
@@ -1214,18 +1295,68 @@ function ProofBrief({ onOpenStudio }: { onOpenStudio: () => void }) {
       <section className="brief-section brief-submit-strip">
         <div>
           <p className="label">Submission-ready path</p>
-          <h2>Workspace first, proof page second, public delivery after approval.</h2>
+          <h2>Proof brief first, Studio one click away, public delivery after approval.</h2>
           <p>
-            The right bounty flow is to link reviewers to the working app, include `/#proof` for the
-            integrated explanation, then attach screenshots and reproducible checks from the delivery pack.
+            The right bounty flow is to link reviewers to the proof-first root, let them launch `#studio`,
+            then attach screenshots and reproducible checks from the delivery pack.
           </p>
         </div>
         <button type="button" className="primary-action" onClick={onOpenStudio}>
           <Play size={16} />
-          Test the build
+          Open Studio
         </button>
       </section>
     </main>
+  )
+}
+
+function BriefWorkspacePreview() {
+  return (
+    <div className="brief-preview-card" aria-label="Compact preview of the VibeProof Studio workspace">
+      <div className="preview-topbar">
+        <span>Studio</span>
+        <span>LocalKit OK</span>
+      </div>
+      <div className="preview-body">
+        <div className="preview-composer">
+          <span />
+          <strong>Prompt, compile, verify, repair.</strong>
+          <p>Five-pass local build pipeline</p>
+        </div>
+        <div className="preview-editor">
+          <i />
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="preview-proof">
+          <span>0 cloud AI prompt APIs</span>
+          <span>PGlite local backend</span>
+          <span>68 local tools</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function BriefLiveCard({
+  icon,
+  label,
+  value,
+  tone,
+}: {
+  icon: ReactNode
+  label: string
+  value: string
+  tone: 'good' | 'danger' | 'quiet' | 'warn'
+}) {
+  return (
+    <article className={`brief-live-card ${tone}`}>
+      {icon}
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </article>
   )
 }
 

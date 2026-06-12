@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-06-12T19:52:07.357Z",
+  "status": "local_only_not_published",
+  "sourceScreenshots": {
+    "proofDesktop": "vibeproof-proof-brief-desktop-1440.png",
+    "proofLaptop": "vibeproof-proof-brief-laptop-1280.png",
+    "proofTablet": "vibeproof-proof-brief-tablet-834.png",
+    "proofMobile": "vibeproof-proof-brief-mobile-390.png",
+    "studioDesktop": "vibeproof-studio-workspace-desktop-1440.png"
+  },
+  "rendered": [
+    {
+      "name": "submission-cover-16x9",
+      "width": 1920,
+      "height": 1080,
+      "html": "submission-cover-16x9.html",
+      "png": "submission-cover-16x9.png"
+    },
+    {
+      "name": "submission-square-card",
+      "width": 1080,
+      "height": 1080,
+      "html": "submission-square-card.html",
+      "png": "submission-square-card.png"
+    },
+    {
+      "name": "submission-story-card",
+      "width": 1080,
+      "height": 1920,
+      "html": "submission-story-card.html",
+      "png": "submission-story-card.png"
+    },
+    {
+      "name": "figma-proof-frame-local",
+      "width": 1920,
+      "height": 1400,
+      "html": "figma-proof-frame-local.html",
+      "png": "figma-proof-frame-local.png"
+    }
+  ]
+}

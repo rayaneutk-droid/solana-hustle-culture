@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, height=1920, initial-scale=1">
+  <title>VibeProof Studio Story</title>
+  <style>
+    :root {
+      color: #f7fbff;
+      background: #070a10;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Inter, system-ui, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      --line: rgba(255,255,255,.14);
+      --muted: #aebbd0;
+      --soft: #dce7f6;
+      --cyan: #72d8ff;
+      --mint: #73f0bd;
+      --gold: #f8c96b;
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; margin: 0; overflow: hidden; }
+    body {
+      background:
+        linear-gradient(118deg, rgba(121,184,255,.2), transparent 27%),
+        linear-gradient(306deg, rgba(115,240,189,.14), transparent 34%),
+        conic-gradient(from 210deg at 62% -12%, rgba(155,140,255,.18), rgba(71,215,255,.1), transparent 31%, rgba(248,201,107,.08), transparent 54%),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(145deg, #050811, #101827 48%, #041512);
+      background-size: auto, auto, auto, 58px 58px, 58px 58px, auto;
+    }
+    .stage { width: 100%; height: 100%; position: relative; padding: 64px; }
+    .glass {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035) 44%, rgba(71,215,255,.055)), rgba(12,18,29,.74);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 28px 90px rgba(0,0,0,.34);
+      backdrop-filter: blur(28px) saturate(155%);
+      border-radius: 34px;
+      overflow: hidden;
+    }
+    .label {
+      margin: 0;
+      color: var(--cyan);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin: 0; letter-spacing: 0; }
+    h1 { font-size: 104px; line-height: .93; font-weight: 800; }
+    h2 { font-size: 44px; line-height: 1; font-weight: 780; }
+    h3 { font-size: 26px; line-height: 1.08; font-weight: 780; }
+    p { color: var(--soft); font-size: 26px; line-height: 1.35; }
+    .chips { display: flex; flex-wrap: wrap; gap: 14px; }
+    .chips span {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      padding: 0 20px;
+      color: #eef8ff;
+      background: linear-gradient(135deg, rgba(121,184,255,.18), rgba(115,240,189,.1)), rgba(255,255,255,.07);
+      font-size: 18px;
+      font-weight: 760;
+    }
+    .shot {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .device {
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(5,8,14,.72);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 24px 60px rgba(0,0,0,.34);
+      overflow: hidden;
+    }
+    .note { color: #b9c7da; font-size: 18px; line-height: 1.35; }
+    .audit { color: #061015; background: linear-gradient(135deg, #90d8ff, #73f0bd); }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <section class="story glass">
+      <p class="label">VibeProof Studio</p>
+      <h1>One tab. Local model. Real proof.</h1>
+      <div class="phone-wrap">
+        <div class="device phone"><img class="shot" src="./vibeproof-proof-brief-mobile-390.png" alt=""></div>
+      </div>
+      <div class="chips"><span>WebLLM local inference</span><span>LocalKit + PGlite</span><span>68 tools</span><span>PWA boundary</span></div>
+      <p>Built for reviewers to verify the local runtime, network boundary, generated app backend, and submission dossier without trusting a hidden server.</p>
+      <p class="note">First model load can download model assets. Prompt and generated-code data stay out of hosted AI APIs.</p>
+    </section>
+  </main>
+  <style>
+    .stage { padding: 58px; }
+    .story { height: 1804px; padding: 58px; display: grid; gap: 34px; align-content: start; }
+    h1 { font-size: 84px; }
+    .phone-wrap { display: grid; justify-items: center; }
+    .phone { width: 438px; height: 948px; border-radius: 42px; }
+    .chips span { min-height: 54px; font-size: 22px; }
+  </style>
+</body></html>

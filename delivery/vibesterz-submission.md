@@ -9,28 +9,24 @@ Built: VibeProof Studio
 Public demo: TODO after Vercel approval
 Source: TODO after GitHub approval
 Proof screenshots:
-- `delivery/vibeproof/vibeproof-local-glass-workspace-desktop-1440.png`
-- `delivery/vibeproof/vibeproof-local-glass-workspace-laptop-1280.png`
-- `delivery/vibeproof/vibeproof-local-glass-workspace-tablet-834.png`
-- `delivery/vibeproof/vibeproof-local-glass-workspace-mobile-390.png`
-- `delivery/vibeproof/vibeproof-desktop-proof.png`
-- `delivery/vibeproof/vibeproof-tablet-proof.png`
-- `delivery/vibeproof/vibeproof-mobile-proof.png`
-- `delivery/vibeproof/vibeproof-proof-brief-desktop.png`
-- `delivery/vibeproof/vibeproof-proof-brief-mobile.png`
+- `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`
+- `delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png`
+- `delivery/vibeproof/vibeproof-proof-brief-tablet-834.png`
+- `delivery/vibeproof/vibeproof-proof-brief-mobile-390.png`
+- `delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png`
 Local boundary audit:
 - `delivery/vibeproof/local-boundary-audit.json`
 Responsive proof report:
-- `delivery/vibeproof/local-glass-workbench-responsive-report.json`
+- `delivery/vibeproof/proof-first-responsive-report.json`
 Deployment runbook:
 - `delivery/vibeproof/deployment-runbook.md`
 
 Why it satisfies the bounty:
 
-- Browser-native AI app builder with a real workspace as the first screen.
+- Browser-native AI app builder with a proof-first reviewer route and a real workspace one click away at `#studio`.
 - Premium Local Glass Workbench UI: iOS/macOS-inspired gradients and glass, but still credible on Windows 11.
-- Tablet and mobile workspace render the builder first, then proof/model/tool panels, with touch-sized controls and an iOS-style bottom tab bar.
-- Integrated submission dossier at `/#proof` explaining the build, verification path, local/runtime boundary, and competitor edge.
+- Tablet and mobile proof brief render cleanly first, then the Studio remains touch-friendly through `#studio`.
+- Integrated submission dossier on the root route explaining the build, verification path, local/runtime boundary, and competitor edge.
 - WebLLM local model worker with `loadModel`, `runPipeline`, and `complete`.
 - Default local model: `Qwen2.5-Coder-0.5B-Instruct-q4f16_1-MLC`.
 - No account, wallet, server AI route, BYOK cloud mode, OpenAI/Gemini/Groq/OpenRouter route, or hosted prompt processing.
@@ -60,10 +56,10 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Network cloud-AI boundary classifier implemented.
 - [x] Local boundary audit script and JSON report implemented.
 - [x] Workspace reviewer checklist proof panel implemented.
-- [x] Integrated `/#proof` bounty dossier implemented as the shareable explanation page.
+- [x] Integrated proof-first bounty dossier implemented as the root shareable explanation page.
 - [x] CodeMirror editor integrated for a stronger MVP workspace feel.
 - [x] Local Glass Workbench premium theme implemented.
-- [x] Tablet/mobile workspace-first order implemented.
+- [x] Tablet/mobile proof-first order implemented.
 - [x] `npm run lint` passes in `vibeproof-studio/`.
 - [x] Root `npm run check` passes.
 - [x] Browser connector used for interactive inspection.
@@ -117,19 +113,19 @@ npm run check
 ## Browser QA Script
 
 1. Open local Vite URL.
-2. Confirm the app opens directly to the workspace.
+2. Confirm the app opens directly to the proof brief.
 3. Confirm no layout overlap on desktop.
-4. Switch to tablet-like and mobile viewports and confirm panels stack cleanly.
-5. Click `Compile proof`.
-6. Confirm runtime console shows `LocalKit iframe proof OK`.
-7. Confirm LocalKit/PGlite event count updates.
-8. On mobile, confirm the bottom tab bar jumps to Build, Model, Tools, and Proof without layout overflow.
-9. Run deterministic tools: JSON format, SHA-256, CSV to JSON.
-10. Try an AI-backed tool before model load and confirm it refuses cloud fallback.
-11. Confirm network proof lists app/PWA resources and reports `0 cloud AI / prompt API requests`.
-12. Confirm PWA panel reports service-worker registration or a clear unsupported state.
-13. Confirm the reviewer checklist proof panel reports local runtime, LocalKit, PWA, and network status.
-14. Open `/#proof` and confirm the integrated bounty dossier renders cleanly on desktop and mobile.
+4. Switch to tablet-like and mobile viewports and confirm the proof brief stacks cleanly.
+5. Click `Launch Local Studio` and confirm `#studio` opens the builder.
+6. Click `Compile proof`.
+7. Confirm runtime console shows `LocalKit iframe proof OK`.
+8. Confirm LocalKit/PGlite event count updates.
+9. On mobile, confirm the bottom tab bar jumps between Proof and Studio without layout overflow.
+10. Run deterministic tools: JSON format, SHA-256, CSV to JSON.
+11. Try an AI-backed tool before model load and confirm it refuses cloud fallback.
+12. Confirm network proof lists app/PWA resources and reports `0 cloud AI / prompt API requests`.
+13. Confirm PWA panel reports service-worker registration or a clear unsupported state.
+14. Confirm the reviewer checklist proof panel reports proof-first route, local runtime, LocalKit, PWA, and network status.
 
 ## Browser Verification Evidence
 
@@ -139,9 +135,10 @@ Responsive Chrome CDP report:
 
 ```json
 {
-  "report": "delivery/vibeproof/local-glass-workbench-responsive-report.json",
+  "report": "delivery/vibeproof/proof-first-responsive-report.json",
   "viewports": ["1440x900", "1280x720", "834x1194", "390x844"],
-  "workspace": "no horizontal overflow on all checked viewports",
+  "proofBrief": "root route verified first on all checked viewports",
+  "studio": "#studio verified with usable builder on desktop",
   "tabletMobileTouchTargets": "no visible controls below 38px on 834x1194 and 390x844",
   "localBackend": "Connected / PGlite events observed"
 }
@@ -151,14 +148,12 @@ Desktop Browser state:
 
 ```json
 {
-  "hasWorkspace": true,
-  "hasOldError": false,
-  "hasAutoProof": true,
-  "hasPwaReady": true,
-  "hasNetworkProof": true,
-  "hasToolCount": true,
-  "hasGeneratedFiles": true,
-  "dbBadge": "9 PGlite events"
+  "url": "http://127.0.0.1:5173/",
+  "hasStudioCta": true,
+  "hasVerification": true,
+  "hasHorizontalOverflow": false,
+  "scrollWidth": 1265,
+  "clientWidth": 1265
 }
 ```
 
@@ -166,36 +161,25 @@ Mobile Browser state:
 
 ```json
 {
-  "width": 390,
+  "requestedWidth": 390,
+  "clientWidth": 375,
   "height": 844,
-  "hasWorkspace": true,
-  "hasAutoProof": true,
+  "hasProofBrief": true,
+  "hasBottomTabbar": true,
   "hasHorizontalOverflow": false,
-  "scrollWidth": 390,
-  "clientWidth": 390
+  "smallTouchTargets": []
 }
 ```
 
-Proof brief desktop state:
+Studio CTA state:
 
 ```json
 {
-  "url": "http://127.0.0.1:5173/#proof",
-  "hasBrief": true,
-  "stillHasWorkspaceSwitch": true,
-  "notDefaultLandingOnly": true,
-  "hasHorizontalOverflow": false
-}
-```
-
-Proof brief mobile state:
-
-```json
-{
-  "width": 390,
-  "height": 844,
-  "hasBrief": true,
-  "hasWorkspaceButton": true,
+  "launchCount": 1,
+  "url": "http://127.0.0.1:5173/#studio",
+  "hasBuilder": true,
+  "hasComposer": true,
+  "hasProofPanel": true,
   "hasHorizontalOverflow": false
 }
 ```

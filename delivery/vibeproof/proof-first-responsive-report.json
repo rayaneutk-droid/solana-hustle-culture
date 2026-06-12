@@ -1,0 +1,287 @@
+{
+  "generatedAt": "2026-06-12T19:51:14.863Z",
+  "runner": "local-chrome-cdp",
+  "appUrl": "http://127.0.0.1:5173/",
+  "captured": [
+    {
+      "name": "proof-brief-desktop",
+      "fileName": "vibeproof-proof-brief-desktop-1440.png",
+      "url": "http://127.0.0.1:5173/",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "mobile": false
+      },
+      "state": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasStudio": true,
+        "hasVerification": true,
+        "hasCloudBoundary": true,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "scrollHeight": 2257,
+        "clientHeight": 900,
+        "horizontalOverflow": false,
+        "smallTouchTargets": [
+          {
+            "text": "Proof brief",
+            "width": 126,
+            "height": 36,
+            "visible": true
+          },
+          {
+            "text": "Studio",
+            "width": 126,
+            "height": 36,
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "proof-brief-laptop",
+      "fileName": "vibeproof-proof-brief-laptop-1280.png",
+      "url": "http://127.0.0.1:5173/",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "mobile": false
+      },
+      "state": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasStudio": true,
+        "hasVerification": true,
+        "hasCloudBoundary": true,
+        "scrollWidth": 1265,
+        "clientWidth": 1265,
+        "scrollHeight": 2496,
+        "clientHeight": 720,
+        "horizontalOverflow": false,
+        "smallTouchTargets": [
+          {
+            "text": "Proof brief",
+            "width": 111,
+            "height": 36,
+            "visible": true
+          },
+          {
+            "text": "Studio",
+            "width": 111,
+            "height": 36,
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "proof-brief-tablet",
+      "fileName": "vibeproof-proof-brief-tablet-834.png",
+      "url": "http://127.0.0.1:5173/",
+      "viewport": {
+        "width": 834,
+        "height": 1194,
+        "mobile": true
+      },
+      "state": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasStudio": true,
+        "hasVerification": true,
+        "hasCloudBoundary": true,
+        "scrollWidth": 834,
+        "clientWidth": 834,
+        "scrollHeight": 3556,
+        "clientHeight": 1194,
+        "horizontalOverflow": false,
+        "smallTouchTargets": []
+      }
+    },
+    {
+      "name": "proof-brief-mobile",
+      "fileName": "vibeproof-proof-brief-mobile-390.png",
+      "url": "http://127.0.0.1:5173/",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "mobile": true
+      },
+      "state": {
+        "url": "http://127.0.0.1:5173/",
+        "hash": "",
+        "title": "VibeProof Studio",
+        "hasProofBrief": true,
+        "hasStudioCta": true,
+        "hasStudio": true,
+        "hasVerification": true,
+        "hasCloudBoundary": true,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5874,
+        "clientHeight": 844,
+        "horizontalOverflow": false,
+        "smallTouchTargets": []
+      }
+    },
+    {
+      "name": "studio-desktop",
+      "fileName": "vibeproof-studio-workspace-desktop-1440.png",
+      "url": "http://127.0.0.1:5173/#studio",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "mobile": false
+      },
+      "state": {
+        "url": "http://127.0.0.1:5173/#studio",
+        "hash": "#studio",
+        "title": "VibeProof Studio",
+        "hasProofBrief": false,
+        "hasStudioCta": false,
+        "hasStudio": true,
+        "hasVerification": false,
+        "hasCloudBoundary": true,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "scrollHeight": 1823,
+        "clientHeight": 900,
+        "horizontalOverflow": false,
+        "smallTouchTargets": [
+          {
+            "text": "Proof brief",
+            "width": 128,
+            "height": 36,
+            "visible": true
+          },
+          {
+            "text": "Studio",
+            "width": 128,
+            "height": 36,
+            "visible": true
+          },
+          {
+            "text": "Premium app",
+            "width": 102,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Data tool",
+            "width": 77,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Micro SaaS",
+            "width": 88,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Portfolio system",
+            "width": 120,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "",
+            "width": 34,
+            "height": 38,
+            "visible": true
+          },
+          {
+            "text": "HTML",
+            "width": 80,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "CSS",
+            "width": 66,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "JS",
+            "width": 56,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "All",
+            "width": 37,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Code",
+            "width": 51,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Data",
+            "width": 49,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Security",
+            "width": 69,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Writing",
+            "width": 67,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Media",
+            "width": 58,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Docs",
+            "width": 50,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "Dev",
+            "width": 44,
+            "height": 32,
+            "visible": true
+          },
+          {
+            "text": "AI",
+            "width": 33,
+            "height": 32,
+            "visible": true
+          }
+        ]
+      }
+    }
+  ],
+  "studioCta": {
+    "hash": "#studio",
+    "hasStudio": true,
+    "hasBuilderPanel": true
+  },
+  "reducedMotion": {
+    "hasProofBrief": true,
+    "reducedMotion": true
+  }
+}

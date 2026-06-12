@@ -1,82 +1,76 @@
-# VibeProof Figma Proof Frame Brief
+# VibeProof Figma Proof Brief
 
-Status: prepared only. Do not create or publish a Figma file without explicit approval.
+Status: prepared locally only. Do not create or publish a Figma file without explicit approval.
 
-## Purpose
+## Target File
 
-Create a polished proof frame that helps bounty reviewers scan the real product evidence quickly. The Figma frame supports the submission; it does not replace the working app, the source, the deployed URL, or the integrated `/#proof` dossier.
+Name: `VibeProof Studio - Proof Brief First`
 
-## Frame
+Purpose: give bounty reviewers a premium, scannable proof-control-room layout before they enter the working Studio. The Figma board supports the submission; it does not replace the working app, source, deployed URL, or reproducible checks.
 
-Title: `VibeProof Studio - Bounty Proof Layout`
+## Required Frames
 
-Recommended canvas:
-
-- Desktop frame: `1920 x 1400`
-- Companion mobile frame: `390 x 1600`
-- Optional social preview frame: `1200 x 630`
+1. `Proof Brief - Desktop 1440x900`
+2. `Proof Brief - Laptop 1280x720`
+3. `Proof Brief - Tablet 834x1194`
+4. `Proof Brief - Mobile 390x844`
+5. `Workspace - Desktop 1440x900`
 
 ## Required Assets
 
-- `delivery/vibeproof/vibeproof-desktop-proof.png`
-- `delivery/vibeproof/vibeproof-tablet-proof.png`
-- `delivery/vibeproof/vibeproof-mobile-proof.png`
-- `delivery/vibeproof/vibeproof-proof-brief-desktop.png`
-- `delivery/vibeproof/vibeproof-proof-brief-mobile.png`
+- `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`
+- `delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png`
+- `delivery/vibeproof/vibeproof-proof-brief-tablet-834.png`
+- `delivery/vibeproof/vibeproof-proof-brief-mobile-390.png`
+- `delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png`
 - `delivery/vibeproof/local-boundary-audit.json`
+- `delivery/vibeproof/proof-first-responsive-report.json`
 
-## Layout
+## Proof Brief First Viewport
 
-1. Hero strip
-   - Title: `VibeProof Studio`
-   - Subtitle: `Pure-local browser AI app builder`
-   - Proof line: `WebLLM + LocalKit + PGlite + 68 tools`
-   - Status badge: `No server AI route`
-
-2. Product evidence row
-   - Large desktop workspace screenshot.
-   - Tablet and mobile screenshots as stacked device cards.
-   - Small caption: `First screen is the working builder, not a landing page.`
-
-3. Local boundary strip
-   - `0 cloud AI / prompt API requests`
-   - `WebLLM local worker`
-   - `PGlite in IndexedDB`
-   - `LocalKit sandbox bridge`
-   - `PWA after first cache`
-
-4. Audit evidence
-   - Show the JSON report headline:
-     `local-boundary-audit.json: pass`
-   - Include short metrics:
-     - `68 tools`
-     - `0 forbidden runtime packages`
-     - `0 direct prompt API network calls`
-     - `0 Vercel functions`
-
-5. Competitor comparison
-   - `OnDevAI: similar local direction; VibeProof adds stronger in-product proof.`
-   - `ForgeBox: strong local tech; VibeProof keeps public-source and reviewer path prepared.`
-   - `Zentro: cloud provider paths weaken pure-local claim; VibeProof keeps runtime local.`
-
-6. Reviewer path
-   - `Open workspace`
-   - `Click Compile proof`
-   - `Confirm LocalKit iframe proof OK`
-   - `Check Network proof`
-   - `Open /#proof`
-   - `Run npm run proof:audit`
+- H1: `VibeProof Studio`
+- Supporting line: `Local AI app builder that runs in your browser tab`
+- Primary CTA: `Launch Local Studio`
+- Secondary CTAs: `Verification checklist`, `Evidence pack`
+- Proof chips:
+  - `Local WebLLM`
+  - `0 cloud AI prompt APIs`
+  - `PGlite local backend`
+  - `PWA/offline after cache`
+- Live evidence cards:
+  - `Model status`
+  - `Network proof`
+  - `Local backend`
+  - `Reviewer path`
+- Honesty note: first model load may request model/WASM/app resources; prompts, generated code, toolbox input, LocalKit data, and preview state should not be sent to hosted AI prompt APIs.
 
 ## Visual Direction
 
 - Apple-platform inspired, not Apple-branded.
 - Liquid Glass cues: translucent layers, subtle rim lighting, soft depth, compact controls.
-- Avoid fake Apple logos, fake OS chrome labels, stock imagery, decorative blobs, and unverifiable claims.
-- Use the real screenshots as the dominant evidence.
-- Keep typography compact and audit-focused; this is a product proof board, not a marketing splash.
+- Cool controlled gradients: aurora rails, proof chips, action gradients, evidence strips.
+- Avoid fake Apple logos, fake OS labels, decorative blobs, stock imagery, and unverifiable claims.
+- Use real screenshots and the compact workspace preview as dominant evidence.
+- Keep typography audit-focused; this is a proof board, not a marketing splash.
+
+## Reviewer Path
+
+1. Open root proof brief.
+2. Click `Launch Local Studio`.
+3. Click `Compile proof`.
+4. Confirm `LocalKit iframe proof OK`.
+5. Check Network proof for `0 cloud AI / prompt API requests`.
+6. Run `npm run proof:audit`.
+
+## Competitor Comparison Strip
+
+- `OnDevAI`: similar local direction; VibeProof adds stronger in-product proof and reviewer entry.
+- `ForgeBox`: strong local tech; VibeProof keeps public-source and reproducible delivery prepared.
+- `Zentro`: provider/BYOK paths weaken pure-local claim; VibeProof keeps the submitted runtime local.
 
 ## Notes For Figma Creation
 
 - Keep all screenshot layers named by filename.
-- Add a small footer: `First model load may download WebLLM/model assets. Prompts, generated code, toolbox input, and preview data are not sent to hosted AI APIs by this app.`
-- If the final deployed URL exists, add a QR/link block. Until deployment approval, leave it as `TODO: Vercel URL after approval`.
+- Build responsive frames from the same tokens, not one stretched desktop frame.
+- Add footer placeholder: `TODO: Vercel URL after approval`.
+- If the final deployed URL exists, add a QR/link block.

@@ -33,13 +33,14 @@ Adds VibeProof Studio, an isolated Vite React TypeScript app for the Vibesterz b
 - LocalKit store and PGlite query bridge for sandboxed generated apps
 - CodeMirror HTML/CSS/JS workspace with sandboxed live preview
 - Local Glass Workbench premium UI with iOS/macOS-inspired gradients, glass panels, and Windows-friendly density
-- Tablet/mobile workspace-first responsive flow with touch-sized controls and iOS-style bottom tab bar
+- Proof-first root route with `#studio` one click away
+- Tablet/mobile proof-first responsive flow with touch-sized controls and iOS-style bottom tab bar
 - 68-tool local toolbox with deterministic and local-model-only AI tools
 - PWA/offline, network, model, and local backend proof panels
 - Known cloud-AI host classifier inside the network proof panel
 - Workspace reviewer checklist proof panel
 - Reproducible `npm run proof:audit` local-boundary report
-- Integrated `/#proof` bounty submission dossier
+- Integrated proof brief bounty submission dossier on the root route
 - Browser-inspected workspace plus local Chrome CDP responsive screenshots/report
 - Bounty submission pack under delivery/
 
@@ -48,7 +49,7 @@ Checks:
 - cd vibeproof-studio && npm run proof:audit
 - cd vibeproof-studio && npm run build
 - npm run check
-- delivery/vibeproof/local-glass-workbench-responsive-report.json
+- delivery/vibeproof/proof-first-responsive-report.json
 ```
 
 ## Vercel
@@ -69,15 +70,15 @@ vercel deploy
 Post-deploy verification:
 
 1. Open preview URL.
-2. Confirm workspace renders on first screen.
-3. Click `Compile proof`.
-4. Confirm `LocalKit iframe proof OK`.
-5. Confirm network and PWA panels render.
-6. Confirm the network proof reports `0 cloud AI / prompt API requests`.
-7. Confirm the reviewer checklist proof panel renders in the workspace.
-8. Run `npm run proof:audit` locally and keep `delivery/vibeproof/local-boundary-audit.json`.
-9. Open `/#proof` and confirm the integrated bounty submission dossier renders.
-10. Capture desktop, laptop, tablet-like, and mobile screenshots from the deployed URL and deployed `/#proof`.
+2. Confirm the proof brief renders on the first screen.
+3. Click `Launch Local Studio` and confirm `#studio` opens the usable builder.
+4. Click `Compile proof`.
+5. Confirm `LocalKit iframe proof OK`.
+6. Confirm network and PWA panels render.
+7. Confirm the network proof reports `0 cloud AI / prompt API requests`.
+8. Confirm the reviewer checklist proof panel renders in the Studio.
+9. Run `npm run proof:audit` locally and keep `delivery/vibeproof/local-boundary-audit.json`.
+10. Capture proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop from the deployed URL.
 
 Headers/config checks:
 
@@ -90,21 +91,21 @@ Do not deploy production until preview is verified.
 
 ## Figma
 
-Purpose: create a proof frame that reviewers can scan quickly without replacing the actual product proof or the integrated `/#proof` dossier.
+Purpose: create a proof frame that reviewers can scan quickly without replacing the actual proof-first app or the working `#studio` builder.
 
 Frame title:
 
 ```text
-VibeProof Studio - Bounty Proof Layout
+VibeProof Studio - Proof Brief First
 ```
 
 Frame sections:
 
-1. Desktop workspace screenshot.
-2. Laptop/Windows-like workspace screenshot.
-3. Tablet-like workspace screenshot.
-4. Mobile workspace screenshot.
-5. Desktop and mobile `/#proof` bounty dossier screenshots.
+1. Desktop proof brief screenshot.
+2. Laptop/Windows-like proof brief screenshot.
+3. Tablet proof brief screenshot.
+4. Mobile proof brief screenshot.
+5. Desktop Studio workspace screenshot.
 6. Runtime boundary strip:
    - Local WebLLM in tab
    - No server AI route
@@ -120,7 +121,7 @@ Frame sections:
    - Browser inspection and local Chrome CDP desktop/laptop/tablet/mobile report
    - iframe LocalKit proof
    - network cloud-AI boundary
-   - workspace reviewer checklist
+   - proof-first root and `#studio` Studio path
 
 Visual direction:
 
@@ -134,17 +135,17 @@ Purpose: create submission support visuals, not core proof.
 
 Assets:
 
-- `delivery/vibeproof/vibeproof-desktop-proof.png`
-- `delivery/vibeproof/vibeproof-tablet-proof.png`
-- `delivery/vibeproof/vibeproof-mobile-proof.png`
-- `delivery/vibeproof/vibeproof-proof-brief-desktop.png`
-- `delivery/vibeproof/vibeproof-proof-brief-mobile.png`
+- `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`
+- `delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png`
+- `delivery/vibeproof/vibeproof-proof-brief-tablet-834.png`
+- `delivery/vibeproof/vibeproof-proof-brief-mobile-390.png`
+- `delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png`
 
 Cover concept:
 
 ```text
 VibeProof Studio
-Local AI app builder in one browser tab
+Local AI app builder that runs in your browser tab
 WebLLM + LocalKit + PGlite + 68 tools
 No server AI route
 ```
@@ -168,5 +169,5 @@ Only submit after:
 - GitHub source URL exists.
 - Vercel preview or production URL is verified.
 - Browser screenshots are current for the deployed URL.
-- Deployed `/#proof` bounty dossier is verified.
+- Deployed root proof brief and `#studio` Studio are verified.
 - Figma/Canva support assets are optional but ready.

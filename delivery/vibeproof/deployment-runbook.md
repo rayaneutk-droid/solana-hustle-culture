@@ -83,16 +83,17 @@ Production should wait until the preview URL is verified. If production is neede
 
 On the Vercel preview URL:
 
-1. Confirm the default route opens the usable workspace, not a marketing page.
-2. Open `/#proof` and confirm the proof dossier renders.
-3. Click `Compile proof`.
-4. Confirm the preview console reports `LocalKit iframe proof OK`.
-5. Confirm the Local backend card reaches `Connected`.
-6. Confirm PWA status is visible and the offline claim stays limited to first cache/model cache.
-7. Confirm the network proof lists resources and reports `0 cloud AI / prompt API requests`.
-8. Confirm no account, wallet, cloud API key, or telemetry prompt appears.
-9. Capture deployed desktop, laptop, tablet, mobile, and proof-brief screenshots.
-10. Replace local-only URLs/TODOs in the Pump.fun reply only after source and preview links exist.
+1. Confirm the default route opens the proof brief first, not a generic marketing page.
+2. Click `Launch Local Studio` and confirm the URL moves to `#studio`.
+3. Confirm the Studio renders the usable builder, editor, preview, toolbox, and proof panels.
+4. Click `Compile proof`.
+5. Confirm the preview console reports `LocalKit iframe proof OK`.
+6. Confirm the Local backend card reaches `Connected`.
+7. Confirm PWA status is visible and the offline claim stays limited to first cache/model cache.
+8. Confirm the network proof lists resources and reports `0 cloud AI / prompt API requests`.
+9. Confirm no account, wallet, cloud API key, or telemetry prompt appears.
+10. Capture deployed proof-brief desktop/laptop/tablet/mobile screenshots plus Studio desktop.
+11. Replace local-only URLs/TODOs in the Pump.fun reply only after source and preview links exist.
 
 ## Figma And Canva
 
@@ -112,7 +113,7 @@ Submit only after all are true:
 
 - Public GitHub source URL exists.
 - Vercel preview or production URL is verified.
-- Deployed `/#proof` URL is verified.
+- Deployed root proof brief and `#studio` Studio URL are verified.
 - Current screenshots exist for the deployed URL.
 - Optional Figma/Canva support assets are linked or intentionally skipped.
 - User explicitly approves the final Pump.fun reply.

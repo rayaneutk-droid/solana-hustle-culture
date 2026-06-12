@@ -9,24 +9,29 @@
     "delivery/vibeproof/deployment-runbook.md",
     "delivery/vibeproof/local-glass-workbench-theme.md",
     "delivery/vibeproof/local-boundary-audit.json",
-    "delivery/vibeproof/local-glass-workbench-responsive-report.json",
+    "delivery/vibeproof/proof-first-responsive-report.json",
+    "delivery/vibeproof/submission-visuals-manifest.json",
+    "delivery/vibeproof/capture-proof-first.mjs",
+    "delivery/vibeproof/render-submission-visuals.mjs",
     "delivery/vibeproof/figma-proof-frame-brief.md",
     "delivery/vibeproof/canva-cover-brief.md"
   ],
   "screenshots": [
-    "delivery/vibeproof/before-local-glass-workbench-desktop.png",
-    "delivery/vibeproof/before-local-glass-workbench-mobile.png",
-    "delivery/vibeproof/vibeproof-local-glass-workspace-desktop-1440.png",
-    "delivery/vibeproof/vibeproof-local-glass-workspace-laptop-1280.png",
-    "delivery/vibeproof/vibeproof-local-glass-workspace-tablet-834.png",
-    "delivery/vibeproof/vibeproof-local-glass-workspace-mobile-390.png",
-    "delivery/vibeproof/vibeproof-local-glass-proof-brief-desktop-1440.png",
-    "delivery/vibeproof/vibeproof-local-glass-proof-brief-mobile-390.png",
-    "delivery/vibeproof/vibeproof-desktop-proof.png",
-    "delivery/vibeproof/vibeproof-tablet-proof.png",
-    "delivery/vibeproof/vibeproof-mobile-proof.png",
-    "delivery/vibeproof/vibeproof-proof-brief-desktop.png",
-    "delivery/vibeproof/vibeproof-proof-brief-mobile.png"
+    "delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png",
+    "delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png",
+    "delivery/vibeproof/vibeproof-proof-brief-tablet-834.png",
+    "delivery/vibeproof/vibeproof-proof-brief-mobile-390.png",
+    "delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png"
+  ],
+  "local_submission_visuals": [
+    "delivery/vibeproof/submission-cover-16x9.png",
+    "delivery/vibeproof/submission-square-card.png",
+    "delivery/vibeproof/submission-story-card.png",
+    "delivery/vibeproof/figma-proof-frame-local.png",
+    "delivery/vibeproof/submission-cover-16x9.html",
+    "delivery/vibeproof/submission-square-card.html",
+    "delivery/vibeproof/submission-story-card.html",
+    "delivery/vibeproof/figma-proof-frame-local.html"
   ],
   "local_checks": [
     "cd vibeproof-studio && npm run lint",
