@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-12T20:52:50.841Z",
+  "generatedAt": "2026-06-12T20:54:54.723Z",
   "project": "VibeProof Studio",
-  "status": "pass",
+  "status": "fail",
   "branch": "codex/vibeproof-studio",
   "dirtyEntries": [
     {
@@ -15,6 +15,14 @@
     {
       "status": " D",
       "path": "delivery/social/watch-this-man-portrait-raw.png"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/audit-delivery.mjs"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/verify-public-url.mjs"
     },
     {
       "status": "??",
@@ -41,7 +49,20 @@
       "path": "delivery/social/solana_hustle_portrait.png"
     }
   ],
-  "generatedEvidenceDirtyEntries": [],
+  "generatedEvidenceDirtyEntries": [
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/delivery-audit.json"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/local-boundary-audit.json"
+    },
+    {
+      "status": " M",
+      "path": "delivery/vibeproof/public-url-verification.json"
+    }
+  ],
   "checks": [
     {
       "label": "Current branch is the VibeProof branch.",
@@ -53,9 +74,18 @@
     },
     {
       "label": "No dirty files outside the explicitly excluded delivery/social scope.",
-      "ok": true,
+      "ok": false,
       "details": {
-        "disallowedDirty": [],
+        "disallowedDirty": [
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/audit-delivery.mjs"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/verify-public-url.mjs"
+          }
+        ],
         "allowedDirtyPrefixes": [
           "delivery/social/"
         ],

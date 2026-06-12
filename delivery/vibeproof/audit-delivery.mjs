@@ -128,6 +128,13 @@ async function main() {
     reducedMotion: responsive.reducedMotion,
   })
 
+  const urlVerification = await readJson(toAbs('delivery/vibeproof/public-url-verification.json'))
+  const failedUrlChecks = (urlVerification.checks ?? []).filter((check) => !check.ok)
+  addCheck('Public URL verification report status is pass.', urlVerification.status === 'pass', {
+    status: urlVerification.status,
+    failedUrlChecks: failedUrlChecks.map((check) => check.label),
+  })
+
   const visuals = await readJson(toAbs('delivery/vibeproof/submission-visuals-manifest.json'))
   const expectedVisuals = ['submission-cover-16x9', 'submission-square-card', 'submission-story-card', 'figma-proof-frame-local']
   const renderedNames = (visuals.rendered ?? []).map((item) => item.name)

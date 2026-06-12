@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-12T20:52:34.202Z",
+  "generatedAt": "2026-06-12T20:54:54.310Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "summary": {
     "artifactCount": 31,
     "screenshotCount": 5,
     "localVisualCount": 8,
-    "checkCount": 17,
+    "checkCount": 18,
     "failedChecks": 0
   },
   "checks": [
@@ -95,6 +95,14 @@
           "hasProofBrief": true,
           "reducedMotion": true
         }
+      }
+    },
+    {
+      "label": "Public URL verification report status is pass.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "failedUrlChecks": []
       }
     },
     {

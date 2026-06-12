@@ -110,6 +110,17 @@ async function inspectRoute(client, url, viewport) {
   return evalJs(client, `(() => {
     const root = document.documentElement;
     const text = document.body.innerText;
+    const mobileTabbar = document.querySelector('.mobile-tabbar');
+    const mobileTabbarRect = mobileTabbar?.getBoundingClientRect();
+    const mobileTabbarStyle = mobileTabbar ? getComputedStyle(mobileTabbar) : null;
+    const hasVisibleMobileTabbar = Boolean(
+      mobileTabbar &&
+      mobileTabbarRect &&
+      mobileTabbarRect.width > 0 &&
+      mobileTabbarRect.height > 0 &&
+      mobileTabbarStyle?.visibility !== 'hidden' &&
+      mobileTabbarStyle?.display !== 'none'
+    );
     const controls = [...document.querySelectorAll('button, a, input, select, textarea, [role="button"]')]
       .map((el) => {
         const rect = el.getBoundingClientRect();
@@ -138,6 +149,7 @@ async function inspectRoute(client, url, viewport) {
       hasPwaPanel: /PWA cache/.test(text) || /PWA\\/offline boundary/.test(text),
       hasNetworkProof: /Network proof/.test(text) || /No cloud AI requests observed/.test(text),
       hasMobileTabbar: Boolean(document.querySelector('.mobile-tabbar')),
+      hasVisibleMobileTabbar,
       hasForbiddenAccountPrompt: /sign in|connect wallet|api key|openrouter|gemini|groq/i.test(text),
       horizontalOverflow: root.scrollWidth > root.clientWidth + 1,
       clientWidth: root.clientWidth,
@@ -280,9 +292,10 @@ async function main() {
     addCheck('Mobile root opens the Proof Brief with Studio CTA.', mobileProofBrief.hasProofBrief && mobileProofBrief.hasStudioCta, mobileProofBrief)
     addCheck('Mobile Proof Brief has no horizontal overflow.', !mobileProofBrief.horizontalOverflow, mobileProofBrief)
     addCheck('Mobile Proof Brief controls are touch-sized.', mobileProofBrief.smallTouchTargets.length === 0, mobileProofBrief)
+    addCheck('Mobile Proof Brief does not show a fixed Studio tab bar overlay.', !mobileProofBrief.hasVisibleMobileTabbar, mobileProofBrief)
 
     const mobileStudio = await inspectRoute(client, studioUrl, mobileViewport)
-    addCheck('Mobile Studio opens with builder and mobile navigation.', mobileStudio.hasStudio && mobileStudio.hasBuilderPanel && mobileStudio.hasMobileTabbar, mobileStudio)
+    addCheck('Mobile Studio opens with builder and visible mobile navigation.', mobileStudio.hasStudio && mobileStudio.hasBuilderPanel && mobileStudio.hasVisibleMobileTabbar, mobileStudio)
     addCheck('Mobile Studio has no horizontal overflow.', !mobileStudio.horizontalOverflow, mobileStudio)
     addCheck('Mobile Studio controls are touch-sized.', mobileStudio.smallTouchTargets.length === 0, mobileStudio)
   } catch (error) {
