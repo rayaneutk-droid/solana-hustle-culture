@@ -129,7 +129,7 @@ What is inside:
 - 68 local tools, with AI-backed tools locked to the loaded local model
 - PWA/offline proof panel with honest first-cache/model-cache boundary
 - Network proof panel showing runtime resources and 0 cloud AI / prompt API requests
-- Reproducible local-boundary audit
+- Reproducible local-boundary audit, including built index/CSS remote asset checks
 
 Honesty note: first model load may download WebLLM/model/WASM assets from model/CDN hosts. Prompts, generated code, toolbox input, LocalKit data, and preview state are not sent to hosted AI prompt APIs by this app.
 

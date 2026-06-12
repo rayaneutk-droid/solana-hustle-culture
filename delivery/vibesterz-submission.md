@@ -39,7 +39,7 @@ Why it satisfies the bounty:
 - 62+ local toolbox tools. Deterministic tools run immediately; AI-backed tools require the loaded local model.
 - Visible network proof panel lists runtime resource requests and reports known cloud AI/prompt API host matches.
 - Workspace proof panel includes a reviewer checklist for local runtime, no hosted AI route, LocalKit, PWA, and network visibility.
-- Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
+- Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, no remote static asset loads in the built index/CSS, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
 - PWA proof panel shows service-worker status and states the offline boundary honestly: app shell after first cache; model weights after first model download/browser cache.
 
 Important honesty note: first model load downloads WebLLM/model assets from model/CDN hosts. The app does not send prompts, generated code, files, toolbox input, or preview data to a cloud AI API.
@@ -57,6 +57,7 @@ Important honesty note: first model load downloads WebLLM/model assets from mode
 - [x] Network resource proof panel implemented.
 - [x] Network cloud-AI boundary classifier implemented.
 - [x] Local boundary audit script and JSON report implemented.
+- [x] Built index/CSS remote static asset audit implemented.
 - [x] Workspace reviewer checklist proof panel implemented.
 - [x] Integrated proof-first bounty dossier implemented as the root shareable explanation page.
 - [x] CodeMirror editor integrated for a stronger MVP workspace feel.
