@@ -13,6 +13,7 @@ This file is the approval gate for moving VibeProof Studio from local proof pack
 - Working Studio route: `/#studio`
 - Local proof report: `delivery/vibeproof/proof-first-responsive-report.json`
 - Boundary audit: `delivery/vibeproof/local-boundary-audit.json`
+- Completion audit: `delivery/vibeproof/completion-audit.md`
 
 Unrelated `delivery/social/` changes are intentionally excluded from this launch scope.
 
