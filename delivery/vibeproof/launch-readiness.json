@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:50:44.427Z",
+  "generatedAt": "2026-06-12T21:54:20.944Z",
   "project": "VibeProof Studio",
   "status": "local_ready_public_gated",
   "localReady": true,
@@ -160,7 +160,28 @@
       "ok": true,
       "details": {
         "status": "pass",
-        "generatedEvidenceDirtyEntries": []
+        "generatedEvidenceDirtyEntries": [
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/delivery-audit.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/local-boundary-audit.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/production-url-verification.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/public-url-verification.json"
+          },
+          {
+            "status": " M",
+            "path": "delivery/vibeproof/reviewer-proof-summary.json"
+          }
+        ]
       }
     },
     {

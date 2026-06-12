@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T21:50:44.067Z",
+  "generatedAt": "2026-06-12T21:54:19.867Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -124,17 +124,17 @@
     {
       "path": "delivery/vibeproof/local-boundary-audit.json",
       "bytes": 7586,
-      "sha256": "7791b2e1fa5fd647077e291cbb7dd040498f678952e483c269cf9253fd7d4535"
+      "sha256": "fabac74db955c0adfce1b93c1d876b1e67e779179633e6b4963ec06c78887419"
     },
     {
       "path": "delivery/vibeproof/public-url-verification.json",
       "bytes": 26498,
-      "sha256": "eb895527cc414732894d5efbc6aae46331775a3e3fbb38eeedef5870fe3cefe3"
+      "sha256": "6c82bf6598d8b2d638dd3f7cdc0927b48382a17b6274a009c3a7e61eac12f2bd"
     },
     {
       "path": "delivery/vibeproof/production-url-verification.json",
       "bytes": 26505,
-      "sha256": "dcaf57e0756f464fa923e890ce0e71e3c4c9dd8672ddf711f4b57ab57882525e"
+      "sha256": "c16ba6c3c845eebdac54bef7ca4fe128d46c4280cc74d8824c492f3b0c650a67"
     },
     {
       "path": "delivery/vibeproof/proof-first-responsive-report.json",
