@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { readFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 
 function runGit(args) {
   return execFileSync('git', args, { encoding: 'utf8' }).trim()
@@ -88,6 +88,7 @@ const report = {
   checks,
 }
 
+await writeFile('delivery/vibeproof/public-preflight.json', `${JSON.stringify(report, null, 2)}\n`)
 console.log(JSON.stringify(report, null, 2))
 
 if (report.status !== 'pass') {
