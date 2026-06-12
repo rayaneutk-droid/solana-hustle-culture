@@ -12,6 +12,10 @@ Prepared source scope:
 - `delivery/vibesterz-submission.md`
 - `delivery/vibeproof/`
 
+Deployment runbook:
+
+- `delivery/vibeproof/deployment-runbook.md`
+
 Do not include unrelated `delivery/social` changes unless the user explicitly asks.
 
 Suggested commit title:

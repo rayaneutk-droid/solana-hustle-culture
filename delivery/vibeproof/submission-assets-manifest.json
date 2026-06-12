@@ -6,6 +6,7 @@
   "core_artifacts": [
     "delivery/vibesterz-submission.md",
     "delivery/vibeproof/public-action-briefs.md",
+    "delivery/vibeproof/deployment-runbook.md",
     "delivery/vibeproof/local-glass-workbench-theme.md",
     "delivery/vibeproof/local-boundary-audit.json",
     "delivery/vibeproof/local-glass-workbench-responsive-report.json",

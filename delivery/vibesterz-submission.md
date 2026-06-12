@@ -22,6 +22,8 @@ Local boundary audit:
 - `delivery/vibeproof/local-boundary-audit.json`
 Responsive proof report:
 - `delivery/vibeproof/local-glass-workbench-responsive-report.json`
+Deployment runbook:
+- `delivery/vibeproof/deployment-runbook.md`
 
 Why it satisfies the bounty:
 
