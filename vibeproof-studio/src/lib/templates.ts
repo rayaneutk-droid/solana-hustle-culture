@@ -24,11 +24,11 @@ export const passCopy: Record<PipelinePass, string> = {
 export const seedFiles: WorkspaceFiles = {
   html: `<main class="app">
   <section class="hero">
-    <p class="eyebrow">LocalKit demo app</p>
+    <p class="eyebrow">Local proof app</p>
     <h1>Private launch notes</h1>
     <p>
-      This generated app writes to the parent-owned local store and queries a
-      PGlite database through the injected LocalKit API.
+      A compact notes surface that saves through LocalKit and checks PGlite
+      from inside the sandbox. No server route needed.
     </p>
   </section>
 
@@ -51,7 +51,12 @@ export const seedFiles: WorkspaceFiles = {
   css: `:root {
   color: #f6f7fb;
   background: #090a0f;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Inter, system-ui, sans-serif;
+  font-synthesis: none;
+  line-height: 1.42;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -64,11 +69,13 @@ body {
 
 .app {
   box-sizing: border-box;
+  width: min(760px, calc(100vw - 32px));
   min-height: 100vh;
+  margin: 0 auto;
   display: grid;
   align-content: center;
-  gap: 22px;
-  padding: clamp(22px, 6vw, 70px);
+  gap: 16px;
+  padding: clamp(18px, 5vw, 46px) 0;
 }
 
 .hero,
@@ -78,11 +85,23 @@ body {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(24px) saturate(145%);
-  border-radius: 24px;
+  border-radius: 22px;
 }
 
 .hero {
-  padding: clamp(26px, 5vw, 56px);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 4.5vw, 40px);
+}
+
+.hero::before {
+  content: "";
+  width: 52px;
+  height: 6px;
+  display: block;
+  margin: 0 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9bd3ff, #69e7bd);
 }
 
 .eyebrow {
@@ -91,21 +110,24 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 h1 {
   margin: 0 0 14px;
-  font-size: 68px;
-  line-height: 0.96;
+  max-width: 10ch;
+  font-size: clamp(36px, 5vw, 50px);
+  line-height: 1;
   letter-spacing: 0;
+  font-weight: 820;
 }
 
 p {
   margin: 0;
-  max-width: 62ch;
-  color: rgba(246, 247, 251, 0.74);
-  font-size: 18px;
+  max-width: 48ch;
+  color: rgba(246, 247, 251, 0.76);
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .composer {
@@ -135,7 +157,7 @@ button {
   color: #09111e;
   background: #9bd3ff;
   padding: 0 18px;
-  font-weight: 800;
+  font-weight: 760;
 }
 
 .result {
@@ -160,7 +182,8 @@ span {
 }
 
 strong {
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 760;
 }
 
 @media (max-width: 680px) {
@@ -170,7 +193,7 @@ strong {
   }
 
   h1 {
-    font-size: 42px;
+    font-size: 38px;
   }
 }`,
   js: `const input = document.querySelector('#noteInput');
@@ -226,8 +249,8 @@ export function deterministicBuild(prompt: string): WorkspaceFiles {
     <p class="label">Deterministic local compile</p>
     <h1>${safeTitle}</h1>
     <p>
-      This fallback proves the workspace, preview sandbox, LocalKit store, and
-      PGlite bridge without pretending a model generated the code.
+      A browser-only proof surface for the workspace, preview sandbox,
+      LocalKit store, and PGlite bridge.
     </p>
   </section>
 
@@ -244,13 +267,18 @@ export function deterministicBuild(prompt: string): WorkspaceFiles {
   place-items: center;
   color: #10131a;
   background: linear-gradient(135deg, #eef4ff, #f8fbff 45%, #dff8ef);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Inter, system-ui, sans-serif;
+  font-synthesis: none;
+  line-height: 1.42;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .proof-app {
-  width: min(860px, calc(100vw - 32px));
+  width: min(780px, calc(100vw - 32px));
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .masthead,
@@ -263,30 +291,33 @@ export function deterministicBuild(prompt: string): WorkspaceFiles {
 }
 
 .masthead {
-  padding: clamp(26px, 5vw, 58px);
+  padding: clamp(24px, 4.5vw, 42px);
 }
 
 .label {
   margin: 0 0 10px;
   color: #0c6d9d;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 750;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 h1 {
   margin: 0 0 12px;
-  font-size: 72px;
-  line-height: 0.94;
+  max-width: 12ch;
+  font-size: clamp(36px, 5vw, 50px);
+  line-height: 1;
   letter-spacing: 0;
+  font-weight: 820;
 }
 
 p {
   margin: 0;
-  max-width: 62ch;
+  max-width: 48ch;
   color: #4a5568;
-  font-size: 18px;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .grid {
@@ -308,7 +339,7 @@ button {
   cursor: pointer;
   color: #fff;
   background: #111827;
-  font-weight: 800;
+  font-weight: 760;
 }
 
 output {
