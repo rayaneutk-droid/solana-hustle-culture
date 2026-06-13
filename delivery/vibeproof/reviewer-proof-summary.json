@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T22:04:46.115Z",
+  "generatedAt": "2026-06-13T03:36:45.111Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -103,7 +103,7 @@
     "deliveryAuditStatus": "pass",
     "deliveryAuditFailedChecks": 0,
     "preflightStatus": "pass",
-    "generatedEvidenceDirtyEntries": 0,
+    "generatedEvidenceDirtyEntries": 5,
     "publicPlaceholders": {
       "github_source_url": "TODO after explicit approval",
       "vercel_demo_url": "TODO after explicit approval",
@@ -124,17 +124,17 @@
     {
       "path": "delivery/vibeproof/local-boundary-audit.json",
       "bytes": 7586,
-      "sha256": "fabac74db955c0adfce1b93c1d876b1e67e779179633e6b4963ec06c78887419"
+      "sha256": "e0b049d08aba7f7bddfe40c2f084774b30c5cea5d97b30b22bc1950264e67123"
     },
     {
       "path": "delivery/vibeproof/public-url-verification.json",
       "bytes": 26498,
-      "sha256": "6c82bf6598d8b2d638dd3f7cdc0927b48382a17b6274a009c3a7e61eac12f2bd"
+      "sha256": "00906695d61367261532ec9d30e04b927a14cd90a5886668bc99f5efe94263dd"
     },
     {
       "path": "delivery/vibeproof/production-url-verification.json",
       "bytes": 26505,
-      "sha256": "c16ba6c3c845eebdac54bef7ca4fe128d46c4280cc74d8824c492f3b0c650a67"
+      "sha256": "8eb9b6aafe41bffa36fb1baae733c47bf6471bdca8fde9886871a34886082591"
     },
     {
       "path": "delivery/vibeproof/proof-first-responsive-report.json",
