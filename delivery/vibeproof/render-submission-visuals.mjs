@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process'
-import { mkdir, rm, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -350,6 +350,16 @@ async function renderPage(client, page) {
   return { name: page.name, width: page.width, height: page.height, html: path.basename(htmlPath), png: path.basename(pngPath) }
 }
 
+async function visualStatus() {
+  try {
+    const report = JSON.parse(await readFile(path.join(outDir, 'proof-first-responsive-report.json'), 'utf8'))
+    const appUrl = report.appUrl ?? ''
+    return /^https:\/\//i.test(appUrl) ? 'deployed_evidence_rendered' : 'local_only_not_published'
+  } catch {
+    return 'local_only_not_published'
+  }
+}
+
 async function main() {
   await mkdir(outDir, { recursive: true })
   const chrome = spawn(chromePath, [
@@ -375,7 +385,7 @@ async function main() {
     for (const page of pages) rendered.push(await renderPage(client, page))
     const manifest = {
       generatedAt: new Date().toISOString(),
-      status: 'local_only_not_published',
+      status: await visualStatus(),
       sourceScreenshots: assets,
       rendered,
     }

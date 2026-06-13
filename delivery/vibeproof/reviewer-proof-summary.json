@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-13T03:39:39.572Z",
+  "generatedAt": "2026-06-13T04:13:05.118Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -27,7 +27,7 @@
   "browserRuntimeNetwork": {
     "dev": {
       "target": "https://vibeproof-studio.vercel.app/",
-      "requestCount": 21,
+      "requestCount": 22,
       "hosts": [
         "vibeproof-studio.vercel.app"
       ],
@@ -129,7 +129,7 @@
     {
       "path": "delivery/vibeproof/public-url-verification.json",
       "bytes": 26803,
-      "sha256": "a52d3d3827a0fbf386aca2fcfd6ea06598344b5e603a67e8fbebf4c830908321"
+      "sha256": "2b0e207de22637fd3fcb137dfe6fe20153f361a2d4b42761f1176e3125c16120"
     },
     {
       "path": "delivery/vibeproof/production-url-verification.json",
@@ -139,7 +139,7 @@
     {
       "path": "delivery/vibeproof/proof-first-responsive-report.json",
       "bytes": 6587,
-      "sha256": "b0a108e077f7530236df0ed52b08a0f30613c89f78c54e946ccfe2c45ac3ec63"
+      "sha256": "dd4346a04538a05429029ee23e5d8f0d53ccb9bebfc52035242420147eca58f3"
     },
     {
       "path": "delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png",
@@ -163,8 +163,8 @@
     },
     {
       "path": "delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png",
-      "bytes": 907868,
-      "sha256": "3faca8789893edf19d07550fe0ab7fc069e954fbfb26b3b100eb76db9663ba65"
+      "bytes": 893663,
+      "sha256": "899283ce053dce906b6dd9d8d9ad2ecfd12cb40b11a12ca76cefe37ba7ff4574"
     },
     {
       "path": "delivery/vibeproof/submission-cover-16x9.png",
@@ -183,8 +183,8 @@
     },
     {
       "path": "delivery/vibeproof/figma-proof-frame-local.png",
-      "bytes": 1609204,
-      "sha256": "031e58d55e21d19037dfc9390fb8e0ebcafb4ec26146cae76336437cf1e2db09"
+      "bytes": 1603758,
+      "sha256": "e81422613352e8f164053acb3e8e198e65780d202f5f27471a43acc025a7fe91"
     },
     {
       "path": "delivery/vibeproof/submission-cover-16x9.html",
