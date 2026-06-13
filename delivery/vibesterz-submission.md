@@ -1,13 +1,13 @@
 # VibeProof Studio Bounty Submission Pack
 
-Status: local MVP built under `vibeproof-studio/`. Public GitHub, Vercel, Figma, Canva, and Pump.fun submission actions still require explicit user confirmation.
+Status: public GitHub source and Vercel deployment are live. Figma, Canva, and the final Pump.fun reply still require explicit user confirmation.
 
 ## Copy-Paste Pump.fun Reply
 
 Built: VibeProof Studio
 
-Public demo: TODO after Vercel approval
-Source: TODO after GitHub approval
+Public demo: https://vibeproof-studio.vercel.app
+Source: https://github.com/rayaneutk-droid/solana-hustle-culture/tree/codex/vibeproof-studio/vibeproof-studio
 Proof screenshots:
 - `delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png`
 - `delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png`
@@ -52,9 +52,9 @@ Why it satisfies the bounty:
 - Workspace proof panel includes a reviewer checklist for local runtime, no hosted AI route, LocalKit, PWA, and network visibility.
 - One-file reviewer summary condenses local boundary, runtime network, production preview, ZIP export, responsive, launch-gate evidence, and SHA-256 digests for visual/source proof artifacts; delivery audit recomputes those hashes to detect drift.
 - Delivery audit validates exact PNG dimensions for the reviewer screenshots, submission cover, square/story cards, and local Figma proof frame.
-- Launch readiness JSON explicitly reports `local_ready_public_gated`, with GitHub, Vercel, Figma, Canva, and Pump.fun still pending explicit approval.
+- Launch readiness and public-submission verification separate the pre-public gate from the deployed evidence gate.
 - Public action checklist keeps every public step in `pending_explicit_approval` and records the required proof before/after each action.
-- Short Pump.fun reply template is prepared separately for final copy-paste after GitHub/Vercel URLs exist.
+- Short Pump.fun reply template is prepared separately for final copy-paste after your final submit approval.
 - Reproducible `npm run proof:audit` checks no cloud AI runtime packages, no direct prompt API network calls, no built cloud prompt endpoint/secret markers, no remote static asset loads in the built index/CSS, LocalKit/PGlite wiring, 62+ tools, and no Vercel serverless functions.
 - `npm run vibeproof:prod-url-verify` serves the production build locally and verifies the proof brief, Studio, LocalKit iframe proof, generated-app ZIP export, mobile touch targets, real service-worker asset, and runtime browser requests with zero cloud AI prompt API hosts.
 - Delivery audit surfaces Vercel static-deploy checks: no serverless functions/builds, immutable hashed assets, revalidatable service worker/manifest, static security headers, no forced COOP/COEP, and SPA rewrites that preserve direct asset/service-worker access.

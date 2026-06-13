@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-13T03:36:45.111Z",
+  "generatedAt": "2026-06-13T03:39:39.572Z",
   "project": "VibeProof Studio",
   "status": "pass",
   "publicActionsRequireConfirmation": true,
@@ -26,10 +26,10 @@
   },
   "browserRuntimeNetwork": {
     "dev": {
-      "target": "http://127.0.0.1:5173/",
-      "requestCount": 87,
+      "target": "https://vibeproof-studio.vercel.app/",
+      "requestCount": 21,
       "hosts": [
-        "127.0.0.1"
+        "vibeproof-studio.vercel.app"
       ],
       "cloudAiRequestHits": []
     },
@@ -103,13 +103,13 @@
     "deliveryAuditStatus": "pass",
     "deliveryAuditFailedChecks": 0,
     "preflightStatus": "pass",
-    "generatedEvidenceDirtyEntries": 5,
+    "generatedEvidenceDirtyEntries": 7,
     "publicPlaceholders": {
-      "github_source_url": "TODO after explicit approval",
-      "vercel_demo_url": "TODO after explicit approval",
+      "github_source_url": "https://github.com/rayaneutk-droid/solana-hustle-culture/tree/codex/vibeproof-studio/vibeproof-studio",
+      "vercel_demo_url": "https://vibeproof-studio.vercel.app",
       "figma_frame_url": "TODO after explicit approval",
       "canva_design_url": "TODO after explicit approval",
-      "pump_fun_reply": "TODO after explicit approval"
+      "pump_fun_reply": "TODO after final Pump.fun approval"
     }
   },
   "evidenceFiles": {
@@ -128,8 +128,8 @@
     },
     {
       "path": "delivery/vibeproof/public-url-verification.json",
-      "bytes": 26498,
-      "sha256": "00906695d61367261532ec9d30e04b927a14cd90a5886668bc99f5efe94263dd"
+      "bytes": 26803,
+      "sha256": "a52d3d3827a0fbf386aca2fcfd6ea06598344b5e603a67e8fbebf4c830908321"
     },
     {
       "path": "delivery/vibeproof/production-url-verification.json",
@@ -138,23 +138,23 @@
     },
     {
       "path": "delivery/vibeproof/proof-first-responsive-report.json",
-      "bytes": 6439,
-      "sha256": "47ed431bfd0afff7b8d18f2eeb611598199e20bff28a6cea99eaf8e78767e924"
+      "bytes": 6587,
+      "sha256": "b0a108e077f7530236df0ed52b08a0f30613c89f78c54e946ccfe2c45ac3ec63"
     },
     {
       "path": "delivery/vibeproof/vibeproof-proof-brief-desktop-1440.png",
-      "bytes": 959579,
-      "sha256": "29dff462158dff67edf768fcc6d2b5d454cd4635d8f57210c6f2b3580f123a30"
+      "bytes": 959591,
+      "sha256": "df87abc27a3718ee6c6e5c5919939e073beb651797126a95c4e4aa4cc5a5c551"
     },
     {
       "path": "delivery/vibeproof/vibeproof-proof-brief-laptop-1280.png",
-      "bytes": 724048,
-      "sha256": "3760cf7871374b97f06be64dc4dcef83442c73274fbd15bcbbe8452c8c07de8f"
+      "bytes": 724067,
+      "sha256": "4cccb183c291171340d10db85fba1680b4dd591958a02c33625a68087419822a"
     },
     {
       "path": "delivery/vibeproof/vibeproof-proof-brief-tablet-834.png",
-      "bytes": 767258,
-      "sha256": "67bd1019a3eadf27c76c3879f9504937fbd0266e01f35aa69a114c6c1f20da86"
+      "bytes": 771755,
+      "sha256": "60f8450416e5af622e9511a3e922d66b98a89a29547f83eba1de6f08ef2c662c"
     },
     {
       "path": "delivery/vibeproof/vibeproof-proof-brief-mobile-390.png",
@@ -163,18 +163,18 @@
     },
     {
       "path": "delivery/vibeproof/vibeproof-studio-workspace-desktop-1440.png",
-      "bytes": 907864,
-      "sha256": "bf9930faf15ea7747c4f3fc82791d5b0067da04fe7c01652b121c661c1ba5946"
+      "bytes": 907868,
+      "sha256": "3faca8789893edf19d07550fe0ab7fc069e954fbfb26b3b100eb76db9663ba65"
     },
     {
       "path": "delivery/vibeproof/submission-cover-16x9.png",
-      "bytes": 1091314,
-      "sha256": "43e6f75f66ad2cee774dbd72dbc74f97527621320c05387989b26ba6218a94c3"
+      "bytes": 1091875,
+      "sha256": "940c3db34870bcf69e3e95f5c49fd7ed9e8b1caa87827c1221c9f790f191f5ba"
     },
     {
       "path": "delivery/vibeproof/submission-square-card.png",
-      "bytes": 644810,
-      "sha256": "82ef3e7a37eeefbf99fd62ff2547cffd7f8c015202002aca92280016e4293c8c"
+      "bytes": 644701,
+      "sha256": "cb4b9acb12a01a6e8c2857c184b3e762f4963a91303e80f6db77119eff4a320b"
     },
     {
       "path": "delivery/vibeproof/submission-story-card.png",
@@ -183,8 +183,8 @@
     },
     {
       "path": "delivery/vibeproof/figma-proof-frame-local.png",
-      "bytes": 1609361,
-      "sha256": "3c80cbd88d6b69edb75708f1bd86d45d867a4ba31f8150dc0d9de8031e23e826"
+      "bytes": 1609204,
+      "sha256": "031e58d55e21d19037dfc9390fb8e0ebcafb4ec26146cae76336437cf1e2db09"
     },
     {
       "path": "delivery/vibeproof/submission-cover-16x9.html",

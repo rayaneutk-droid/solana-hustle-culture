@@ -5,8 +5,8 @@ Status: prepared only. Do not submit without final explicit user approval.
 ```text
 Built: VibeProof Studio
 
-Demo: <VERCEL_URL>
-Source: <GITHUB_URL>
+Demo: https://vibeproof-studio.vercel.app
+Source: https://github.com/rayaneutk-droid/solana-hustle-culture/tree/codex/vibeproof-studio/vibeproof-studio
 
 VibeProof Studio is a proof-first, pure-local browser AI app builder. The root route opens a reviewer Proof Brief, and one click launches the working Studio at #studio.
 

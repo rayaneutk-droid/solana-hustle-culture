@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-13T03:36:44.620Z",
+  "generatedAt": "2026-06-13T03:38:13.585Z",
   "project": "VibeProof Studio",
-  "target": "http://127.0.0.1:5173/",
-  "mode": "local",
+  "target": "https://vibeproof-studio.vercel.app/",
+  "mode": "public-url",
   "status": "pass",
   "checks": [
     {
@@ -10,7 +10,7 @@
       "ok": true,
       "details": {
         "status": 200,
-        "url": "http://127.0.0.1:5173/"
+        "url": "https://vibeproof-studio.vercel.app/"
       }
     },
     {
@@ -19,7 +19,7 @@
       "details": {
         "ok": true,
         "status": 200,
-        "contentType": "application/manifest+json"
+        "contentType": "application/manifest+json; charset=utf-8"
       }
     },
     {
@@ -28,8 +28,8 @@
       "details": {
         "ok": true,
         "status": 200,
-        "contentType": "text/html",
-        "devFallback": true
+        "contentType": "application/javascript; charset=utf-8",
+        "devFallback": false
       }
     },
     {
@@ -42,7 +42,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -74,7 +74,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -106,7 +106,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -138,7 +138,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -170,7 +170,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -317,7 +317,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -464,7 +464,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -611,7 +611,7 @@
           "height": 900,
           "mobile": false
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -766,7 +766,7 @@
       "ok": true,
       "details": {
         "ok": true,
-        "size": 8422,
+        "size": 8419,
         "entryNames": [
           "index.html",
           "src/",
@@ -793,7 +793,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -825,7 +825,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -857,7 +857,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -889,7 +889,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -921,7 +921,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -953,7 +953,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -985,7 +985,7 @@
           "height": 844,
           "mobile": true
         },
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,
@@ -1011,10 +1011,10 @@
       "label": "Runtime browser requests contain no cloud AI prompt API hosts.",
       "ok": true,
       "details": {
-        "requestCount": 87,
+        "requestCount": 21,
         "uniqueHostCount": 1,
         "hosts": [
-          "127.0.0.1"
+          "vibeproof-studio.vercel.app"
         ],
         "cloudAiRequestHits": []
       }

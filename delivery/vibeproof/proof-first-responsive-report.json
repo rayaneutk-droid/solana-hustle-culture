@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-06-12T20:44:51.049Z",
+  "generatedAt": "2026-06-13T03:38:29.566Z",
   "runner": "local-chrome-cdp",
-  "appUrl": "http://127.0.0.1:5173/",
+  "appUrl": "https://vibeproof-studio.vercel.app",
   "captured": [
     {
       "name": "proof-brief-desktop",
       "fileName": "vibeproof-proof-brief-desktop-1440.png",
-      "url": "http://127.0.0.1:5173/",
+      "url": "https://vibeproof-studio.vercel.app",
       "viewport": {
         "width": 1440,
         "height": 900,
         "mobile": false
       },
       "state": {
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -32,14 +32,14 @@
     {
       "name": "proof-brief-laptop",
       "fileName": "vibeproof-proof-brief-laptop-1280.png",
-      "url": "http://127.0.0.1:5173/",
+      "url": "https://vibeproof-studio.vercel.app",
       "viewport": {
         "width": 1280,
         "height": 720,
         "mobile": false
       },
       "state": {
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -58,14 +58,14 @@
     {
       "name": "proof-brief-tablet",
       "fileName": "vibeproof-proof-brief-tablet-834.png",
-      "url": "http://127.0.0.1:5173/",
+      "url": "https://vibeproof-studio.vercel.app",
       "viewport": {
         "width": 834,
         "height": 1194,
         "mobile": true
       },
       "state": {
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -84,14 +84,14 @@
     {
       "name": "proof-brief-mobile",
       "fileName": "vibeproof-proof-brief-mobile-390.png",
-      "url": "http://127.0.0.1:5173/",
+      "url": "https://vibeproof-studio.vercel.app",
       "viewport": {
         "width": 390,
         "height": 844,
         "mobile": true
       },
       "state": {
-        "url": "http://127.0.0.1:5173/",
+        "url": "https://vibeproof-studio.vercel.app/",
         "hash": "",
         "title": "VibeProof Studio",
         "hasProofBrief": true,
@@ -110,14 +110,14 @@
     {
       "name": "studio-desktop",
       "fileName": "vibeproof-studio-workspace-desktop-1440.png",
-      "url": "http://127.0.0.1:5173/#studio",
+      "url": "https://vibeproof-studio.vercel.app#studio",
       "viewport": {
         "width": 1440,
         "height": 900,
         "mobile": false
       },
       "state": {
-        "url": "http://127.0.0.1:5173/#studio",
+        "url": "https://vibeproof-studio.vercel.app/#studio",
         "hash": "#studio",
         "title": "VibeProof Studio",
         "hasProofBrief": false,

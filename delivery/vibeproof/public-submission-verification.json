@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-06-13T03:39:39.925Z",
+  "project": "VibeProof Studio",
+  "status": "public_submission_ready",
+  "checks": [
+    {
+      "label": "GitHub source URL is filled with a public HTTPS URL.",
+      "ok": true,
+      "details": {
+        "github_source_url": "https://github.com/rayaneutk-droid/solana-hustle-culture/tree/codex/vibeproof-studio/vibeproof-studio"
+      }
+    },
+    {
+      "label": "Vercel demo URL is filled with a deployed HTTPS URL.",
+      "ok": true,
+      "details": {
+        "vercel_demo_url": "https://vibeproof-studio.vercel.app"
+      }
+    },
+    {
+      "label": "Optional Figma URL is either intentionally optional/TODO or a HTTPS URL.",
+      "ok": true,
+      "details": {
+        "figma_frame_url": "TODO after explicit approval"
+      }
+    },
+    {
+      "label": "Optional Canva URL is either intentionally optional/TODO or a HTTPS URL.",
+      "ok": true,
+      "details": {
+        "canva_design_url": "TODO after explicit approval"
+      }
+    },
+    {
+      "label": "Pump.fun reply is not marked submitted before final approval.",
+      "ok": true,
+      "details": {
+        "pump_fun_reply": "TODO after final Pump.fun approval"
+      }
+    },
+    {
+      "label": "Public URL verification was regenerated against the deployed Vercel URL.",
+      "ok": true,
+      "details": {
+        "verificationTarget": "https://vibeproof-studio.vercel.app/",
+        "vercel_demo_url": "https://vibeproof-studio.vercel.app"
+      }
+    },
+    {
+      "label": "Public URL verification status is pass.",
+      "ok": true,
+      "details": {
+        "status": "pass",
+        "failedChecks": []
+      }
+    },
+    {
+      "label": "Deployed root opens Proof Brief and Studio route opens builder.",
+      "ok": true,
+      "details": {
+        "rootProofBrief": {
+          "ok": true,
+          "hasStudioCta": true
+        },
+        "studioRoute": {
+          "ok": true,
+          "hasBuilderPanel": true,
+          "hasLocalBackend": true,
+          "hasNetworkProof": true
+        }
+      }
+    },
+    {
+      "label": "Deployed LocalKit iframe proof and generated ZIP proof pass.",
+      "ok": true,
+      "details": {
+        "localKitProof": {
+          "ok": true,
+          "consoleTail": "info\nPreview reloaded with deterministic proof app.\n\ninfo\nDeterministic proof compile replaced workspace files.\n\ninfo\nLocalKit iframe proof OK"
+        },
+        "zipProof": {
+          "ok": true,
+          "localToolCount": 68,
+          "cloudAiPromptApis": false,
+          "missingEntries": []
+        }
+      }
+    },
+    {
+      "label": "Deployed runtime browser requests avoid cloud AI prompt API hosts.",
+      "ok": true,
+      "details": {
+        "hosts": [
+          "vibeproof-studio.vercel.app"
+        ],
+        "cloudAiRequestHits": []
+      }
+    },
+    {
+      "label": "Local boundary, delivery audit, and reviewer summary are passing.",
+      "ok": true,
+      "details": {
+        "localBoundary": "pass",
+        "deliveryAudit": "pass",
+        "reviewerSummary": "pass"
+      }
+    }
+  ]
+}
